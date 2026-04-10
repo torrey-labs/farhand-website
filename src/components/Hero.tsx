@@ -108,7 +108,7 @@ export default function Hero() {
       {/* Product Placeholder Image */}
       <motion.div
         initial={{ opacity: 0, y: 100 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 0.2, y: 0 }}
         transition={{ delay: 0.8, duration: 1.2 }}
         style={{
           position: 'absolute',
@@ -116,14 +116,24 @@ export default function Hero() {
           width: '80%',
           maxWidth: '1200px',
           height: '400px',
-          background: 'url(/screenshot1.png) center top / cover no-repeat',
+          background: 'linear-gradient(180deg, rgba(26, 255, 103, 0.1) 0%, transparent 100%)',
           border: '1px solid rgba(26, 255, 103, 0.2)',
           borderBottom: 'none',
           borderRadius: '40px 40px 0 0',
           zIndex: 0,
-          boxShadow: '0 -20px 60px rgba(0,0,0,0.5)'
+          pointerEvents: 'none',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
         }}
-      />
+      >
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.5em', opacity: 0.5, marginBottom: '1rem' }}>
+            Farhand Relay Platform
+          </div>
+          <div style={{ width: '200px', height: '1px', background: 'var(--accent-green)', opacity: 0.3, margin: '0 auto' }}></div>
+        </div>
+      </motion.div>
 
       <motion.div 
         animate={{ y: [0, 10, 0] }}
