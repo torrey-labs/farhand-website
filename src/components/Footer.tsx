@@ -48,7 +48,7 @@ export default function Footer() {
             minHeight: '600px'
           }}>
             <Cal 
-              calLink="aaryan-farhand/30min" 
+              calLink="aaryan-agrawal/30min" 
               style={{ width: "100%", height: "100%", minHeight: "600px" }}
               config={{ layout: 'month_view', theme: 'dark' }}
             />
