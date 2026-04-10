@@ -1,62 +1,79 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Cal, { getCalApi } from "@calcom/embed-react";
 
 export default function Footer() {
+  useEffect(() => {
+    (async function () {
+      const cal = await getCalApi();
+      cal("ui", { 
+        theme: "dark", 
+        styles: { branding: { brandColor: "#000000" } },
+        hideEventTypeDetails: false,
+        layout: "month_view"
+      });
+    })();
+  }, []);
+
   return (
-    <footer className="section-padding" style={{ paddingBottom: '3rem', background: 'var(--background)' }}>
+    <footer id="schedule" className="section-padding" style={{ paddingBottom: '3rem', background: '#000' }}>
       <div className="container">
         
         {/* Main CTA block */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-50px" }}
-          style={{ textAlign: 'center', marginBottom: '8rem' }}
+          transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+          viewport={{ once: true, margin: "-100px" }}
+          style={{ textAlign: 'center', marginBottom: '6rem' }}
         >
-          <h3 style={{ fontSize: 'clamp(1.5rem, 3vw, 28px)', marginBottom: '4rem', lineHeight: 1.4 }}>
+          <h3 style={{ fontSize: 'clamp(1.5rem, 3.5vw, 32px)', marginBottom: '1.5rem', lineHeight: 1.4, fontWeight: 300 }}>
             You don't need a field support team. <br/>
-            You need field service <span className="text-accent">done.</span>
+            You need field service <span className="text-accent" style={{ fontWeight: 600 }}>done.</span>
           </h3>
+          <p style={{ color: 'var(--light-gray)', marginBottom: '5rem', fontSize: '18px' }}>
+            Book a call with Aaryan to discuss your deployment needs.
+          </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap' }}>
-              <div style={{ textAlign: 'left' }}>
-                <p style={{ fontSize: '12px', fontFamily: 'var(--font-inter)', fontWeight: 500, color: '#888', marginBottom: '0.5rem' }}>
-                  Email
-                </p>
-                <p style={{ fontSize: '18px', color: 'var(--light-gray)', margin: 0, lineHeight: 1.5 }}>
-                  aaryan@farhand.live<br/>
-                  (857) 498-9778
-                </p>
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  background: '#000',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: '#fff',
-                  padding: '1rem 2rem',
-                  borderRadius: '9999px',
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  alignSelf: 'center',
-                  transition: 'background 0.3s'
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.05)')}
-                onMouseLeave={(e) => (e.currentTarget.style.background = '#000')}
-              >
-                Schedule a call
-              </motion.button>
-            </div>
+          {/* Cal.com Embed */}
+          <div style={{ 
+            maxWidth: '1000px', 
+            margin: '0 auto', 
+            background: 'rgba(255,255,255,0.01)', 
+            borderRadius: '24px', 
+            border: '1px solid var(--border-color)',
+            overflow: 'hidden',
+            minHeight: '600px'
+          }}>
+            <Cal 
+              calLink="aaryan-farhand/30min" 
+              style={{ width: "100%", height: "100%", minHeight: "600px" }}
+              config={{ layout: 'month_view', theme: 'dark' }}
+            />
           </div>
         </motion.div>
+
+        {/* Contact info cards */}
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap', marginBottom: '8rem' }}>
+           <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '12px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
+              Email
+            </p>
+            <p style={{ fontSize: '20px', color: 'var(--foreground)', margin: 0, fontWeight: 500 }}>
+              aaryan@farhand.live
+            </p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '12px', fontWeight: 600, color: '#555', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.5rem' }}>
+              Direct
+            </p>
+            <p style={{ fontSize: '20px', color: 'var(--foreground)', margin: 0, fontWeight: 500 }}>
+              (857) 498-9778
+            </p>
+          </div>
+        </div>
 
         {/* Bottom Bar */}
         <div style={{ 
@@ -64,23 +81,29 @@ export default function Footer() {
           justifyContent: 'space-between', 
           alignItems: 'flex-end',
           borderTop: '1px solid var(--border-color)',
-          paddingTop: '2rem',
+          paddingTop: '3rem',
           flexWrap: 'wrap',
           gap: '2rem'
         }}>
-          <div>
-            <p style={{ fontSize: '16px', color: 'var(--light-gray)', marginBottom: '1rem' }}>
-              Your field support partner
+          <div style={{ textAlign: 'left' }}>
+            <img 
+              src="/logo-w-type-dark.png" 
+              alt="Farhand Logo" 
+              style={{ height: '24px', filter: 'invert(1)', opacity: 0.8, marginBottom: '1rem' }} 
+            />
+            <p style={{ fontSize: '14px', color: 'var(--light-gray)', opacity: 0.6, maxWidth: '250px', lineHeight: 1.5 }}>
+              The infrastructure for the next generation of industrial automation.
             </p>
-            <a href="#" style={{ fontSize: '16px', color: 'var(--light-gray)', textDecoration: 'underline', textDecorationColor: 'rgba(255,255,255,0.3)' }}>
-              Terms & Privacy
-            </a>
           </div>
 
-          <p style={{ fontSize: '18px', color: 'var(--light-gray)', textAlign: 'right', margin: 0 }}>
-            Designed by SF-based roboticists<br/>
-            For robots out in the field
-          </p>
+          <div style={{ textAlign: 'right' }}>
+            <p style={{ fontSize: '18px', color: 'var(--foreground)', fontWeight: 400, marginBottom: '0.5rem' }}>
+              Designed by SF-based roboticists
+            </p>
+            <p style={{ fontSize: '14px', color: 'var(--light-gray)', opacity: 0.6 }}>
+              © 2026 Farhand Inc. All rights reserved.
+            </p>
+          </div>
         </div>
 
       </div>
