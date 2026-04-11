@@ -21,6 +21,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'facilities',
   ];
 
+  const blogPosts = [
+    'ai-guided-field-service-robots',
+    'field-service-skills-gap',
+    'remote-resolution-field-service',
+    'knowledge-preservation-field-service',
+    'first-time-fix-rate-ai',
+  ];
+
   return [
     {
       url: baseUrl,
@@ -45,6 +53,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'monthly' as const,
       priority: 0.8,
+    })),
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
+    ...blogPosts.map((slug) => ({
+      url: `${baseUrl}/blog/${slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
     })),
     {
       url: `${baseUrl}/terms`,
