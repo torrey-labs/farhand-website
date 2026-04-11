@@ -18,8 +18,22 @@ export interface VerticalPageProps {
 const ease = [0.19, 1, 0.22, 1] as const;
 
 export default function VerticalLanding({ machineType, headline, subheadline, painPoints, howItWorks, faqs, stats }: VerticalPageProps) {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": { "@type": "Answer", "text": faq.a },
+    })),
+  };
+
   return (
     <main style={{ background: '#000', minHeight: '100vh' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Navigation />
 
       {/* Hero */}

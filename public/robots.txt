@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://farhand.live/sitemap.xml

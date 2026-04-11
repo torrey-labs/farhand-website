@@ -21,10 +21,31 @@ const serifDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "FARHAND | Your field service partner",
-  description: "AI-guided technicians install & service your robots & machinery at your client sites.",
+  title: {
+    default: "FARHAND | Your field service partner",
+    template: "%s | Farhand",
+  },
+  description: "AI-guided technicians install & service your robots & machinery at your client sites. On-demand field service across every zip code in the US.",
   icons: {
     icon: "/favicon.svg",
+  },
+  metadataBase: new URL("https://farhand.live"),
+  openGraph: {
+    title: "Farhand — Your field service partner",
+    description: "On-demand technicians guided by AI to service your machines like your own guys. Every zip code in the US.",
+    url: "https://farhand.live",
+    siteName: "Farhand",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Farhand — Your field service partner",
+    description: "On-demand technicians guided by AI to service your machines like your own guys.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -37,6 +58,32 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="facebook-domain-verification" content="nfla0sjkkzg556b9nwgktdftfas5gk" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Farhand",
+              "url": "https://farhand.live",
+              "description": "AI-guided technicians install & service your robots & machinery at your client sites.",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+1-857-498-9778",
+                "email": "aaryan@farhand.live",
+                "contactType": "sales",
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/farhand-robotics/home"
+              ],
+              "areaServed": {
+                "@type": "Country",
+                "name": "United States"
+              },
+              "serviceType": ["Robot Field Service", "AI-Guided Maintenance", "Industrial Equipment Repair", "Medical Equipment Service"]
+            })
+          }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
