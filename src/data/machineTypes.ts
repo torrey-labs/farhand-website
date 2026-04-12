@@ -1,10 +1,11 @@
 /**
  * Machine type definitions for Farhand programmatic SEO landing pages.
  *
- * Each entry powers one service vertical (`/services/[slug]`) and all of its
- * city-level permutations (`/services/[slug]/[city]`). Content is consolidated
- * from the existing `src/app/services/*/page.tsx` files so both the canonical
- * vertical page and the programmatic pages can share one source of truth.
+ * Each entry powers one service vertical at /services/SLUG and all of its
+ * city-level permutations at /services/SLUG/CITY. Content is consolidated
+ * from the existing src/app/services/SLUG/page.tsx files so both the
+ * canonical vertical page and the programmatic pages can share one source
+ * of truth.
  */
 
 export interface MachineTypeStat {
@@ -18,7 +19,7 @@ export interface MachineTypeFAQ {
 }
 
 export interface MachineType {
-  /** URL slug — matches `src/app/services/[slug]` folders */
+  /** URL slug — matches the existing services folder names like "robots" or "instruments" */
   slug: string;
   /** Display name used in headings and metadata */
   displayName: string;
@@ -317,7 +318,7 @@ export const machineTypes: MachineType[] = [
   },
 ];
 
-/** Lookup a machine type by its URL slug. Returns `undefined` if not found. */
+/** Lookup a machine type by its URL slug. Returns undefined if not found. */
 export function getMachineTypeBySlug(slug: string): MachineType | undefined {
   return machineTypes.find((m) => m.slug === slug);
 }
