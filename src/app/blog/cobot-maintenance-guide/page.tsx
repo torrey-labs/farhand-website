@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="cobot-maintenance-guide" />
+      <BlogPost
       title="Cobot Maintenance Guide: Collaborative Robot Service Best Practices"
       date="April 12, 2026"
       category="Technical"
@@ -80,5 +83,6 @@ export default function Post() {
         Sources: IFR World Robotics 2025, Universal Robots Service Manual, FANUC CRX Maintenance Guide, Aquant 2025-2026 Field Service Benchmark, Service Council 2025 State of AI.
       </p>
     </BlogPost>
+  </>
   );
 }

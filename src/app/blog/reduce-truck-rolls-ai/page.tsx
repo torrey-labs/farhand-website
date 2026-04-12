@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="reduce-truck-rolls-ai" />
+      <BlogPost
       title="How AI Reduces Truck Rolls by 40%"
       date="April 12, 2026"
       category="Technology"
@@ -68,5 +71,6 @@ export default function Post() {
         Sources: Aquant 2025-2026 Field Service Benchmark, Service Council 2025 State of AI, Siemens True Cost of Downtime 2024.
       </p>
     </BlogPost>
+  </>
   );
 }

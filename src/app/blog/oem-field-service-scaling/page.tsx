@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="oem-field-service-scaling" />
+      <BlogPost
       title="Why OEMs Can't Scale Internal Service Teams"
       date="April 12, 2026"
       category="Industry"
@@ -72,5 +75,6 @@ export default function Post() {
         Sources: U.S. BLS Occupational Outlook 2024, Aquant 2025-2026 Field Service Benchmark, Siemens True Cost of Downtime 2024, Service Council 2025 State of AI, IFR World Robotics 2025.
       </p>
     </BlogPost>
+  </>
   );
 }

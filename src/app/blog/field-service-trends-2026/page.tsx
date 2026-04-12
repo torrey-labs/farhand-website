@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="field-service-trends-2026" />
+      <BlogPost
       title="The Future of Field Service: 2026 and Beyond"
       date="April 12, 2026"
       category="Industry"
@@ -64,5 +67,6 @@ export default function Post() {
         Sources: Service Council 2025 State of AI, Aquant 2025-2026 Field Service Benchmark, Siemens True Cost of Downtime 2024, IFR World Robotics 2025, U.S. BLS Occupational Outlook 2024.
       </p>
     </BlogPost>
+  </>
   );
 }

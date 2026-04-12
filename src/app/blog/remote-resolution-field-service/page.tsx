@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="remote-resolution-field-service" />
+      <BlogPost
       title="1 in 3 Service Issues Can Be Resolved Without Sending Anyone"
       date="April 8, 2026"
       category="Technology"
@@ -51,5 +54,6 @@ export default function Post() {
         Sources: Aquant 2025-2026 Field Service Benchmark Reports.
       </p>
     </BlogPost>
+  </>
   );
 }

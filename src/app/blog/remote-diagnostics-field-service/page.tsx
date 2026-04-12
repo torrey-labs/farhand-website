@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="remote-diagnostics-field-service" />
+      <BlogPost
       title="Remote Diagnostics: The $14B Opportunity in Field Service"
       date="April 12, 2026"
       category="Industry"
@@ -63,5 +66,6 @@ export default function Post() {
         Sources: Aquant 2025-2026 Field Service Benchmark, Service Council 2025 State of AI, MarketsandMarkets Remote Diagnostics Forecast 2030, IFR World Robotics 2025.
       </p>
     </BlogPost>
+  </>
   );
 }

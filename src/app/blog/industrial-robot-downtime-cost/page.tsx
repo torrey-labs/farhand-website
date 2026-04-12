@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="industrial-robot-downtime-cost" />
+      <BlogPost
       title="The True Cost of Downtime for Industrial Robots"
       date="April 12, 2026"
       category="Insights"
@@ -67,5 +70,6 @@ export default function Post() {
         Sources: Siemens True Cost of Downtime 2024, IFR World Robotics 2025, Aquant 2025-2026 Field Service Benchmark, Service Council 2025 State of AI.
       </p>
     </BlogPost>
+  </>
   );
 }

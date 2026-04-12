@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="fanuc-robot-maintenance-checklist" />
+      <BlogPost
       title="FANUC Robot Maintenance: A Complete Service Checklist"
       date="April 12, 2026"
       category="Technical"
@@ -72,5 +75,6 @@ export default function Post() {
         Sources: FANUC Maintenance Manual B-series, IFR World Robotics 2025, Aquant 2025-2026 Field Service Benchmark, Service Council 2025 State of AI.
       </p>
     </BlogPost>
+  </>
   );
 }

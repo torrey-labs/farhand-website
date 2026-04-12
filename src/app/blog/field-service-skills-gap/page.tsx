@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="field-service-skills-gap" />
+      <BlogPost
       title="The Field Service Skills Gap Is Costing You Millions"
       date="April 9, 2026"
       category="Insights"
@@ -51,5 +54,6 @@ export default function Post() {
         Sources: Aquant 2025-2026 Field Service Benchmark Reports.
       </p>
     </BlogPost>
+  </>
   );
 }

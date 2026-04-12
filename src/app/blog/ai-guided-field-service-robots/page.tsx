@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="ai-guided-field-service-robots" />
+      <BlogPost
       title="AI-Guided Field Service for Robots: Why the Old Model is Broken"
       date="April 10, 2026"
       category="Industry"
@@ -56,5 +59,6 @@ export default function Post() {
         Sources: Aquant 2025-2026 Field Service Benchmark Reports, IFR World Robotics, Siemens True Cost of Downtime 2024, Service Council 2025 State of AI.
       </p>
     </BlogPost>
+  </>
   );
 }

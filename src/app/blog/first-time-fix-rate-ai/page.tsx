@@ -1,4 +1,5 @@
 import BlogPost from '@/components/BlogPost';
+import ArticleSchema from '@/components/ArticleSchema';
 import Link from 'next/link';
 
 export const metadata = {
@@ -8,7 +9,9 @@ export const metadata = {
 
 export default function Post() {
   return (
-    <BlogPost
+    <>
+      <ArticleSchema slug="first-time-fix-rate-ai" />
+      <BlogPost
       title="How AI Pushes First-Time Fix Rates from 53% to 86%"
       date="April 6, 2026"
       category="Technology"
@@ -54,5 +57,6 @@ export default function Post() {
         Sources: Aquant 2025-2026 Field Service Benchmark Reports, Neuron7 2026 Service AI Report.
       </p>
     </BlogPost>
+  </>
   );
 }
