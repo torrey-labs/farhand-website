@@ -61,6 +61,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 1,
+      images: [
+        `${baseUrl}/us-map.png`,
+        `${baseUrl}/relay-platform.png`,
+        `${baseUrl}/logo-w-type-dark.png`,
+      ],
     },
     {
       url: `${baseUrl}/faq`,
