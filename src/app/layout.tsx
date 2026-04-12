@@ -58,6 +58,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="facebook-domain-verification" content="nfla0sjkkzg556b9nwgktdftfas5gk" />
+        <link rel="alternate" type="application/rss+xml" title="Farhand Blog" href="/rss.xml" />
         {/* Google Analytics 4 — replace G-XXXXXXXXXX with your GA4 measurement ID */}
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
         <script
