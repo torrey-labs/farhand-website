@@ -2,25 +2,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import FAQSection from '@/components/FAQSection';
 import Link from 'next/link';
-
-const blogFaqs = [
-  {
-    q: 'How often do you publish new articles?',
-    a: 'We publish weekly articles on field service operations, AI-guided maintenance, and industry trends. Subscribe or check back regularly for new insights.',
-  },
-  {
-    q: 'What topics does the Farhand blog cover?',
-    a: 'Our blog focuses on field service challenges, AI and automation in maintenance, robot operations, industry benchmarks, and real-world case studies from OEMs, fleet operators, and service teams.',
-  },
-  {
-    q: 'Can I contribute a guest post?',
-    a: 'We welcome guest contributions from field service practitioners, robotics engineers, and service operations leaders. Email aaryan@farhand.live with your pitch.',
-  },
-  {
-    q: 'Where do your stats and benchmarks come from?',
-    a: 'We cite peer-reviewed sources: Aquant Field Service Benchmark Reports, IFR World Robotics, Siemens downtime studies, Service Council research, and Neuron7 AI reports. Every stat links back to its source.',
-  },
-];
+import { coreFaqs } from '@/data/faqs';
 
 const posts = [
   {
@@ -112,7 +94,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <FAQSection faqs={blogFaqs} title="Blog FAQ" />
+      <FAQSection faqs={coreFaqs} subtitle="Everything you need to know about AI-guided field service." />
 
       <Footer />
     </main>
