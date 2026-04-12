@@ -36,6 +36,8 @@ interface Env {
   TUMBLR_TOKEN?: string;
   TUMBLR_BLOG_NAME?: string;
   TELEGRAPH_ACCESS_TOKEN?: string;
+  OPENAI_API_KEY?: string;
+  UNSPLASH_ACCESS_KEY?: string;
 }
 
 function loadEnv(): Env {
@@ -67,6 +69,8 @@ interface ArticleRecord {
   createdAt: string;
   syndicatedTo?: string[];
   pageCreated?: boolean;
+  coverImage?: string;
+  coverImageProvider?: 'openai' | 'unsplash';
 }
 
 function getDb(): ArticleRecord[] {
@@ -250,13 +254,128 @@ export default function Post() {
   console.log(`  📄 Created page: /blog/${slug}`);
 }
 
+// ── Image Generation ──────────────────────────────────────────────────
+const PUBLIC_BLOG_DIR = join(ROOT, 'public', 'blog');
+
+const DALLE_PROMPT_TEMPLATE =
+  'Dark cinematic industrial photography, neon green accent (#1aff67), robotic {subject}, moody lighting, photorealistic, 16:9, no text, no people';
+
+function buildDallePrompt(record: ArticleRecord): string {
+  const subject = record.title || record.keyword;
+  return DALLE_PROMPT_TEMPLATE.replace('{subject}', subject);
+}
+
+async function downloadImage(url: string, destPath: string): Promise<void> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Download failed: ${res.status}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  mkdirSync(PUBLIC_BLOG_DIR, { recursive: true });
+  writeFileSync(destPath, buf);
+}
+
+async function generateDalleImage(record: ArticleRecord, apiKey: string): Promise<string> {
+  // DALL-E 3 native sizes: 1024x1024, 1792x1024 (closest to 16:9), 1024x1792.
+  // We request 1792x1024 which gets served as ~1.75:1; downstream consumers
+  // can resize to 1200x630 if strict OG aspect matters.
+  const res = await fetch('https://api.openai.com/v1/images/generations', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      model: 'dall-e-3',
+      prompt: buildDallePrompt(record),
+      n: 1,
+      size: '1792x1024',
+      quality: 'hd',
+      style: 'natural',
+    }),
+  });
+  if (!res.ok) throw new Error(`DALL-E: ${res.status} ${await res.text()}`);
+  const data = await res.json();
+  const url: string | undefined = data?.data?.[0]?.url;
+  if (!url) throw new Error('DALL-E returned no URL');
+  const dest = join(PUBLIC_BLOG_DIR, `${record.slug}.jpg`);
+  await downloadImage(url, dest);
+  return `/blog/${record.slug}.jpg`;
+}
+
+function unsplashQueryFor(record: ArticleRecord): string {
+  const text = (record.title || record.keyword).toLowerCase();
+  if (text.includes('cobot') || text.includes('universal robot')) return 'collaborative robot factory';
+  if (text.includes('fanuc')) return 'industrial robot arm factory';
+  if (text.includes('downtime')) return 'factory automation line';
+  if (text.includes('predictive') || text.includes('preventive')) return 'industrial maintenance technician';
+  if (text.includes('remote') || text.includes('diagnostic')) return 'engineer laptop factory';
+  if (text.includes('oem')) return 'manufacturing engineer';
+  if (text.includes('knowledge') || text.includes('training')) return 'industrial worker tablet';
+  if (text.includes('truck') || text.includes('dispatch')) return 'service van technician';
+  if (text.includes('trend') || text.includes('future')) return 'futuristic factory automation';
+  if (text.includes('roi') || text.includes('cost')) return 'factory operations dashboard';
+  return 'industrial robotics factory';
+}
+
+async function generateUnsplashImage(record: ArticleRecord, accessKey: string): Promise<string> {
+  const query = unsplashQueryFor(record);
+  const res = await fetch(
+    `https://api.unsplash.com/photos/random?orientation=landscape&query=${encodeURIComponent(query)}`,
+    { headers: { Authorization: `Client-ID ${accessKey}` } },
+  );
+  if (!res.ok) throw new Error(`Unsplash: ${res.status} ${await res.text()}`);
+  const data = await res.json();
+  const url: string | undefined = data?.urls?.raw
+    ? `${data.urls.raw}&w=1200&h=630&fit=crop&fm=jpg&q=85`
+    : data?.urls?.regular;
+  if (!url) throw new Error('Unsplash returned no URL');
+  const dest = join(PUBLIC_BLOG_DIR, `${record.slug}.jpg`);
+  await downloadImage(url, dest);
+  return `/blog/${record.slug}.jpg`;
+}
+
+async function generateCoverImage(record: ArticleRecord, env: Env): Promise<void> {
+  if (record.coverImage && existsSync(join(ROOT, 'public', record.coverImage.replace(/^\//, '')))) {
+    console.log(`  ⏭  ${record.slug} — cover image already exists`);
+    return;
+  }
+
+  if (env.OPENAI_API_KEY) {
+    console.log(`  🎨 DALL-E: ${record.slug}`);
+    const rel = await generateDalleImage(record, env.OPENAI_API_KEY);
+    record.coverImage = rel;
+    record.coverImageProvider = 'openai';
+    console.log(`    ✅ ${rel}`);
+    return;
+  }
+  if (env.UNSPLASH_ACCESS_KEY) {
+    console.log(`  🖼  Unsplash: ${record.slug}`);
+    const rel = await generateUnsplashImage(record, env.UNSPLASH_ACCESS_KEY);
+    record.coverImage = rel;
+    record.coverImageProvider = 'unsplash';
+    console.log(`    ✅ ${rel}`);
+    return;
+  }
+  throw new Error('No image provider configured — set OPENAI_API_KEY or UNSPLASH_ACCESS_KEY');
+}
+
+function absoluteCoverUrl(record: ArticleRecord): string | undefined {
+  return record.coverImage ? `${BASE_URL}${record.coverImage}` : undefined;
+}
+
 // ── Syndication ───────────────────────────────────────────────────────
-async function syndicateToDevTo(title: string, markdown: string, canonical: string, tags: string[], apiKey: string, retries = 2): Promise<string> {
+async function syndicateToDevTo(title: string, markdown: string, canonical: string, tags: string[], apiKey: string, coverImage: string | undefined, retries = 2): Promise<string> {
   const res = await fetch('https://dev.to/api/articles', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'api-key': apiKey },
     body: JSON.stringify({
-      article: { title, body_markdown: markdown, published: true, canonical_url: canonical, tags: tags.slice(0, 4) },
+      article: {
+        title,
+        body_markdown: markdown,
+        published: true,
+        canonical_url: canonical,
+        tags: tags.slice(0, 4),
+        ...(coverImage ? { main_image: coverImage } : {}),
+      },
     }),
   });
   if (res.status === 429 && retries > 0) {
@@ -265,19 +384,27 @@ async function syndicateToDevTo(title: string, markdown: string, canonical: stri
     const wait = waitMatch ? parseInt(waitMatch[1]) : 300;
     console.log(`    ⏸  Rate limited — waiting ${wait}s then retrying...`);
     await new Promise(r => setTimeout(r, (wait + 5) * 1000));
-    return syndicateToDevTo(title, markdown, canonical, tags, apiKey, retries - 1);
+    return syndicateToDevTo(title, markdown, canonical, tags, apiKey, coverImage, retries - 1);
   }
   if (!res.ok) throw new Error(`Dev.to: ${res.status} ${await res.text()}`);
   return (await res.json()).url;
 }
 
-async function syndicateToHashnode(title: string, markdown: string, canonical: string, token: string, pubId: string): Promise<string> {
+async function syndicateToHashnode(title: string, markdown: string, canonical: string, token: string, pubId: string, coverImage: string | undefined): Promise<string> {
   const res = await fetch('https://gql.hashnode.com', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: token },
     body: JSON.stringify({
       query: `mutation($i:PublishPostInput!){publishPost(input:$i){post{url}}}`,
-      variables: { i: { title, contentMarkdown: markdown, publicationId: pubId, originalArticleURL: canonical } },
+      variables: {
+        i: {
+          title,
+          contentMarkdown: markdown,
+          publicationId: pubId,
+          originalArticleURL: canonical,
+          ...(coverImage ? { coverImageOptions: { coverImageURL: coverImage } } : {}),
+        },
+      },
     }),
   });
   if (!res.ok) throw new Error(`Hashnode: ${res.status}`);
@@ -295,9 +422,12 @@ async function syndicateToMedium(title: string, markdown: string, canonical: str
   return (await res.json()).data.url;
 }
 
-async function syndicateToTelegraph(title: string, markdown: string, canonical: string, token: string): Promise<string> {
+async function syndicateToTelegraph(title: string, markdown: string, canonical: string, token: string, coverImage: string | undefined): Promise<string> {
   // Convert markdown to Telegraph node format
   const nodes = markdownToTelegraphNodes(markdown, canonical);
+  if (coverImage) {
+    nodes.unshift({ tag: 'figure', children: [{ tag: 'img', attrs: { src: coverImage } }] });
+  }
   const body = new URLSearchParams();
   body.append('access_token', token);
   body.append('title', title);
@@ -382,13 +512,14 @@ async function syndicateArticle(record: ArticleRecord, env: Env) {
   const canonical = `${BASE_URL}/blog/${record.slug}`;
   const tags = ['fieldservice', 'ai', 'robotics', 'automation'];
   const title = record.title || record.keyword;
+  const coverImage = absoluteCoverUrl(record);
   const results: string[] = [];
 
   const already = new Set(record.syndicatedTo || []);
   const platforms = [
-    { name: 'Dev.to', fn: () => syndicateToDevTo(title, markdown, canonical, tags, env.DEVTO_API_KEY!), ok: !!env.DEVTO_API_KEY },
-    { name: 'Hashnode', fn: () => syndicateToHashnode(title, markdown, canonical, env.HASHNODE_TOKEN!, env.HASHNODE_PUBLICATION_ID!), ok: !!env.HASHNODE_TOKEN && !!env.HASHNODE_PUBLICATION_ID },
-    { name: 'Telegraph', fn: () => syndicateToTelegraph(title, markdown, canonical, env.TELEGRAPH_ACCESS_TOKEN!), ok: !!env.TELEGRAPH_ACCESS_TOKEN },
+    { name: 'Dev.to', fn: () => syndicateToDevTo(title, markdown, canonical, tags, env.DEVTO_API_KEY!, coverImage), ok: !!env.DEVTO_API_KEY },
+    { name: 'Hashnode', fn: () => syndicateToHashnode(title, markdown, canonical, env.HASHNODE_TOKEN!, env.HASHNODE_PUBLICATION_ID!, coverImage), ok: !!env.HASHNODE_TOKEN && !!env.HASHNODE_PUBLICATION_ID },
+    { name: 'Telegraph', fn: () => syndicateToTelegraph(title, markdown, canonical, env.TELEGRAPH_ACCESS_TOKEN!, coverImage), ok: !!env.TELEGRAPH_ACCESS_TOKEN },
     { name: 'Tumblr', fn: () => syndicateToTumblr(title, markdown, canonical, env), ok: !!env.TUMBLR_TOKEN && !!env.TUMBLR_BLOG_NAME },
   ];
 
@@ -422,6 +553,8 @@ async function main() {
   status [articleId]               Check article status (or all pending)
   fetch [articleId]                Fetch completed article → Next.js page
   fetch-all                        Fetch all finished articles
+  generate-images <slug>           Generate cover image for one article (OpenAI → Unsplash fallback)
+  generate-all-images              Generate cover images for all articles missing one
   syndicate <slug>                 Syndicate one article to all platforms
   syndicate-all                    Syndicate all articles
   list                             List all articles and status
@@ -557,6 +690,49 @@ async function main() {
         }
       }
       saveDb(db);
+      break;
+    }
+
+    case 'generate-images': {
+      const slug = args[0];
+      if (!slug) { console.error('Usage: generate-images <slug>'); return; }
+      if (!env.OPENAI_API_KEY && !env.UNSPLASH_ACCESS_KEY) {
+        console.error('❌ Set OPENAI_API_KEY or UNSPLASH_ACCESS_KEY');
+        return;
+      }
+      const db = getDb();
+      const record = db.find(r => r.slug === slug);
+      if (!record) { console.error(`Article not found: ${slug}`); return; }
+      try {
+        await generateCoverImage(record, env);
+        saveDb(db);
+      } catch (err: any) {
+        console.error(`  ❌ ${err.message}`);
+      }
+      break;
+    }
+
+    case 'generate-all-images': {
+      if (!env.OPENAI_API_KEY && !env.UNSPLASH_ACCESS_KEY) {
+        console.error('❌ Set OPENAI_API_KEY or UNSPLASH_ACCESS_KEY');
+        return;
+      }
+      const db = getDb();
+      const targets = db.filter(r => !r.coverImage);
+      if (!targets.length) { console.log('All articles already have cover images.'); return; }
+      console.log(`🎨 Generating ${targets.length} cover images\n`);
+      for (let i = 0; i < targets.length; i++) {
+        const record = targets[i];
+        console.log(`[${i + 1}/${targets.length}] ${record.slug}`);
+        try {
+          await generateCoverImage(record, env);
+          saveDb(db);
+          // Be polite to OpenAI / Unsplash rate limits
+          if (i < targets.length - 1) await new Promise(r => setTimeout(r, 1500));
+        } catch (err: any) {
+          console.error(`  ❌ ${err.message}`);
+        }
+      }
       break;
     }
 
