@@ -1,5 +1,11 @@
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 const faqs = [
   {
@@ -72,40 +78,32 @@ export default function FAQPage() {
   };
 
   return (
-    <main style={{ background: '#000', minHeight: '100vh' }}>
+    <main className="bg-background min-h-screen">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Navigation />
 
-      <section style={{ padding: 'clamp(8rem, 15vw, 12rem) 0 clamp(3rem, 8vw, 5rem)' }}>
-        <div className="container" style={{ maxWidth: '800px', textAlign: 'center' }}>
-          <h1 style={{ marginBottom: '1rem' }}>Frequently asked questions</h1>
-          <h2 style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <section className="pt-[clamp(8rem,15vw,12rem)] pb-[clamp(3rem,8vw,5rem)]">
+        <div className="container max-w-[800px] text-center">
+          <h1 className="mb-4">Frequently asked questions</h1>
+          <h2 className="max-w-[600px] mx-auto">
             Everything you need to know about Farhand and AI-guided field service.
           </h2>
         </div>
       </section>
 
-      <section style={{ paddingBottom: 'clamp(4rem, 10vw, 8rem)' }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
-          {faqs.map((faq, i) => (
-            <div
-              key={i}
-              style={{
-                padding: '1.5rem 0',
-                borderBottom: '1px solid var(--border-color)',
-              }}
-            >
-              <h4 style={{ fontSize: 'clamp(17px, 2vw, 20px)', fontWeight: 500, color: 'var(--foreground)', marginBottom: '0.75rem' }}>
-                {faq.q}
-              </h4>
-              <p style={{ fontSize: '16px', color: 'var(--light-gray)', lineHeight: 1.6, margin: 0, opacity: 0.9 }}>
-                {faq.a}
-              </p>
-            </div>
-          ))}
+      <section className="pb-[clamp(4rem,10vw,8rem)]">
+        <div className="container max-w-[800px]">
+          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
+            {faqs.map((faq, i) => (
+              <AccordionItem key={i} value={`item-${i}`}>
+                <AccordionTrigger className="text-lg sm:text-xl">{faq.q}</AccordionTrigger>
+                <AccordionContent>{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 

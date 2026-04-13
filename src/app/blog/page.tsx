@@ -49,44 +49,38 @@ export const metadata = {
 
 export default function BlogPage() {
   return (
-    <main style={{ background: '#000', minHeight: '100vh' }}>
+    <main className="bg-background min-h-screen">
       <Navigation />
 
-      <section style={{ padding: 'clamp(8rem, 15vw, 12rem) 0 clamp(3rem, 8vw, 5rem)' }}>
-        <div className="container" style={{ textAlign: 'center' }}>
-          <h1 style={{ marginBottom: '1rem' }}>Blog</h1>
-          <h2 style={{ maxWidth: '600px', margin: '0 auto' }}>
+      <section className="pt-[clamp(8rem,15vw,12rem)] pb-[clamp(3rem,8vw,5rem)]">
+        <div className="container text-center">
+          <h1 className="mb-4">Blog</h1>
+          <h2 className="max-w-[600px] mx-auto">
             Insights on AI-guided field service and the future of industrial operations.
           </h2>
         </div>
       </section>
 
-      <section style={{ paddingBottom: 'clamp(4rem, 10vw, 8rem)' }}>
-        <div className="container" style={{ maxWidth: '800px' }}>
+      <section className="pb-[clamp(4rem,10vw,8rem)]">
+        <div className="container max-w-[800px]">
           {posts.map((post, i) => (
             <Link
               key={i}
               href={`/blog/${post.slug}`}
-              style={{
-                display: 'block',
-                padding: '2rem 0',
-                borderBottom: '1px solid var(--border-color)',
-                textDecoration: 'none',
-                transition: 'opacity 0.2s',
-              }}
+              className="block py-8 border-b border-white/10 no-underline transition-opacity duration-200 hover:opacity-80"
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem', flexWrap: 'wrap', gap: '0.5rem' }}>
-                <span style={{ fontSize: '13px', color: 'var(--accent-green)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+              <div className="flex justify-between items-center mb-3 flex-wrap gap-2">
+                <span className="text-xs text-accent font-medium uppercase tracking-wider">
                   {post.category}
                 </span>
-                <span style={{ fontSize: '13px', color: 'var(--light-gray)', opacity: 0.5 }}>
+                <span className="text-xs text-light-gray/50">
                   {post.date}
                 </span>
               </div>
-              <h3 style={{ fontSize: 'clamp(20px, 3vw, 24px)', fontWeight: 500, marginBottom: '0.5rem', lineHeight: 1.3 }}>
+              <h3 className="text-xl md:text-2xl font-medium mb-2 leading-[1.3]">
                 {post.title}
               </h3>
-              <p style={{ fontSize: '16px', color: 'var(--light-gray)', opacity: 0.8, margin: 0, lineHeight: 1.6 }}>
+              <p className="text-base text-light-gray/80 m-0 leading-relaxed">
                 {post.excerpt}
               </p>
             </Link>

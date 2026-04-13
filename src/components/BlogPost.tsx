@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import { Button } from '@/components/ui/button';
 
 interface BlogPostProps {
   title: string;
@@ -14,40 +15,43 @@ interface BlogPostProps {
 
 export default function BlogPost({ title, date, category, children }: BlogPostProps) {
   return (
-    <main style={{ background: '#000', minHeight: '100vh' }}>
+    <main className="bg-background min-h-screen">
       <Navigation />
 
-      <article style={{ padding: 'clamp(8rem, 15vw, 10rem) 0 clamp(3rem, 8vw, 5rem)' }}>
-        <div className="container" style={{ maxWidth: '720px' }}>
-          <div style={{ marginBottom: '2rem' }}>
-            <Link href="/blog" style={{ fontSize: '14px', color: 'var(--accent-green)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
+      <article className="pt-[clamp(8rem,15vw,10rem)] pb-[clamp(3rem,8vw,5rem)]">
+        <div className="container max-w-[720px]">
+          <div className="mb-8">
+            <Link
+              href="/blog"
+              className="text-sm text-accent no-underline inline-flex items-center gap-2 mb-8"
+            >
               &larr; Back to blog
             </Link>
           </div>
-          <span style={{ fontSize: '13px', color: 'var(--accent-green)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <span className="text-xs text-accent font-medium uppercase tracking-wider">
             {category}
           </span>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 42px)', marginTop: '0.75rem', marginBottom: '1rem', lineHeight: 1.2 }}>
+          <h1 className="text-[clamp(2rem,5vw,42px)] mt-3 mb-4 leading-[1.2]">
             {title}
           </h1>
-          <p style={{ fontSize: '15px', color: 'var(--light-gray)', opacity: 0.5, marginBottom: '3rem' }}>
+          <p className="text-[15px] text-light-gray/50 mb-12">
             {date}
           </p>
-          <div style={{ fontSize: '18px', color: 'var(--light-gray)', lineHeight: 1.8 }}>
+          <div className="text-lg text-light-gray leading-[1.8]">
             {children}
           </div>
         </div>
       </article>
 
       {/* CTA */}
-      <section style={{ padding: 'clamp(3rem, 8vw, 5rem) 0' }}>
-        <div className="container" style={{ textAlign: 'center', maxWidth: '600px' }}>
-          <h3 style={{ fontSize: '24px', fontWeight: 400, marginBottom: '1.5rem' }}>
+      <section className="py-[clamp(3rem,8vw,5rem)]">
+        <div className="container text-center max-w-[600px]">
+          <h3 className="text-2xl font-normal mb-6">
             Ready to modernize your field service?
           </h3>
-          <a href="/#schedule" className="btn-primary">
-            Schedule a call
-          </a>
+          <Button asChild size="lg">
+            <a href="/#schedule">Schedule a call</a>
+          </Button>
         </div>
       </section>
 
