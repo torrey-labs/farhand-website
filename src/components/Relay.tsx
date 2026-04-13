@@ -13,7 +13,7 @@ const steps = [
 
 export default function Relay() {
   return (
-    <section id="relay" className="bg-background py-[clamp(3rem,8vw,6rem)]">
+    <section id="relay" className="bg-background py-12 md:py-16 lg:py-24">
       <div className="container text-center">
 
         {/* Solution Introduction */}
@@ -22,7 +22,7 @@ export default function Relay() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
           viewport={{ once: true, margin: "-100px" }}
-          className="py-[clamp(3rem,8vw,5rem)] px-[clamp(1.5rem,5vw,3rem)] border border-white/10 rounded-[30px] max-w-[900px] mx-auto mb-[clamp(3rem,8vw,5rem)]"
+          className="py-12 md:py-16 lg:py-20 px-6 md:px-10 lg:px-12 border border-white/10 rounded-[30px] max-w-[900px] mx-auto mb-12 md:mb-16 lg:mb-20"
         >
           <p className="text-base md:text-lg text-light-gray/90 mb-6 font-normal">
             There&apos;s a better model
@@ -42,10 +42,10 @@ export default function Relay() {
           transition={{ duration: 1.2 }}
           viewport={{ once: true }}
         >
-          <h3 className="text-[clamp(28px,5vw,34px)] mb-2 font-light">
+          <h3 className="text-3xl md:text-[34px] mb-2 font-light">
             Farhand <strong>Relay</strong>&#8482;
           </h3>
-          <p className="text-base md:text-lg font-normal text-light-gray/80 mb-[clamp(2rem,6vw,3rem)]">
+          <p className="text-base md:text-lg font-normal text-light-gray/80 mb-8 md:mb-10 lg:mb-12">
             <strong>Our AI platform that becomes your senior technician.</strong>
           </p>
 

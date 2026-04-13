@@ -10,7 +10,7 @@ export default function TermsPage() {
   return (
     <main className="bg-background min-h-screen text-white">
       <Navigation />
-      <div className="py-[clamp(3rem,8vw,6rem)]">
+      <div className="py-12 md:py-16 lg:py-24">
         <div className="container max-w-[800px] pt-16">
           <h1 className="mb-8">Terms & Conditions</h1>
           <p className="mb-6 text-light-gray">Last Updated: April 2026</p>

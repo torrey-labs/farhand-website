@@ -18,7 +18,7 @@ export default function BlogPost({ title, date, category, children }: BlogPostPr
     <main className="bg-background min-h-screen">
       <Navigation />
 
-      <article className="pt-[clamp(8rem,15vw,10rem)] pb-[clamp(3rem,8vw,5rem)]">
+      <article className="pt-32 md:pt-36 lg:pt-40 pb-12 md:pb-16 lg:pb-20">
         <div className="container max-w-[720px]">
           <div className="mb-8">
             <Link
@@ -31,7 +31,7 @@ export default function BlogPost({ title, date, category, children }: BlogPostPr
           <span className="text-xs text-accent font-medium uppercase tracking-wider">
             {category}
           </span>
-          <h1 className="text-[clamp(2rem,5vw,42px)] mt-3 mb-4 leading-[1.2]">
+          <h1 className="text-3xl md:text-4xl lg:text-[42px] mt-3 mb-4 leading-[1.2]">
             {title}
           </h1>
           <p className="text-[15px] text-light-gray/50 mb-12">
@@ -44,7 +44,7 @@ export default function BlogPost({ title, date, category, children }: BlogPostPr
       </article>
 
       {/* CTA */}
-      <section className="py-[clamp(3rem,8vw,5rem)]">
+      <section className="py-12 md:py-16 lg:py-20">
         <div className="container text-center max-w-[600px]">
           <h3 className="text-2xl font-normal mb-6">
             Ready to modernize your field service?

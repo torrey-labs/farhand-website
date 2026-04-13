@@ -45,7 +45,7 @@ export default function VerticalLanding({ machineType, headline, subheadline, pa
       <Navigation />
 
       {/* Hero */}
-      <section className="min-h-[70vh] flex flex-col justify-center items-center text-center pt-[clamp(6rem,15vw,10rem)] pb-[clamp(3rem,8vw,5rem)]">
+      <section className="min-h-[70vh] flex flex-col justify-center items-center text-center pt-24 md:pt-32 lg:pt-40 pb-12 md:pb-16 lg:pb-20">
         <div className="container max-w-[900px]">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -84,14 +84,14 @@ export default function VerticalLanding({ machineType, headline, subheadline, pa
       </section>
 
       {/* Pain Points */}
-      <section className="bg-background py-[clamp(3rem,8vw,6rem)]">
+      <section className="bg-background py-12 md:py-16 lg:py-24">
         <div className="container text-center">
           <motion.h3
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease }}
             viewport={{ once: true }}
-            className="mb-[clamp(2rem,6vw,4rem)] font-normal text-[clamp(1.5rem,4vw,32px)]"
+            className="mb-8 md:mb-12 lg:mb-16 font-normal text-2xl md:text-3xl lg:text-[32px]"
           >
             Sound familiar?
           </motion.h3>
@@ -117,9 +117,9 @@ export default function VerticalLanding({ machineType, headline, subheadline, pa
 
       {/* Stats */}
       {stats && stats.length > 0 && (
-        <section className="py-[clamp(2rem,5vw,4rem)]">
+        <section className="py-8 md:py-12 lg:py-16">
           <div className="container">
-            <div className="flex justify-center gap-[clamp(2rem,5vw,4rem)] flex-wrap">
+            <div className="flex justify-center gap-8 md:gap-12 lg:gap-16 flex-wrap">
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
@@ -129,7 +129,7 @@ export default function VerticalLanding({ machineType, headline, subheadline, pa
                   viewport={{ once: true }}
                   className="text-center min-w-[150px]"
                 >
-                  <p className="text-[clamp(32px,5vw,48px)] font-light text-accent mb-2 leading-none">
+                  <p className="text-4xl md:text-5xl font-light text-accent mb-2 leading-none">
                     {stat.value}
                   </p>
                   <p className="text-[15px] text-light-gray/80 m-0">
@@ -143,7 +143,7 @@ export default function VerticalLanding({ machineType, headline, subheadline, pa
       )}
 
       {/* How It Works */}
-      <section className="bg-background py-[clamp(3rem,8vw,6rem)]">
+      <section className="bg-background py-12 md:py-16 lg:py-24">
         <div className="container text-center">
           <motion.h3
             initial={{ opacity: 0, y: 30 }}
@@ -159,7 +159,7 @@ export default function VerticalLanding({ machineType, headline, subheadline, pa
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-lg text-light-gray/80 mb-[clamp(2rem,6vw,4rem)] max-w-[600px] mx-auto"
+            className="text-lg text-light-gray/80 mb-8 md:mb-12 lg:mb-16 max-w-[600px] mx-auto"
           >
             Our AI platform that becomes your senior technician.
           </motion.p>
@@ -186,14 +186,14 @@ export default function VerticalLanding({ machineType, headline, subheadline, pa
       </section>
 
       {/* FAQs */}
-      <section className="bg-background py-[clamp(3rem,8vw,6rem)]">
+      <section className="bg-background py-12 md:py-16 lg:py-24">
         <div className="container max-w-[800px]">
           <motion.h3
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease }}
             viewport={{ once: true }}
-            className="text-center mb-[clamp(2rem,6vw,4rem)] font-normal"
+            className="text-center mb-8 md:mb-12 lg:mb-16 font-normal"
           >
             Frequently asked questions
           </motion.h3>

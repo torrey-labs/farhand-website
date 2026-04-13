@@ -40,7 +40,7 @@ export default function FAQSection({
   };
 
   return (
-    <section className="bg-background py-[clamp(3rem,8vw,6rem)]">
+    <section className="bg-background py-12 md:py-16 lg:py-24">
       {includeSchema && (
         <script
           type="application/ld+json"
@@ -54,13 +54,13 @@ export default function FAQSection({
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease }}
           viewport={{ once: true, margin: '-100px' }}
-          className="text-center mb-[clamp(3rem,6vw,4rem)]"
+          className="text-center mb-12 md:mb-14 lg:mb-16"
         >
           <h3 className={subtitle ? 'mb-4' : ''} style={{ fontWeight: 400 }}>
             {title}
           </h3>
           {subtitle && (
-            <p className="text-light-gray/80 max-w-[560px] mx-auto text-[clamp(16px,2vw,18px)]">
+            <p className="text-light-gray/80 max-w-[560px] mx-auto text-base md:text-lg">
               {subtitle}
             </p>
           )}

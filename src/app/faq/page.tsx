@@ -85,7 +85,7 @@ export default function FAQPage() {
       />
       <Navigation />
 
-      <section className="pt-[clamp(8rem,15vw,12rem)] pb-[clamp(3rem,8vw,5rem)]">
+      <section className="pt-32 md:pt-40 lg:pt-48 pb-12 md:pb-16 lg:pb-20">
         <div className="container max-w-[800px] text-center">
           <h1 className="mb-4">Frequently asked questions</h1>
           <h2 className="max-w-[600px] mx-auto">
@@ -94,7 +94,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="pb-[clamp(4rem,10vw,8rem)]">
+      <section className="pb-16 md:pb-24 lg:pb-32">
         <div className="container max-w-[800px]">
           <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
             {faqs.map((faq, i) => (

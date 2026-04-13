@@ -30,12 +30,12 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
           viewport={{ once: true, margin: "-100px" }}
-          className="text-center pt-[clamp(3rem,8vw,5rem)] pb-[clamp(2rem,5vw,3rem)]"
+          className="text-center pt-12 md:pt-16 lg:pt-20 pb-8 md:pb-10 lg:pb-12"
         >
-          <h3 className="text-[clamp(1.5rem,4vw,32px)] mb-1 leading-[1.5] font-normal">
+          <h3 className="text-2xl md:text-3xl lg:text-[32px] mb-1 leading-[1.5] font-normal">
             You don&apos;t need a field support team.
           </h3>
-          <h3 className="text-[clamp(1.5rem,4vw,32px)] leading-[1.5] font-normal">
+          <h3 className="text-2xl md:text-3xl lg:text-[32px] leading-[1.5] font-normal">
             You need field service <em className="text-accent italic">done</em>.
           </h3>
         </motion.div>
@@ -46,7 +46,7 @@ export default function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
           viewport={{ once: true }}
-          className="flex justify-center items-start gap-[clamp(3rem,8vw,6rem)] flex-wrap max-w-[900px] mx-auto mb-[clamp(2rem,5vw,3rem)]"
+          className="flex justify-center items-start gap-12 md:gap-16 lg:gap-24 flex-wrap max-w-[900px] mx-auto mb-8 md:mb-10 lg:mb-12"
         >
           {/* Contact Info */}
           <div className="text-center min-w-[200px]">
@@ -75,7 +75,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Cal.com Embed */}
-        <div className="max-w-[1000px] mx-auto mb-[clamp(3rem,8vw,5rem)] bg-white/[0.01] rounded-[24px] border border-white/10 overflow-hidden min-h-[clamp(450px,80vw,600px)]">
+        <div className="max-w-[1000px] mx-auto mb-12 md:mb-16 lg:mb-20 bg-white/[0.01] rounded-[24px] border border-white/10 overflow-hidden min-h-[500px]">
           <Cal
             calLink="aaryan-agrawal/30min"
             style={{ width: "100%", height: "100%", minHeight: "clamp(450px, 80vw, 600px)" }}
