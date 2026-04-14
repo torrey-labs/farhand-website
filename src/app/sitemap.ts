@@ -64,7 +64,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [
         `${baseUrl}/world-map.avif`,
         `${baseUrl}/relay-platform.png`,
-        `${baseUrl}/logo-w-type-light.png`,
+        `${baseUrl}/logo-w-type-light-on-dark.png`,
       ],
     },
     {

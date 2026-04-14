@@ -99,10 +99,9 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <img
-                src="/logo-w-type-light.png"
+                src="/logo-w-type-light-on-dark.png"
                 alt="Farhand Logo"
                 className="h-6 opacity-90"
-                style={{ filter: 'invert(1) hue-rotate(180deg)' }}
               />
             </div>
             <p className="text-sm text-light-gray/60 mb-4">
