@@ -71,24 +71,34 @@ export default function NewsletterSignup() {
             onChange={(e) => setEmail(e.target.value)}
             disabled={status === 'loading'}
             style={{
-              flex: '1 1 260px',
-              padding: '0.85rem 1rem',
+              flexGrow: 1,
+              flexShrink: 1,
+              flexBasis: '260px',
+              paddingTop: '0.85rem',
+              paddingRight: '1rem',
+              paddingBottom: '0.85rem',
+              paddingLeft: '1rem',
               fontSize: '16px',
-              background: '#111',
-              border: '1px solid var(--border-color)',
+              backgroundColor: '#111',
+              borderWidth: '1px',
+              borderStyle: 'solid',
+              borderColor: 'var(--border-color)',
               borderRadius: '4px',
               color: 'var(--foreground)',
-              outline: 'none',
+              outlineStyle: 'none',
             }}
           />
           <button
             type="submit"
             disabled={status === 'loading'}
             style={{
-              padding: '0.85rem 1.5rem',
+              paddingTop: '0.85rem',
+              paddingRight: '1.5rem',
+              paddingBottom: '0.85rem',
+              paddingLeft: '1.5rem',
               fontSize: '16px',
-              background: 'var(--accent-green)',
-              border: 'none',
+              backgroundColor: 'var(--accent-green)',
+              borderStyle: 'none',
               borderRadius: '4px',
               color: '#000',
               cursor: status === 'loading' ? 'wait' : 'pointer',

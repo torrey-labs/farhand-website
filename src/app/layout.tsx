@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, DM_Sans, Playfair_Display } from "next/font/google";
+import { Inter, DM_Sans, Fraunces } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
@@ -15,10 +15,11 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 });
 
-// Playfair Display is an elegant serif close to Bespoke Serif
-const serifDisplay = Playfair_Display({
+// Fraunces is a modern geometric serif — closest Google Fonts match to Bespoke Serif
+const serifDisplay = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-serif-display",
 });
 
