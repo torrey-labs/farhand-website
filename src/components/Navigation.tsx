@@ -15,9 +15,10 @@ export default function Navigation() {
       <div className="container flex justify-between items-center">
         <Link href="/" className="flex items-center min-h-[44px]">
           <img
-            src="/logo-w-type-dark.png"
+            src="/logo-w-type-light.png"
             alt="Farhand Logo"
-            className="h-7 object-contain invert"
+            className="h-7 object-contain"
+            style={{ filter: 'invert(1) hue-rotate(180deg)' }}
           />
         </Link>
 

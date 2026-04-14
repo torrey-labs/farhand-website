@@ -99,9 +99,10 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <img
-                src="/logo-w-type-dark.png"
+                src="/logo-w-type-light.png"
                 alt="Farhand Logo"
-                className="h-6 invert opacity-90"
+                className="h-6 opacity-90"
+                style={{ filter: 'invert(1) hue-rotate(180deg)' }}
               />
             </div>
             <p className="text-sm text-light-gray/60 mb-4">
@@ -123,7 +124,7 @@ export default function Footer() {
           {/* Right Column - US Map */}
           <div className="max-w-[450px] flex-1 basis-[300px]">
             <img
-              src="/us-map.png"
+              src="/world-map.avif"
               alt="US Coverage Map"
               className="w-full h-auto"
             />

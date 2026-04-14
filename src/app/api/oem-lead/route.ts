@@ -81,65 +81,86 @@ async function enrichViaApollo(company: string): Promise<EnrichmentResult> {
   }
 }
 
-async function storeAsGitHubIssue(
+function text(s: string) {
+  return { rich_text: [{ type: 'text', text: { content: s.slice(0, 2000) } }] };
+}
+
+async function storeInNotion(
   company: string,
   enrichment: EnrichmentResult,
   meta: Record<string, string>,
 ) {
-  const token = process.env.GITHUB_TOKEN_ISSUES;
-  const repo = process.env.GITHUB_ISSUES_REPO || 'AaryanAgrawal/farhand-website';
-  if (!token) return { stored: false, reason: 'no GITHUB_TOKEN_ISSUES' };
+  const token = process.env.NOTION_API_KEY;
+  const databaseId = process.env.NOTION_LEADS_DATABASE_ID;
+  if (!token || !databaseId) {
+    return { stored: false, reason: 'missing NOTION_API_KEY or NOTION_LEADS_DATABASE_ID' };
+  }
 
   const org = enrichment.org;
   const people = enrichment.topPeople;
 
-  const body = [
-    `**Company:** ${company}`,
-    org?.name && org.name !== company ? `**Apollo match:** ${org.name}` : null,
-    org?.primary_domain ? `**Domain:** https://${org.primary_domain}` : null,
-    org?.website_url ? `**Website:** ${org.website_url}` : null,
-    org?.linkedin_url ? `**LinkedIn:** ${org.linkedin_url}` : null,
-    org?.industry ? `**Industry:** ${org.industry}` : null,
-    org?.estimated_num_employees ? `**Employees:** ${org.estimated_num_employees}` : null,
-    org?.annual_revenue ? `**Revenue:** $${org.annual_revenue.toLocaleString()}` : null,
-    [org?.city, org?.state, org?.country].filter(Boolean).length
-      ? `**HQ:** ${[org?.city, org?.state, org?.country].filter(Boolean).join(', ')}`
-      : null,
-    org?.short_description ? `\n> ${org.short_description}\n` : null,
-    people.length > 0 ? '\n## Top contacts\n' : null,
-    ...people.map((p) =>
-      `- **${p.name || 'Unknown'}** — ${p.title || 'unknown title'}${p.linkedin_url ? ` · [LinkedIn](${p.linkedin_url})` : ''}${p.email ? ` · ${p.email}` : ''}`,
-    ),
-    '\n---\n',
-    `**Captured:** ${new Date().toISOString()}`,
-    `**Source:** ${meta.source || 'unknown'}`,
-    meta.referrer ? `**Referrer:** ${meta.referrer}` : null,
-    meta.userAgent ? `**UA:** \`${meta.userAgent.slice(0, 200)}\`` : null,
+  const description = org?.short_description || '';
+
+  const topContacts = people
+    .map((p) =>
+      [
+        p.name || 'Unknown',
+        p.title ? ` — ${p.title}` : '',
+        p.email ? ` · ${p.email}` : '',
+        p.linkedin_url ? ` · ${p.linkedin_url}` : '',
+      ].join(''),
+    )
+    .join('\n');
+
+  const hq = [org?.city, org?.state, org?.country].filter(Boolean).join(', ');
+  const domain = org?.primary_domain
+    ? `https://${org.primary_domain}`
+    : org?.website_url || null;
+
+  const notes = [
+    `Source: ${meta.source || 'unknown'}`,
+    meta.referrer ? `Referrer: ${meta.referrer}` : null,
+    meta.userAgent ? `UA: ${meta.userAgent.slice(0, 300)}` : null,
+    org?.name && org.name !== company ? `Apollo matched: ${org.name}` : null,
   ]
     .filter(Boolean)
     .join('\n');
 
-  const title = `[OEM Lead] ${company}`;
-  const res = await fetch(`https://api.github.com/repos/${repo}/issues`, {
+  const properties: Record<string, unknown> = {
+    Company: { title: [{ type: 'text', text: { content: company.slice(0, 200) } }] },
+    Status: { select: { name: 'New' } },
+    Source: { select: { name: meta.source || 'qr-oem' } },
+  };
+
+  if (domain) properties.Domain = { url: domain };
+  if (org?.industry) properties.Industry = text(org.industry);
+  if (org?.estimated_num_employees) properties.Employees = { number: org.estimated_num_employees };
+  if (org?.annual_revenue) properties.Revenue = { number: org.annual_revenue };
+  if (hq) properties.HQ = text(hq);
+  if (org?.linkedin_url) properties.LinkedIn = { url: org.linkedin_url };
+  if (description) properties.Description = text(description);
+  if (topContacts) properties['Top Contacts'] = text(topContacts);
+  if (notes) properties.Notes = text(notes);
+
+  const res = await fetch('https://api.notion.com/v1/pages', {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${token}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
+      'Notion-Version': '2022-06-28',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      title,
-      body,
-      labels: ['oem-lead'],
+      parent: { database_id: databaseId },
+      properties,
     }),
   });
 
   if (!res.ok) {
-    return { stored: false, reason: `gh ${res.status}` };
+    const errText = await res.text();
+    return { stored: false, reason: `notion ${res.status}: ${errText.slice(0, 300)}` };
   }
-  const issue = await res.json();
-  return { stored: true, issueUrl: issue?.html_url };
+  const page = await res.json();
+  return { stored: true, pageUrl: page?.url };
 }
 
 export async function POST(req: NextRequest) {
@@ -160,7 +181,7 @@ export async function POST(req: NextRequest) {
     };
 
     const enrichment = await enrichViaApollo(company);
-    const storage = await storeAsGitHubIssue(company, enrichment, meta);
+    const storage = await storeInNotion(company, enrichment, meta);
 
     // Always log for Vercel runtime logs, regardless of storage.
     console.log(

@@ -27,7 +27,12 @@ export default function Hero() {
         <motion.div style={{ y: y1, opacity }} transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}>
           <h1
             className="mb-6 max-w-[1000px]"
-            style={{ textShadow: '0 4px 30px rgba(0,0,0,0.9)', fontWeight: 400 }}
+            style={{
+              textShadow: '0 4px 30px rgba(0,0,0,0.9)',
+              fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
+              fontWeight: 400,
+            }}
           >
             Your field service partner
           </h1>
