@@ -101,7 +101,7 @@ export default function Footer() {
               <img
                 src="/logo-w-type-light-on-dark.png"
                 alt="Farhand Logo"
-                className="h-6 opacity-90"
+                className="h-10 opacity-90"
               />
             </div>
             <p className="text-sm text-light-gray/60 mb-4">

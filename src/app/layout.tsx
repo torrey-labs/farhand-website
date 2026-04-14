@@ -70,18 +70,25 @@ export default function RootLayout({
           <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION} />
         )}
         <link rel="alternate" type="application/rss+xml" title="Farhand Blog" href="/rss.xml" />
-        {/* Google Analytics 4 — replace G-XXXXXXXXXX with your GA4 measurement ID */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        {/* Google Analytics 4 — NEXT_PUBLIC_GA4_MEASUREMENT_ID set in Vercel env */}
+        {process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}`}
+            />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
-            `
-          }}
-        />
+              gtag('config', '${process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}');
+            `,
+              }}
+            />
+          </>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

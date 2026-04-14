@@ -17,7 +17,7 @@ export default function Navigation() {
           <img
             src="/logo-w-type-light-on-dark.png"
             alt="Farhand Logo"
-            className="h-7 object-contain"
+            className="h-11 object-contain"
           />
         </Link>
 
