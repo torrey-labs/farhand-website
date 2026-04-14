@@ -30,6 +30,7 @@ export default function Hero() {
             style={{
               textShadow: '0 4px 30px rgba(0,0,0,0.9)',
               fontFamily: 'var(--font-serif)',
+              fontStyle: 'italic',
               fontWeight: 400,
               letterSpacing: '-0.025em',
             }}
