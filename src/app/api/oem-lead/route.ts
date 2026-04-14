@@ -87,6 +87,7 @@ function text(s: string) {
 
 async function storeInNotion(
   company: string,
+  contactName: string,
   enrichment: EnrichmentResult,
   meta: Record<string, string>,
 ) {
@@ -132,6 +133,7 @@ async function storeInNotion(
     Source: { select: { name: meta.source || 'qr-oem' } },
   };
 
+  if (contactName) properties['Contact'] = text(contactName);
   if (domain) properties.Domain = { url: domain };
   if (org?.industry) properties.Industry = text(org.industry);
   if (org?.estimated_num_employees) properties.Employees = { number: org.estimated_num_employees };
@@ -167,8 +169,15 @@ export async function POST(req: NextRequest) {
   try {
     const payload = await req.json();
     const company = typeof payload?.company === 'string' ? payload.company.trim() : '';
+    const contactName = typeof payload?.name === 'string' ? payload.name.trim() : '';
     if (!company || company.length > 200) {
       return new Response(JSON.stringify({ error: 'Invalid company' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    if (contactName.length > 200) {
+      return new Response(JSON.stringify({ error: 'Invalid name' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       });
@@ -181,13 +190,14 @@ export async function POST(req: NextRequest) {
     };
 
     const enrichment = await enrichViaApollo(company);
-    const storage = await storeInNotion(company, enrichment, meta);
+    const storage = await storeInNotion(company, contactName, enrichment, meta);
 
     // Always log for Vercel runtime logs, regardless of storage.
     console.log(
       '[oem-lead]',
       JSON.stringify({
         company,
+        contactName,
         enrichmentSource: enrichment.source,
         orgMatch: enrichment.org?.name,
         peopleFound: enrichment.topPeople.length,

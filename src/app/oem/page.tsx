@@ -24,10 +24,6 @@ export default function OEMLandingPage() {
         </h2>
 
         <OemLeadForm />
-
-        <p className="text-xs text-light-gray/60 mt-8">
-          One question. Ten seconds. Then we&apos;ll take it from there.
-        </p>
       </div>
     </main>
   );
