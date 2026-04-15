@@ -8,6 +8,27 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    slug: 'semiconductor-equipment-field-service-benchmarks',
+    title: 'Semiconductor Equipment Field Service: 2026 Benchmarks and the Downtime Economics',
+    excerpt: 'Fab downtime costs hit $3–10M per hour. Service benchmarks for ASML, Applied, Lam, TEL, KLA. Why MTTR under 2 hours is the only number that matters.',
+    date: '2026-04-14',
+    category: 'Insights',
+  },
+  {
+    slug: 'medical-device-field-service-fda-compliance',
+    title: 'Medical Device Field Service: FDA 21 CFR 820 Compliance Guide',
+    excerpt: 'Every service visit is a regulatory event. What 21 CFR 820 requires, how to stay audit-ready, and why AI-guided workflows cut 483 risk to zero.',
+    date: '2026-04-14',
+    category: 'Technical',
+  },
+  {
+    slug: 'field-service-kpis-that-matter-2026',
+    title: 'Field Service KPIs That Actually Matter in 2026',
+    excerpt: 'Most dashboards track 20+ metrics. Only 8 predict customer retention and margin. The leading indicators, the lagging ones, and a scorecard template.',
+    date: '2026-04-14',
+    category: 'Insights',
+  },
+  {
     slug: 'field-service-roi-calculator',
     title: 'How to Calculate Field Service ROI in 2026',
     excerpt: 'A practical framework: truck roll costs, first-time fix multipliers, downtime savings, and the AI compounding effect. Build a defensible ROI model.',
