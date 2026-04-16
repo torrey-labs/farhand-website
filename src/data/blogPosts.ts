@@ -8,6 +8,34 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    slug: 'kuka-robot-service-us',
+    title: 'KUKA Robot Service in the US: What European OEMs Need to Know',
+    excerpt: '30,000+ KUKA robots in North America, serviced from a handful of hubs. The coverage gap and how AI-guided technicians close it.',
+    date: '2026-04-15',
+    category: 'Industry',
+  },
+  {
+    slug: 'yaskawa-robot-maintenance-us',
+    title: 'Yaskawa Robot Maintenance: US Field Service Challenges',
+    excerpt: 'Motoman robots are everywhere in US manufacturing. Maintaining them from Miamisburg alone doesn\'t scale. The AI-guided alternative.',
+    date: '2026-04-15',
+    category: 'Technical',
+  },
+  {
+    slug: 'tsmc-supplier-equipment-service',
+    title: 'TSMC Supplier Equipment Service: Scaling with US Fab Expansion',
+    excerpt: 'TSMC Arizona needs Taiwanese equipment OEMs to provide US-based service. The CHIPS Act timeline and how AI-guided technicians solve it.',
+    date: '2026-04-15',
+    category: 'Industry',
+  },
+  {
+    slug: 'siemens-industrial-service-us',
+    title: 'Siemens Industrial Equipment Service in the US',
+    excerpt: 'SINUMERIK, SIMATIC, SINAMICS — Siemens covers metros well but leaves gaps. How to augment with AI-guided technicians.',
+    date: '2026-04-15',
+    category: 'Industry',
+  },
+  {
     slug: 'semiconductor-equipment-field-service-benchmarks',
     title: 'Semiconductor Equipment Field Service: 2026 Benchmarks and the Downtime Economics',
     excerpt: 'Fab downtime costs hit $3–10M per hour. Service benchmarks for ASML, Applied, Lam, TEL, KLA. Why MTTR under 2 hours is the only number that matters.',

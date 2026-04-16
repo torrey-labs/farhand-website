@@ -35,6 +35,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'distributors',
     'fleet-operators',
     'facilities',
+    'japanese-oems',
+    'european-oems',
+    'taiwanese-oems',
+    'chinese-oems',
   ];
 
   const blogPosts = [
@@ -53,6 +57,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'reduce-truck-rolls-ai',
     'field-service-trends-2026',
     'cobot-maintenance-guide',
+    'semiconductor-equipment-field-service-benchmarks',
+    'medical-device-field-service-fda-compliance',
+    'field-service-kpis-that-matter-2026',
+    'kuka-robot-service-us',
+    'yaskawa-robot-maintenance-us',
+    'tsmc-supplier-equipment-service',
+    'siemens-industrial-service-us',
   ];
 
   return [

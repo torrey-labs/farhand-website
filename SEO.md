@@ -1,162 +1,330 @@
-# Farhand SEO Dashboard
+# Farhand SEO & Marketing Dashboard
 
-Living status doc. Last updated: 2026-04-13.
+Living status doc. **Last updated: 2026-04-15.**
 
-This is the single source of truth for on-site + off-site SEO state. If a pillar's row changes, update it here and commit alongside the code change that changed it.
+Single source of truth for all SEO, analytics, lead capture, content, and marketing infrastructure. Update this file alongside every code change that affects marketing or SEO.
 
 ---
 
 ## Status at a glance
 
-| Pillar | Status | Evidence |
+| Category | Status | Details |
 |---|---|---|
-| Programmatic landing pages (525 URLs) | ✅ shipped | `src/app/services/[machine]/[city]/page.tsx`, `src/data/cities.ts`, `src/data/machineTypes.ts` |
-| Schema.org markup (Article, Service, Breadcrumb, Organization) | ✅ shipped | `src/lib/schema.ts`, `src/components/ArticleSchema.tsx`, `src/app/layout.tsx` |
-| Sitemap + image extensions | ✅ shipped | `src/app/sitemap.ts` |
-| RSS 2.0 feed + discovery link | ✅ shipped | `src/app/rss.xml/route.ts`, `src/app/layout.tsx` |
-| Blog (15 posts, canonical registry) | ✅ shipped | `src/data/blogPosts.ts`, `src/app/blog/*/page.tsx` |
-| Syndication pipeline (Dev.to, Hashnode, Medium, Tumblr, Telegraph) | ✅ shipped | `scripts/syndicate.ts`, `scripts/content-pipeline.ts` |
-| Cover image generation (DALL-E + Unsplash) | ✅ shipped | `scripts/content-pipeline.ts` (`generate-images`, `generate-all-images`) |
-| GBP claim + review-monitoring runbook | ✅ documented | `docs/GBP_SETUP.md` |
-| Newsletter signup (UI + placeholder API) | ✅ shipped | `src/components/NewsletterSignup.tsx`, `src/app/api/newsletter/route.ts` |
-| Search Atlas OTTO (client-side) | ✅ live | `src/app/layout.tsx` (UUID `c3ddc202-592a-4afa-b651-4fdef43e7e20`) |
-| Search Atlas REST API pipeline | ✅ shipped | `scripts/content-pipeline.ts` — `sa-status`, `sa-issues`, `sa-recrawl`, `sa-snapshot` |
-| Search Atlas MCP (keywords, GBP, content scoring, backlinks) | ✅ installed | `~/.claude/settings.json` → `searchatlas` server; 16 tools available in Claude sessions |
-| OTTO widget **active** (pushing live fixes) | ⚠️ NOT active | API returns `is_active: false`. Toggle "Activate" in Search Atlas dashboard. |
-| `robots.txt` | ⬜ missing | — |
-| FAQ JSON-LD | ⬜ not started | `src/data/faqs.ts` exists, markup not emitted |
-| Per-post OG cover images | ⬜ not started | pipeline ready, no credentials populated |
-| GA4 measurement ID | ⬜ placeholder | `src/app/layout.tsx` still says `G-XXXXXXXXXX` |
-| Google Analytics CLI / data access | ⬜ not started | — |
-| Visitor identification (Clearbit / Snitcher) | ⬜ not started | — |
-| Backlink outreach plan | ⬜ not started | — |
-| Real newsletter provider (Loops / Resend / Mailchimp) | ⬜ not started | endpoint is placeholder that `console.log`s |
+| **Pages live** | ✅ 570+ | 37 static + 525 programmatic + 8 new (intl + pitch + connect) |
+| **Blog posts** | ✅ 22 | 18 existing + 4 new brand-targeted posts |
+| **GA4** | ✅ live | `G-CMC24D7416` firing on every page via `NEXT_PUBLIC_GA4_MEASUREMENT_ID` |
+| **Google Search Console** | ✅ verified | HTML file method, sitemap submitted |
+| **Bing Webmaster** | ✅ imported | From GSC, sitemap submitted |
+| **Vercel Analytics + Speed Insights** | ✅ live | `@vercel/analytics` + `@vercel/speed-insights` in `layout.tsx` |
+| **Schema.org** | ✅ | Organization, Article, Service, Breadcrumb, FAQ |
+| **Sitemap** | ✅ dynamic | `src/app/sitemap.ts`, 570+ URLs |
+| **robots.txt** | ✅ | `public/robots.txt`, blocks `/ui` |
+| **RSS feed** | ✅ | `src/app/rss.xml/route.ts` |
+| **Lead capture (OEM form)** | ✅ | `/oem` → `/api/oem-lead` → Notion "Website Leads" DB |
+| **Lead capture (reverse IP)** | ✅ code shipped | `src/middleware.ts` + `/api/visit`, no-op without `IPINFO_TOKEN` |
+| **Notion CRM** | ✅ | "Website Leads" DB with 16 properties, integration token live |
+| **Auto-deploy** | ✅ | GitHub Actions → Vercel on every push to main |
+| **IndexNow** | ✅ | Pings Bing+Yandex after every deploy + weekly Monday |
+| **Lighthouse CI** | ✅ | Weekly Monday, files GitHub issue on regression |
+| **Scheduled blog agent** | ✅ | Weekly Monday 9am PT, writes + commits + pushes a new post |
+| **Scheduled page expansion** | ✅ | Monthly 1st, adds 10 cities (+70 programmatic pages) |
+| **Scheduled competitor scan** | ✅ | Weekly Thursday 10am PT, writes report to `reports/` |
+| **Apollo enrichment** | ⚠️ stubbed | Code ready, needs `APOLLO_API_KEY` env var |
+| **IPinfo reverse IP** | ⚠️ stubbed | Code ready, needs `IPINFO_TOKEN` env var |
+| **LinkedIn Insight Tag** | ⚠️ stubbed | Code ready, needs `NEXT_PUBLIC_LINKEDIN_PARTNER_ID` |
+| **Meta Pixel** | ⚠️ stubbed | Code ready, needs `NEXT_PUBLIC_META_PIXEL_ID` |
+| **Content syndication** | ⚠️ partial | Telegraph token set. Dev.to, Hashnode need keys. 5/22 posts syndicated. |
+| **Newsletter provider** | ⬜ | API route is placeholder (`console.log`). Need Loops/Resend/Beehiiv. |
+| **HARO / Featured signup** | ⬜ | Requires manual signup at featured.com. Highest-ROI backlink strategy. |
+| **Google Business Profile** | ⬜ | Needs to be claimed at business.google.com. |
+| **Search Atlas OTTO active** | ⚠️ | Widget engaged but `is_active: false`. One-click toggle in SA dashboard. |
 
 ---
 
-## On-site SEO
+## Page inventory
 
-### Shipped
-
-- **525 programmatic landing pages.** Every combination of 7 machine types × 75 cities at `/services/{machine}/{city}`. Dynamic route at `src/app/services/[machine]/[city]/page.tsx` with `generateStaticParams` so each URL ships as static HTML. Per-page title, meta description, canonical, and OG metadata generated in `generateMetadata`. Service + Breadcrumb JSON-LD injected inline. Source data: `src/data/cities.ts`, `src/data/machineTypes.ts`.
-- **Schema.org helpers** in `src/lib/schema.ts`: `articleSchema`, `productSchema`, `breadcrumbSchema`. Organization JSON-LD lives directly in `src/app/layout.tsx` and is always present site-wide.
-- **Article JSON-LD on every blog post.** `src/components/ArticleSchema.tsx` reads the canonical blog registry at `src/data/blogPosts.ts` and renders `<script type="application/ld+json">`. Wired into all 15 `src/app/blog/*/page.tsx` files.
-- **Sitemap** at `src/app/sitemap.ts` — emits root, 7 service pages, 525 programmatic pages, 4 stakeholder pages, blog index, all 15 blog posts, `/faq`, `/terms`, `/privacy`. Homepage entry carries `image:image` extensions for `us-map.png`, `relay-platform.png`, `logo-w-type-dark.png`.
-- **RSS 2.0 feed** at `src/app/rss.xml/route.ts`. Sorted by date, proper RFC 822 timestamps, `application/rss+xml` content-type, 1h cache + SWR. Discovery `<link rel="alternate">` in `src/app/layout.tsx`.
-- **Blog registry** at `src/data/blogPosts.ts` — single source of truth for slug, title, excerpt, date, category. Used by the blog index, RSS feed, and `ArticleSchema`.
-
-### Next
-
-1. **`public/robots.txt`** — explicit `Sitemap:` pointer plus `User-agent: *` allow. Prevents default Next.js behavior from leaking `/api/*` to crawlers.
-2. **FAQ JSON-LD** on `/faq` using `src/data/faqs.ts` — adds a new `faqSchema` helper to `src/lib/schema.ts` and emits it from `src/app/faq/page.tsx`. Triggers FAQ rich results.
-3. **Per-post cover images.** Run `npx tsx scripts/content-pipeline.ts generate-all-images` once `OPENAI_API_KEY` or `UNSPLASH_ACCESS_KEY` is populated in `scripts/.env.syndication`. Updates `coverImage` on each `ArticleRecord`, populates `public/blog/{slug}.jpg`, and feeds into both the Next.js OG tags (once we read from the registry) and the syndication publishers (already wired).
-4. **Static root OG image.** Single branded 1200×630 at `public/og-default.jpg` referenced from `src/app/layout.tsx` metadata. Right now the root has no OG image at all.
-5. **Programmatic pages OG images.** City × machine pages fall back to the site default; consider a dynamic OG route (`src/app/api/og/[machine]/[city]/route.tsx`) using `next/og` for per-page social cards.
-
----
-
-## Off-site SEO
-
-### Shipped
-
-- **Syndication pipeline.** `scripts/content-pipeline.ts` + `scripts/syndicate.ts` push blog posts to Dev.to, Hashnode, Medium, Tumblr, Telegraph with canonical URLs back to `farhand.live`. Rate-limit aware (Dev.to 150s spacing, retry on 429). Each platform receives the post's cover image (`main_image` on Dev.to, `coverImageOptions.coverImageURL` on Hashnode, first-node figure on Telegraph).
-- **Cover image providers.** OpenAI DALL-E 3 (hd, 1792×1024, branded prompt template) preferred; Unsplash (topic-aware query mapping, 1200×630 crop) as free fallback. Saves to `public/blog/{slug}.jpg` and persists the relative URL on `ArticleRecord.coverImage`.
-- **GBP runbook.** `docs/GBP_SETUP.md` covers listing claim, service-area declaration, review monitoring via the Search Atlas MCP, response workflow, and ongoing hygiene cadence.
-- **Newsletter signup surface.** `src/components/NewsletterSignup.tsx` rendered on `/` and `/blog`. Client-side validation + submission to `src/app/api/newsletter/route.ts`.
-
-### Next
-
-1. **Execute the GBP runbook.** The doc exists; the listing still needs to be claimed at [business.google.com](https://business.google.com) using `aaryan@farhand.live`. Service-area configuration, photos, and Q&A seed list per `docs/GBP_SETUP.md`.
-2. **Real newsletter provider.** `src/app/api/newsletter/route.ts` currently just logs the email and returns `{ok:true}`. Pick Loops / Resend / Mailchimp, add provider-specific API call, keep the placeholder validation in place.
-3. **Run the image pipeline for existing posts.** Needs `OPENAI_API_KEY` (~$0.08/image hd × 15 posts ≈ $1.20) or free Unsplash. Once run, downstream syndicators pick up the `coverImage` automatically.
-4. **Backlink outreach.** No plan written yet. Candidates: guest posts on Modern Machine Shop, Automation.com, Field Service Digital, Assembly Magazine; partnerships with OEMs we service; listings in Robotics Business Review directory.
-5. **Syndicate the 10 new posts.** Run `npx tsx scripts/content-pipeline.ts seed-existing` (needs an update to include the new posts) then `syndicate-all`.
-
----
-
-## Search Atlas — ✅ wired, ⚠️ one toggle pending
-
-| Piece | Status | Notes |
+### Static pages (14)
+| Route | Purpose | Indexed |
 |---|---|---|
-| Client-side OTTO dynamic optimization | ✅ live | `src/app/layout.tsx` loads `dashboard.searchatlas.com/scripts/dynamic_optimization.js` with UUID `c3ddc202-592a-4afa-b651-4fdef43e7e20`. |
-| OTTO widget engaged (`pixel_tag_state`) | ✅ | API confirms `installed` + "OTTO AI SEO is Engaged". |
-| `searchatlas-mcp-server` in `~/.claude/settings.json` | ✅ installed | 16 MCP tools available from any Claude session (`searchatlas_orchestrator`, `searchatlas_otto_seo`, `searchatlas_content`, `searchatlas_site_explorer`, `searchatlas_gbp`, `searchatlas_authority_building`, `searchatlas_llm_visibility`, `searchatlas_keywords`, `searchatlas_ppc`, `searchatlas_website_studio`, plus 6 management tools). |
-| REST API pipeline commands | ✅ shipped | `scripts/content-pipeline.ts` exposes `sa-status`, `sa-issues`, `sa-recrawl`, `sa-snapshot`. All auth via `x-api-key` header against `https://sa.searchatlas.com/api/v2/`. |
-| `SEARCHATLAS_API_KEY` in `.env.syndication` | ✅ documented | Pull from `~/.claude/settings.json` or the Search Atlas dashboard. |
-| Site health baseline | ✅ captured | 917 / 1000 as of last crawl. Pre-merge baseline: 3 pages, 2 sitemap URLs. Post-merge recrawl triggered 2026-04-13 — will include all 562 pages once push lands. |
-| Open issue groups tracked | ✅ visible | 11 open groups. Top four by `health_to_gain`: Page Title (+21), Images (+20), Content (+18), Page Headers (+13). Run `sa-issues` for the live list. |
-| **OTTO `is_active`** | ⚠️ **false** | Widget is engaged but not activating fixes. **One-click toggle in the Search Atlas dashboard** — until that flips, OTTO reads the site but doesn't push DOM patches. Blocks the actual on-page optimization lift. |
-| Keyword research automated | 🟡 MCP-only | No documented REST endpoint. Use the `searchatlas_keywords` MCP tool from Claude instead. |
-| GBP review monitoring | 🟡 MCP-only | No documented REST endpoint. Use `searchatlas_gbp` MCP tool from Claude. |
-| Content scoring per URL | 🟡 MCP-only | Use `searchatlas_content` MCP tool. |
-| Backlink / competitor analysis | 🟡 MCP-only | Use `searchatlas_site_explorer` MCP tool. |
-| LLM visibility tracking | 🟡 MCP-only | Use `searchatlas_llm_visibility` MCP tool. |
+| `/` | Homepage | yes |
+| `/faq` | FAQ with Schema.org | yes |
+| `/privacy` | Privacy policy (updated: visitor tracking disclosure) | yes |
+| `/terms` | Terms of service | yes |
+| `/oem` | QR lead capture (one-field company + name) | **no** (noindex) |
+| `/pitch` | Trackable one-pager (replaces PDF) | **no** (noindex) |
+| `/connect` | Digital business card (QR on physical card) | **no** (noindex) |
+| `/ui` | Component sandbox | **no** (noindex, robots.txt blocked) |
+| `/for/oems` | Stakeholder: OEMs | yes |
+| `/for/distributors` | Stakeholder: Distributors | yes |
+| `/for/fleet-operators` | Stakeholder: Fleet operators | yes |
+| `/for/facilities` | Stakeholder: Facilities | yes |
+| `/for/japanese-oems` | International: Japan (FANUC, Yaskawa, Mazak) | yes |
+| `/for/european-oems` | International: Europe (KUKA, ABB, Siemens) | yes |
+| `/for/taiwanese-oems` | International: Taiwan (TSMC suppliers, Delta) | yes |
+| `/for/chinese-oems` | International: China (SANY, Estun, Siasun) | yes |
 
-### What the REST API currently exposes
+### Service pages (7 static + 525 programmatic)
+| Route pattern | Count | Source data |
+|---|---|---|
+| `/services/{machine}` | 7 | `src/data/machineTypes.ts` (7 machine types) |
+| `/services/{machine}/{city}` | 525 | 7 machines × 75 cities from `src/data/cities.ts` |
 
-Only four endpoint families are stable enough on the public REST surface to automate from CI:
+Machine types: robots, industrial-robots, industrial-machinery, instruments, equipment, medical-equipment, general-aviation.
 
-- `GET  /api/v2/otto-projects/{uuid}/` — project detail (domain rating, refdomains, backlinks, pixel state, ROI, last crawl)
-- `GET  /api/v2/site-audit/{id}/` — site audit detail (site health, pages crawled, sitemap coverage, CMS detection, JS rendering flag)
-- `GET  /api/v2/site-audit/{id}/issues/` — issue groups with `health_to_gain`, severity counts
-- `POST /api/v2/site-audit/{id}/recrawl/` — trigger a fresh crawl
+### Blog posts (22)
+| # | Slug | Category | Date |
+|---|---|---|---|
+| 1 | `semiconductor-equipment-field-service-benchmarks` | Insights | 2026-04-14 |
+| 2 | `medical-device-field-service-fda-compliance` | Technical | 2026-04-14 |
+| 3 | `field-service-kpis-that-matter-2026` | Insights | 2026-04-14 |
+| 4 | `kuka-robot-service-us` | Industry | 2026-04-15 |
+| 5 | `yaskawa-robot-maintenance-us` | Technical | 2026-04-15 |
+| 6 | `tsmc-supplier-equipment-service` | Industry | 2026-04-15 |
+| 7 | `siemens-industrial-service-us` | Industry | 2026-04-15 |
+| 8 | `field-service-roi-calculator` | Insights | 2026-04-12 |
+| 9 | `fanuc-robot-maintenance-checklist` | Technical | 2026-04-12 |
+| 10 | `industrial-robot-downtime-cost` | Insights | 2026-04-12 |
+| 11 | `predictive-vs-preventive-maintenance` | Technology | 2026-04-12 |
+| 12 | `remote-diagnostics-field-service` | Industry | 2026-04-12 |
+| 13 | `oem-field-service-scaling` | Industry | 2026-04-12 |
+| 14 | `cobot-maintenance-guide` | Technical | 2026-04-12 |
+| 15 | `reduce-truck-rolls-ai` | Technology | 2026-04-12 |
+| 16 | `field-service-trends-2026` | Industry | 2026-04-12 |
+| 17 | `first-time-fix-rate-ai` | Insights | 2026-04-12 |
+| 18 | `knowledge-preservation-field-service` | Insights | 2026-04-12 |
+| 19 | `remote-resolution-field-service` | Technology | 2026-04-12 |
+| 20 | `field-service-skills-gap` | Industry | 2026-04-12 |
+| 21 | `ai-guided-field-service-robots` | Technology | 2026-04-12 |
+| 22 | `field-service-knowledge-management` | Industry | 2026-04-12 |
 
-Everything else (keywords, GBP, backlinks, content scoring, LLM visibility) is **MCP-only**. Call those from a Claude session — the MCP server runs from `~/.claude/settings.json` and all 16 tools load automatically.
+Source of truth: `src/data/blogPosts.ts`. All posts follow the canonical pattern in `src/app/blog/field-service-roi-calculator/page.tsx`.
 
-### Pipeline commands
+### API routes (3)
+| Route | Purpose |
+|---|---|
+| `/api/oem-lead` | OEM form submission → Apollo enrichment → Notion |
+| `/api/visit` | Reverse IP visitor identification (called by middleware) |
+| `/api/newsletter` | Newsletter signup (placeholder, logs only) |
 
-```bash
-# OTTO project + site audit overview
-npx tsx scripts/content-pipeline.ts sa-status
+---
 
-# Open issue groups, ranked by health_to_gain (biggest SEO wins at the top)
-npx tsx scripts/content-pipeline.ts sa-issues
+## Infrastructure
 
-# Kick off a fresh site audit crawl (should_repoll flips true, audit_started_at updates)
-npx tsx scripts/content-pipeline.ts sa-recrawl
+### Hosting & DNS
+| Component | Service | Account |
+|---|---|---|
+| Registrar | GoDaddy (pending transfer to Cloudflare) | aaryanragrawal |
+| DNS | **Cloudflare** (NS: anuj/dolly.ns.cloudflare.com) | Aaryanragrawal@gmail.com |
+| Hosting | **Vercel** (project: farhand-website) | aaryanragrawal-1878 |
+| CI/CD | **GitHub Actions** → Vercel auto-deploy | AaryanAgrawal/farhand-website |
+| CRM | **Notion** (database: Website Leads) | Farhand workspace |
+| Email | **Google Workspace** (MX: aspmx.l.google.com) | aaryan@farhand.live |
 
-# Dump project + audit + issues JSON to scripts/.content-data/seo-snapshots/{ISO}.json
-# Run weekly to track site health trends over time
-npx tsx scripts/content-pipeline.ts sa-snapshot
+### Environment variables
+| Var | Where set | Status | Purpose |
+|---|---|---|---|
+| `NOTION_API_KEY` | Vercel prod env | ✅ live | Notion integration "Farhand Website" |
+| `NOTION_LEADS_DATABASE_ID` | Vercel prod env | ✅ live | `5cdd1ffc-ad60-4165-874d-3344d9bcced8` |
+| `NEXT_PUBLIC_GA4_MEASUREMENT_ID` | Vercel prod env | ✅ live | `G-CMC24D7416` |
+| `VISIT_SECRET` | Vercel prod env | ✅ live | Protects `/api/visit` from spoofing |
+| `VERCEL_TOKEN` | GitHub secret | ✅ live | CI deployment auth |
+| `VERCEL_ORG_ID` | GitHub variable | ✅ live | `team_Nsre7Gv1KjFULi4ZdSCU74NK` |
+| `VERCEL_PROJECT_ID` | GitHub variable | ✅ live | `prj_i0NZ0EsQBkMfmTwQXaNE9rTdzKSF` |
+| `CLOUDFLARE_API_TOKEN` | `.env.local` only | ✅ local | DNS management (Edit zone DNS for farhand.live) |
+| `CLOUDFLARE_ZONE_ID` | `.env.local` only | ✅ local | `0eefd328ad52b700eae1ae4673b75c00` |
+| `TELEGRAPH_ACCESS_TOKEN` | `scripts/.env.syndication` | ✅ local | Content syndication to telegra.ph |
+| `APOLLO_API_KEY` | NOT SET | ⬜ | Apollo enrichment for leads |
+| `IPINFO_TOKEN` | NOT SET | ⬜ | Reverse IP → company lookup |
+| `NEXT_PUBLIC_LINKEDIN_PARTNER_ID` | NOT SET | ⬜ | LinkedIn Insight Tag |
+| `NEXT_PUBLIC_META_PIXEL_ID` | NOT SET | ⬜ | Meta (Facebook) Pixel |
+| `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | NOT SET (using HTML file instead) | ⬜ | GSC meta tag verification |
+| `NEXT_PUBLIC_BING_SITE_VERIFICATION` | NOT SET (imported via GSC) | ⬜ | Bing meta tag verification |
+| `DEVTO_API_KEY` | NOT SET | ⬜ | Dev.to syndication |
+| `HASHNODE_TOKEN` | NOT SET | ⬜ | Hashnode syndication |
+| `HASHNODE_PUBLICATION_ID` | NOT SET | ⬜ | Hashnode publication |
+
+### Scheduled Claude agents (Max plan)
+Managed at: https://claude.ai/code/scheduled
+
+| Name | Cron (UTC) | Local time | What it does |
+|---|---|---|---|
+| Weekly Blog Post | `0 16 * * 1` | Mon 9am PT | Picks uncovered topic from 15-item pool, writes 1200-1800 word post, commits + pushes |
+| Monthly Page Expansion | `0 17 1 * *` | 1st of month 10am PT | Adds 10 new cities to `src/data/cities.ts` (+70 programmatic pages), commits + pushes |
+| Weekly Competitor + Keyword Scan | `0 17 * * 4` | Thu 10am PT | Checks Roboworx/Reliance/Formic/Path/Rapid blogs, identifies keyword gaps, writes report to `reports/` |
+
+### GitHub Actions workflows
+| Workflow | Trigger | What it does |
+|---|---|---|
+| `deploy.yml` | push to main | `vercel build --prod` + `vercel deploy --prebuilt --prod --archive=tgz` |
+| `indexnow.yml` | after deploy + weekly Monday 09:00 UTC | Fetches sitemap, POSTs all URLs to IndexNow API (Bing + Yandex) |
+| `lighthouse.yml` | weekly Monday 14:00 UTC | Runs Lighthouse CI on 5 key URLs, files GitHub issue if perf regresses |
+
+---
+
+## SEO features
+
+### Schema.org markup
+| Schema type | Where emitted | File |
+|---|---|---|
+| Organization | Every page (layout.tsx) | `src/app/layout.tsx` |
+| Article | Every blog post | `src/components/ArticleSchema.tsx` + `src/lib/schema.ts` |
+| Service | Every `/services/[machine]/[city]` page | `src/lib/schema.ts` (`productSchema`) |
+| BreadcrumbList | Every `/services/[machine]/[city]` page | `src/lib/schema.ts` (`breadcrumbSchema`) |
+| FAQPage | `/faq` + FAQ sections on pages | `src/components/FAQSection.tsx` |
+
+### Technical SEO
+- **Canonical URLs**: set via `alternates.canonical` in metadata for programmatic pages
+- **robots.txt**: `public/robots.txt` — Allow all, Disallow `/ui`, Sitemap pointer
+- **Sitemap**: `src/app/sitemap.ts` — dynamic, all routes, monthly changefreq on programmatic pages
+- **RSS feed**: `src/app/rss.xml/route.ts` — all blog posts, RFC 822 dates
+- **IndexNow key**: `public/08cf9d26cc70338b32441f8e74e164bbf84dfbf494942ad58442cae769626a04.txt`
+- **GSC verification**: `public/google21078288b340938c.html`
+
+---
+
+## Lead capture pipeline
+
+### Flow 1: OEM form (active engagement)
+```
+Visitor scans QR → /oem → types company + name → POST /api/oem-lead
+→ enrichViaApollo (if APOLLO_API_KEY) → storeInNotion → redirect to /
+→ Row appears in Notion "Website Leads" with Source: qr-oem
 ```
 
-### Remaining Search Atlas work
+### Flow 2: Reverse IP (passive identification)
+```
+Visitor loads any page → middleware.ts captures IP → cookie dedup (24h)
+→ POST /api/visit (with VISIT_SECRET header)
+→ lookupCompanyByIp via IPinfo (if IPINFO_TOKEN)
+→ filter: only business/education/government (drop ISPs, hosting, bots)
+→ findLeadByCompany in Notion (dedup: if exists, bump Visit Count)
+→ enrichViaApollo → storeInNotion → Source: website
+```
+**Status**: code shipped, feature is no-op until `IPINFO_TOKEN` is set.
 
-1. **Flip `is_active` to true** in the Search Atlas dashboard. This is a one-click toggle under the OTTO project settings and is the single biggest blocker to on-page optimization actually taking effect.
-2. **Wait for the 2026-04-13 recrawl to finish** — it was triggered as part of this work. The pre-merge audit saw only 3 pages; the post-merge recrawl will include all 562.
-3. **Schedule `sa-snapshot` weekly** (cron or GitHub Action) so we get a trend file per week under `scripts/.content-data/seo-snapshots/`.
-4. **Route keyword research + GBP polling through the MCP tools** in a Claude session — they're available, no new code needed.
+### Notion "Website Leads" database
+Database ID: `5cdd1ffc-ad60-4165-874d-3344d9bcced8`
+Location: Sales & Marketing → Website Leads
+
+Properties: Company (title), Contact (text), Status (select: New/Contacted/Qualified/Won/Lost), Source (select: qr-oem/website/cold/referral), Domain (url), Industry (text), Employees (number), Revenue (dollar), HQ (text), LinkedIn (url), Description (text), Top Contacts (text), Notes (text), Visit Count (number), Last Visit (date), Captured (created_time)
 
 ---
 
-## Analytics — ⬜ not started
+## Content syndication
 
-- **GA4.** `src/app/layout.tsx` has a placeholder script pointing at `G-XXXXXXXXXX`. Real measurement ID needs to be created in GA4 admin and swapped in.
-- **Google Analytics CLI** (`google-analytics-cli` npm package) — not installed. Blocks CLI-driven traffic reports.
-- **Visitor ID.** No Clearbit Reveal, Snitcher, or equivalent. Start with Clearbit free tier (50 reveals/month).
+### Pipeline: `scripts/content-pipeline.ts`
+Env file: `scripts/.env.syndication` (gitignored)
+
+| Platform | Status | Key required |
+|---|---|---|
+| Telegraph (telegra.ph) | ✅ token set | `TELEGRAPH_ACCESS_TOKEN` |
+| Dev.to | ⬜ needs key | `DEVTO_API_KEY` |
+| Hashnode | ⬜ needs key + pub ID | `HASHNODE_TOKEN`, `HASHNODE_PUBLICATION_ID` |
+| Medium | ❌ deprecated | API killed by Medium |
+| Tumblr | ❌ abandoned | OAuth flow incomplete |
+
+### Syndication state
+- 5/22 posts previously syndicated (Dev.to + Hashnode + Telegraph) — from earlier session
+- 17/22 posts NOT in pipeline tracker — `seed-existing` is hardcoded to 5 slugs
+- To syndicate all: extend `seed-existing` to dynamically read `src/data/blogPosts.ts`, or write a new scanner
 
 ---
 
-## Content registry
+## Trackable marketing collateral (website-as-PDF replacement)
 
-Source of truth: `src/data/blogPosts.ts` (15 entries). Sitemap + RSS + blog index all read from here. When adding a new post:
+### UTM link pattern
+```
+https://farhand.live/{page}?utm_source={source}&utm_medium={medium}&utm_campaign={campaign}&utm_content={prospect}
+```
 
-1. Create `src/app/blog/{slug}/page.tsx` importing `BlogPost` and `ArticleSchema`.
-2. Append to `blogPosts` array at the top of `src/data/blogPosts.ts`.
-3. Append slug to `blogPosts` array in `src/app/sitemap.ts`.
+| Use case | Example URL |
+|---|---|
+| Cold email to FANUC | `farhand.live/for/japanese-oems?utm_source=email&utm_medium=outreach&utm_campaign=q2-2026&utm_content=fanuc` |
+| Expo QR handout | `farhand.live/oem?utm_source=qr&utm_medium=expo&utm_campaign=modex-2026` |
+| LinkedIn DM | `farhand.live/pitch?utm_source=linkedin&utm_medium=dm&utm_campaign=q2-2026&utm_content=prospect-name` |
+| Business card QR | `farhand.live/connect?utm_source=qr&utm_medium=card` |
+| Investor deck link | `farhand.live/pitch?utm_source=email&utm_medium=fundraise&utm_campaign=preseed` |
 
-### Next 10 topics (prioritized by search volume × topical fit)
+GA4 captures all UTM parameters automatically. No code needed.
 
-1. "How much does industrial robot maintenance cost?" — cost calculator angle
-2. "ABB robot error codes explained" — ABB equivalent of the FANUC guide
-3. "KUKA robot service: maintenance schedule and common failures"
-4. "Field service KPIs: what top teams actually measure"
-5. "Warehouse robot maintenance guide (AMRs, AGVs, ASRS)"
-6. "AI agents in field service: separating hype from ROI"
-7. "Medical device field service compliance: FDA, IEC 60601, and beyond"
-8. "How to build a field service SLA customers will actually sign"
-9. "The on-demand technician model: what's changed in 2026"
-10. "Robot calibration service: when to call, what it costs, what to expect"
+### QR codes
+- `/oem` QR: `public/oem-qr.png` (1200px) + `public/oem-qr.svg`
+- Generate new QR codes: `npx tsx scripts/generate-qr.ts` (add targets in `scripts/generate-qr.ts`)
+
+---
+
+## Backlink strategy
+
+### Active
+- **HARO / Featured** — ⬜ not signed up. Signup: https://www.featured.com/experts-signup/. Daily digest, respond to 1-2 queries. Expected yield: 5-15 backlinks in 3 months from industry pubs.
+- **Qwoted** — ⬜ alternative to HARO. https://www.qwoted.com. B2B tech journalist focus.
+
+### Opportunities (not started)
+- Guest posts: Modern Machine Shop, Automation.com, Field Service Digital, Assembly Magazine
+- OEM partner mentions (once customer case studies exist)
+- Robotics Business Review directory listing
+- Manufacturing.net contributor column
+
+---
+
+## TODO (ordered by priority)
+
+### Immediate (this week)
+1. ⬜ Sign up for HARO/Featured (manual — https://www.featured.com/experts-signup/)
+2. ⬜ Activate Search Atlas OTTO (`is_active: false` → one-click toggle in SA dashboard)
+3. ⬜ Add Apollo API key to Vercel env (enables lead enrichment)
+4. ⬜ Add Dev.to API key to `scripts/.env.syndication` (30-second signup)
+5. ⬜ Claim Google Business Profile at business.google.com
+
+### This month
+6. ⬜ Add IPinfo.io token ($49/mo) or sign up for RB2B free trial (reverse IP activation)
+7. ⬜ Wire newsletter provider (Loops/Beehiiv) into `/api/newsletter`
+8. ⬜ Generate OG cover images for all blog posts (needs OPENAI_API_KEY or UNSPLASH_ACCESS_KEY)
+9. ⬜ Create static root OG image at `public/og-default.jpg` (1200×630 branded)
+10. ⬜ Transfer domain registration from GoDaddy to Cloudflare Registrar ($11/yr vs $22/yr)
+
+### Ongoing (automated)
+11. ✅ Weekly blog post (Monday, Claude agent)
+12. ✅ Monthly programmatic page expansion (1st of month, Claude agent)
+13. ✅ Weekly competitor + keyword scan (Thursday, Claude agent)
+14. ✅ Weekly Lighthouse check (Monday, GitHub Actions)
+15. ✅ IndexNow ping on every deploy (GitHub Actions)
+16. ✅ Auto-deploy on push (GitHub Actions → Vercel)
+
+---
+
+## File reference
+
+### Key files to know
+| File | Purpose |
+|---|---|
+| `src/app/layout.tsx` | Root layout: GA4, Vercel Analytics, Speed Insights, Schema.org Org, LinkedIn/Meta stubs |
+| `src/app/sitemap.ts` | Dynamic sitemap (all routes) |
+| `src/app/rss.xml/route.ts` | RSS feed |
+| `src/data/blogPosts.ts` | Blog post registry (add new posts here) |
+| `src/data/cities.ts` | 75 US cities for programmatic SEO |
+| `src/data/machineTypes.ts` | 7 machine types with pain points, stats, FAQs |
+| `src/data/faqs.ts` | Shared FAQ data (`coreFaqs`) |
+| `src/lib/schema.ts` | JSON-LD builders (Article, Service, Breadcrumb) |
+| `src/lib/notion.ts` | Shared Notion + Apollo functions (storeInNotion, enrichViaApollo, findLeadByCompany) |
+| `src/lib/ip-lookup.ts` | IPinfo.io wrapper for reverse IP |
+| `src/middleware.ts` | Visitor IP capture + `/api/visit` dispatch |
+| `src/components/VerticalLanding.tsx` | Template for all stakeholder + service pages |
+| `src/components/README.md` | AI-facing component guide for creating new pages |
+| `scripts/content-pipeline.ts` | Content generation + syndication CLI |
+| `scripts/generate-qr.ts` | QR code generator |
+| `scripts/generate-weekly-blog.sh` | Local launchd blog generator (superseded by Claude cloud agent) |
+| `scripts/.env.syndication` | Syndication API keys (gitignored) |
+| `.env.local` | Local env vars (gitignored) |
+| `.github/workflows/deploy.yml` | Auto-deploy workflow |
+| `.github/workflows/indexnow.yml` | IndexNow ping workflow |
+| `.github/workflows/lighthouse.yml` | Lighthouse regression workflow |
+| `.github/lighthouse/lighthouserc.json` | Lighthouse assertion thresholds |
+| `public/robots.txt` | Crawler directives |
+| `public/google21078288b340938c.html` | GSC verification file |
+| `public/oem-qr.png` | QR code for /oem |
+| `SEO.md` | This file |
+| `CLAUDE.md` | Agent instructions |
 
 ---
 
@@ -165,20 +333,17 @@ Source of truth: `src/data/blogPosts.ts` (15 entries). Sitemap + RSS + blog inde
 Before shipping any SEO change:
 
 ```bash
-npx tsc --noEmit                     # must be clean
-npx next build                       # must show "Compiled successfully"
-# 562+ routes expected (15 blog + 525 programmatic + the rest)
+npx next build                       # must compile + build all routes
+# Expect 570+ routes (22 blog + 525 programmatic + static pages)
 ```
 
-Live smoke test (dev or preview):
+After deploy, verify:
 
 ```bash
-curl -sI   http://localhost:PORT/rss.xml                              # 200, application/rss+xml
-curl -s    http://localhost:PORT/sitemap.xml | grep -c '<url>'        # 562+
-curl -s    http://localhost:PORT/blog/field-service-roi-calculator \
-  | grep -c '"@type":"Article"'                                       # 1
-curl -s    http://localhost:PORT/services/robots/new-york \
-  | grep -c '"@type":"Service"'                                       # 1
+curl -sI https://farhand.live/                              # 200
+curl -sI https://farhand.live/sitemap.xml                    # 200
+curl -sI https://farhand.live/rss.xml                        # 200
+curl -sI https://farhand.live/robots.txt                     # 200
+curl -s  https://farhand.live/ | grep "G-CMC24D7416"         # GA4 present
+curl -s  https://farhand.live/services/robots/new-york | grep '"@type":"Service"'  # schema present
 ```
-
-When adding a new schema type, add a corresponding `grep -c` line above.
