@@ -21,13 +21,22 @@ export default function Navigation() {
           />
         </Link>
 
-        <motion.a
-          href="#schedule"
-          whileHover={{ opacity: 0.8 }}
-          className="text-accent text-lg font-normal no-underline px-5 py-2.5 min-h-[44px] flex items-center"
-        >
-          Schedule a Call
-        </motion.a>
+        <div className="flex items-center gap-2 md:gap-4">
+          <motion.a
+            href="/for/robotics-labs"
+            whileHover={{ opacity: 0.8 }}
+            className="text-light-gray text-base md:text-lg font-normal no-underline px-3 md:px-5 py-2.5 min-h-[44px] flex items-center"
+          >
+            For Labs
+          </motion.a>
+          <motion.a
+            href="#schedule"
+            whileHover={{ opacity: 0.8 }}
+            className="text-accent text-base md:text-lg font-normal no-underline px-3 md:px-5 py-2.5 min-h-[44px] flex items-center"
+          >
+            Schedule a Call
+          </motion.a>
+        </div>
       </div>
     </motion.nav>
   );
