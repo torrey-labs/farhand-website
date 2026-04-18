@@ -7,6 +7,7 @@ export type FeaturedLogo = {
   src: string;
   alt: string;
   height?: number;
+  filter?: string;
 };
 
 type FeaturedOnProps = {
@@ -39,20 +40,19 @@ export default function FeaturedOn({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-12"
+          className="flex flex-wrap items-center justify-center gap-10 md:gap-16"
         >
           {logos.map((logo) => (
-            <div
+            <img
               key={logo.src}
-              className="bg-white/95 rounded-xl px-6 py-4 flex items-center justify-center"
-            >
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                style={{ height: logo.height ?? 44 }}
-                className="w-auto object-contain"
-              />
-            </div>
+              src={logo.src}
+              alt={logo.alt}
+              style={{
+                height: logo.height ?? 44,
+                filter: logo.filter,
+              }}
+              className="w-auto object-contain"
+            />
           ))}
         </motion.div>
       </div>

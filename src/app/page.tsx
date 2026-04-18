@@ -1,7 +1,7 @@
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import FeaturedOn from '@/components/FeaturedOn';
-import InteractiveCoverageMap from '@/components/InteractiveCoverageMap';
+import CoverageMap from '@/components/CoverageMap';
 import Problem from '@/components/Problem';
 import Relay from '@/components/Relay';
 import StatsStrip from '@/components/StatsStrip';
@@ -18,10 +18,15 @@ export default function Home() {
       <FeaturedOn
         logos={[
           { src: '/press/arm-institute.png', alt: 'ARM Institute', height: 64 },
-          { src: '/press/field-service-next-west.png', alt: 'Field Service Next West', height: 36 },
+          {
+            src: '/press/field-service-next-west.png',
+            alt: 'Field Service Next West',
+            height: 44,
+            filter: 'brightness(0) invert(1)',
+          },
         ]}
       />
-      <InteractiveCoverageMap />
+      <CoverageMap />
       <div id="problem">
         <Problem />
       </div>
