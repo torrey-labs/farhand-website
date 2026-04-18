@@ -93,9 +93,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Section - Logo + Map */}
+        {/* Bottom Section - Logo */}
         <div className="flex justify-between items-end flex-wrap gap-12 pb-8">
-          {/* Left Column */}
           <div>
             <div className="flex items-center gap-2 mb-2">
               <img
@@ -118,15 +117,6 @@ export default function Footer() {
                 <FaLinkedin size={20} />
               </motion.a>
             </div>
-          </div>
-
-          {/* Right Column - US Map */}
-          <div className="max-w-[450px] flex-1 basis-[300px]">
-            <img
-              src="/world-map.avif"
-              alt="US Coverage Map"
-              className="w-full h-auto"
-            />
           </div>
         </div>
 
