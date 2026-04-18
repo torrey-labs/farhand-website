@@ -1,11 +1,64 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { FaLinkedin } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
+
+function FooterEmailForm() {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!email) return;
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'footer' }),
+      });
+      if (!res.ok) throw new Error();
+      setStatus('success');
+      setEmail('');
+    } catch {
+      setStatus('error');
+    }
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="flex-1 basis-[320px] max-w-[520px]">
+      <p className="text-sm text-light-gray/70 mb-3">Email</p>
+      <div className="bg-white/15 rounded-[10px] p-3.5 mb-3">
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="jules@example.com"
+          className="w-full bg-transparent border-none outline-none text-foreground placeholder:text-neutral-400 text-base font-[inherit] min-h-[20px]"
+        />
+      </div>
+      <Button
+        type="submit"
+        variant="dark"
+        disabled={status === 'loading'}
+        className="w-full h-12 rounded-[10px] text-sm font-semibold"
+      >
+        {status === 'loading'
+          ? 'Sending…'
+          : status === 'success'
+            ? 'Got it — we\u2019ll be in touch.'
+            : status === 'error'
+              ? 'Try again'
+              : 'Send me a call link'}
+      </Button>
+    </form>
+  );
+}
 
 export default function Footer() {
   useEffect(() => {
@@ -33,7 +86,7 @@ export default function Footer() {
           className="text-center pt-12 md:pt-16 lg:pt-20 pb-8 md:pb-10 lg:pb-12"
         >
           <h3 className="text-2xl md:text-3xl lg:text-[32px] mb-1 leading-[1.5] font-normal">
-            You don&apos;t need a field support team.
+            You don&apos;t need a field service team.
           </h3>
           <h3 className="text-2xl md:text-3xl lg:text-[32px] leading-[1.5] font-normal">
             You need field service <em className="text-accent italic">done</em>.
@@ -59,19 +112,7 @@ export default function Footer() {
           </div>
 
           {/* Email Form */}
-          <div className="flex-1 basis-[320px] max-w-[520px]">
-            <p className="text-sm text-light-gray/70 mb-3">Email</p>
-            <div className="bg-white/15 rounded-[10px] p-3.5 mb-3">
-              <input
-                type="email"
-                placeholder="jules@example.com"
-                className="w-full bg-transparent border-none outline-none text-neutral-400 text-base font-[inherit] min-h-[20px]"
-              />
-            </div>
-            <Button variant="dark" className="w-full h-12 rounded-[10px] text-sm font-semibold">
-              Schedule a call
-            </Button>
-          </div>
+          <FooterEmailForm />
         </motion.div>
 
         {/* Cal.com Embed */}
@@ -83,15 +124,6 @@ export default function Footer() {
           />
         </div>
 
-        {/* Footer Content */}
-        <div className="flex justify-between items-start flex-wrap gap-12 mb-8">
-          <div className="text-right ml-auto">
-            <p className="text-sm text-light-gray/60 leading-relaxed">
-              Designed by SF-based roboticists<br />
-              For robots out in the field
-            </p>
-          </div>
-        </div>
 
         {/* Bottom Section - Logo */}
         <div className="flex justify-between items-end flex-wrap gap-12 pb-8">

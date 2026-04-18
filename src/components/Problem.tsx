@@ -6,8 +6,8 @@ import { Card } from '@/components/ui/card';
 
 const problems = [
   "Travelling or regional technicians don't scale",
-  "Outsourced service contracts are slow and expensive",
-  "Only your senior guy knows some repairs",
+  "Outsourced service contracts are expensive and poor quality",
+  "Only your senior engineer knows some procedures",
 ];
 
 export default function Problem() {

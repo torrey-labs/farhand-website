@@ -22,6 +22,9 @@ export default function Hero() {
         <source src="/Farhand website.mp4" type="video/mp4" />
       </video>
 
+      {/* Bottom fade to black */}
+      <div className="absolute inset-x-0 bottom-0 h-48 z-0 bg-gradient-to-b from-transparent to-black pointer-events-none" />
+
       {/* Content Overlay */}
       <div className="container z-[1] relative flex flex-col items-center">
         <motion.div style={{ y: y1, opacity }} transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}>
@@ -35,7 +38,7 @@ export default function Hero() {
               letterSpacing: '-0.025em',
             }}
           >
-            Your field service partner
+            Your field ops team
           </h1>
         </motion.div>
 
@@ -46,7 +49,7 @@ export default function Hero() {
           className="max-w-[850px] mb-12 text-light-gray font-normal"
           style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}
         >
-          Our AI-guided technicians install & service your robots & machinery at your client sites.
+          Our AI-guided service engineers install & service your robots & machinery at your client sites.
         </motion.h2>
 
         <motion.div

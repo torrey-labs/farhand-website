@@ -1,41 +1,47 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
 
-// Coordinates in 959 × 593 viewBox (matches public/us-outline.svg).
-const TECH_DOTS: [number, number][] = [
-  // Northeast
-  [855, 195], [820, 220], [820, 240], [760, 245], [810, 265], [815, 250],
-  [795, 285], [850, 205], [830, 208], [845, 212], [775, 205], [790, 200],
-  [795, 195], [775, 230],
-  // Midwest
-  [620, 240], [690, 220], [650, 280], [700, 260], [720, 235], [680, 280],
-  [615, 205], [555, 175], [590, 305], [525, 300], [540, 250], [490, 250],
-  [655, 205], [610, 180], [590, 200], [510, 225], [580, 255], [700, 225],
-  // South / Southeast
-  [720, 385], [810, 530], [775, 510], [790, 490], [790, 455], [765, 335],
-  [680, 335], [615, 355], [600, 475], [510, 450], [490, 415], [475, 445],
-  [465, 470], [480, 380], [510, 365], [580, 380], [670, 395], [790, 320],
-  [735, 340], [720, 340], [780, 395], [760, 420], [730, 460], [650, 445],
-  [580, 460],
-  // West
-  [120, 360], [65, 275], [145, 400], [70, 285], [130, 90], [110, 115],
-  [75, 260], [95, 310], [200, 335], [240, 400], [265, 430], [330, 350],
-  [275, 245], [380, 295], [230, 180], [215, 100], [390, 310], [125, 95],
-  [85, 135], [415, 375], [345, 415],
-];
+function useCountUp(target: number, start: boolean, duration = 1400) {
+  const [value, setValue] = useState(0);
+  const startTime = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!start) return;
+    let raf = 0;
+    const tick = (t: number) => {
+      if (startTime.current === null) startTime.current = t;
+      const elapsed = t - startTime.current;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setValue(Math.round(target * eased));
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [target, start, duration]);
+
+  return value;
+}
 
 export default function CoverageMap() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const count = useCountUp(2100, inView);
+
   return (
-    <section className="bg-background py-16 md:py-24 border-t border-border overflow-hidden">
-      <div className="container text-center">
+    <section
+      ref={ref}
+      className="bg-background py-16 md:py-24 border-t border-border overflow-hidden"
+    >
+      <div className="container">
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8 }}
-          className="mb-3 md:mb-4 font-light"
+          className="mb-3 md:mb-4 font-light text-center"
         >
           Robots everywhere. <em className="text-accent italic not-italic">People everywhere.</em>
         </motion.h3>
@@ -45,54 +51,52 @@ export default function CoverageMap() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="text-light-gray/80 mb-10 md:mb-14"
+          className="text-light-gray/80 mb-12 md:mb-16 text-center"
         >
-          Every US zip code. 1,700+ field techs.
+          Every US zip code.
         </motion.p>
 
-        <div
-          className="relative mx-auto max-w-[1100px]"
-          style={{ aspectRatio: '959 / 593' }}
-        >
-          <img
-            src="/us-outline.svg"
-            alt=""
-            aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-contain opacity-[0.08]"
-            style={{ filter: 'invert(1)' }}
-          />
-
-          <svg
-            viewBox="0 0 959 593"
-            className="absolute inset-0 w-full h-full"
-            preserveAspectRatio="xMidYMid meet"
+        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-center max-w-[1200px] mx-auto">
+          {/* Stat */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.8 }}
+            className="text-center md:text-left md:pl-4 lg:pl-8 shrink-0"
           >
-            {TECH_DOTS.map(([x, y], i) => (
-              <circle
-                key={`tech-${i}`}
-                cx={x}
-                cy={y}
-                r={3.5}
-                fill="#1aff67"
-                opacity={0.9}
-              >
-                <animate
-                  attributeName="opacity"
-                  values="0.9;0.4;0.9"
-                  dur={`${2 + (i % 5) * 0.3}s`}
-                  begin={`${(i % 10) * 0.2}s`}
-                  repeatCount="indefinite"
-                />
-                <animate
-                  attributeName="r"
-                  values="3.5;4.2;3.5"
-                  dur={`${2 + (i % 5) * 0.3}s`}
-                  begin={`${(i % 10) * 0.2}s`}
-                  repeatCount="indefinite"
-                />
-              </circle>
-            ))}
-          </svg>
+            <div
+              className="text-accent font-light tracking-tight leading-none"
+              style={{
+                fontSize: 'clamp(4rem, 12vw, 7.5rem)',
+                fontFeatureSettings: '"tnum"',
+              }}
+            >
+              {count.toLocaleString('en-US')}+
+            </div>
+            <div className="mt-3 md:mt-4 text-light-gray text-sm md:text-base uppercase tracking-[0.15em]">
+              Field techs
+              <br />
+              across the US
+            </div>
+          </motion.div>
+
+          {/* Map — static US outline */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="relative w-full"
+            style={{ aspectRatio: '959 / 593' }}
+          >
+            <img
+              src="/us-outline.svg"
+              alt="US coverage map"
+              className="absolute inset-0 w-full h-full object-contain"
+              style={{ filter: 'invert(1) opacity(0.35)' }}
+            />
+          </motion.div>
         </div>
       </div>
     </section>

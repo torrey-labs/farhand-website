@@ -8,6 +8,8 @@ export type FeaturedLogo = {
   alt: string;
   height?: number;
   filter?: string;
+  href?: string;
+  title?: string;
 };
 
 type FeaturedOnProps = {
@@ -42,18 +44,35 @@ export default function FeaturedOn({
           transition={{ duration: 0.6, delay: 0.1 }}
           className="flex flex-wrap items-center justify-center gap-10 md:gap-16"
         >
-          {logos.map((logo) => (
-            <img
-              key={logo.src}
-              src={logo.src}
-              alt={logo.alt}
-              style={{
-                height: logo.height ?? 44,
-                filter: logo.filter,
-              }}
-              className="w-auto object-contain"
-            />
-          ))}
+          {logos.map((logo) => {
+            const img = (
+              <img
+                src={logo.src}
+                alt={logo.alt}
+                title={logo.title}
+                style={{
+                  height: logo.height ?? 44,
+                  filter: logo.filter,
+                }}
+                className="w-auto object-contain"
+              />
+            );
+            if (logo.href) {
+              return (
+                <a
+                  key={logo.src}
+                  href={logo.href}
+                  title={logo.title ?? logo.alt}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-opacity"
+                >
+                  {img}
+                </a>
+              );
+            }
+            return <span key={logo.src}>{img}</span>;
+          })}
         </motion.div>
       </div>
     </section>
