@@ -68,7 +68,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>Why AI-guided service fits cobots especially well</h2>
       <p>
-        Cobots are deployed in mixed fleets — most facilities have 2-3 different brands with different service procedures. Holding all that context in a single technician&apos;s head is unrealistic. Aquant benchmarks show bottom-performing techs cost <strong>97% more per ticket</strong> than top performers, largely because of this knowledge gap.
+        Cobots are deployed in mixed fleets — most facilities have 2-3 different brands with different service procedures. Holding all that context in a single Field Service Engineer&apos;s head is unrealistic. Aquant benchmarks show bottom-performing techs cost <strong>97% more per ticket</strong> than top performers, largely because of this knowledge gap.
       </p>
       <p>
         AI-guided workflows load the full manual set for every brand into context. Service Council&apos;s 2025 State of AI reports <strong>39% faster resolution</strong> and <strong>21% accuracy gains</strong> — which matters even more on a production floor where every minute of cobot downtime stops a named operator&apos;s work.

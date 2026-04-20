@@ -2,7 +2,7 @@ import VerticalLanding from '@/components/VerticalLanding';
 
 export const metadata = {
   title: 'Equipment Field Service | Farhand',
-  description: 'AI-guided field service for commercial and industrial equipment. On-demand technicians with full documentation context.',
+  description: 'AI-guided field service for commercial and industrial equipment. On-demand Field Service Engineers with full documentation context.',
 };
 
 export default function EquipmentPage() {
@@ -10,9 +10,9 @@ export default function EquipmentPage() {
     <VerticalLanding
       machineType="Equipment"
       headline="Every OEM is building smarter equipment. Run it on smarter ops."
-      subheadline="On-demand technicians guided by AI to install, maintain, and repair your equipment at customer sites — like your own guys, everywhere."
+      subheadline="On-demand Field Service Engineers guided by AI to install, maintain, and repair your equipment at customer sites — like your own guys, everywhere."
       painPoints={[
-        "Travelling or regional technicians don't scale",
+        "Travelling or regional Field Service Engineers don't scale",
         "Outsourced service contracts are slow and expensive",
         "Failed visits cost 44% of total service costs for bottom performers",
       ]}
@@ -23,7 +23,7 @@ export default function EquipmentPage() {
       ]}
       howItWorks={[
         "Load your equipment docs — installation guides, troubleshooting trees, parts catalogs, service bulletins.",
-        "Technician shows up with AI-powered, step-by-step guidance built from your own documentation.",
+        "Field Service Engineer shows up with AI-powered, step-by-step guidance built from your own documentation.",
         "Faster onboarding — new tech performs like a 10-year veteran on day one.",
         "Parts optimization — smarter diagnostics means fewer unnecessary replacements.",
       ]}
@@ -34,7 +34,7 @@ export default function EquipmentPage() {
         },
         {
           q: "How is this different from a staffing agency?",
-          a: "Staffing sends bodies. We send AI-guided technicians who arrive knowing your equipment. The AI loads your full manual — no chunking, no retrieval errors.",
+          a: "Staffing sends bodies. We send AI-guided Field Service Engineers who arrive knowing your equipment. The AI loads your full manual — no chunking, no retrieval errors.",
         },
         {
           q: "Can you handle installations as well as repairs?",

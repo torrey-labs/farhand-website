@@ -21,7 +21,7 @@ export default function ConnectPage() {
           Co-founder, Farhand
         </p>
         <p className="text-light-gray mb-10 leading-relaxed">
-          AI-guided field service for robotics &amp; machinery OEMs. On-demand technicians in every US zip code.
+          AI-guided field service for robotics &amp; machinery OEMs. On-demand Field Service Engineers in every US zip code.
         </p>
 
         <div className="flex flex-col gap-3">

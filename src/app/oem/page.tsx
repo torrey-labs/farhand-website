@@ -20,7 +20,7 @@ export default function OEMLandingPage() {
         </h1>
 
         <h2 className="max-w-[560px] mx-auto mb-12 font-normal">
-          AI-guided technicians install &amp; repair your equipment at every client site — without you building a field team.
+          AI-guided Field Service Engineers install &amp; repair your equipment at every client site — without you building a field team.
         </h2>
 
         <OemLeadForm />

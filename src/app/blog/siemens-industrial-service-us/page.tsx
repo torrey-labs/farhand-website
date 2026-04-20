@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Siemens Industrial Equipment Service in the US',
-  description: 'Siemens machines power US manufacturing from CNC to PLC. Their US service covers metros well but leaves gaps. How to augment with AI-guided technicians.',
+  description: 'Siemens machines power US manufacturing from CNC to PLC. Their US service covers metros well but leaves gaps. How to augment with AI-guided Field Service Engineers.',
 };
 
 export default function Post() {
@@ -67,7 +67,7 @@ export default function Post() {
         <strong>Augment with AI-guided partners</strong> for emergency break-fix outside Siemens&apos; 4-hour radius, nights and weekends, overflow during peak maintenance windows, and the geographic gaps where no Siemens office exists within a reasonable drive.
       </p>
       <p>
-        <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand&apos;s AI-guided technicians</Link> arrive with your full documentation loaded — Siemens product manuals plus the machine builder&apos;s OEM documentation plus your plant-specific configuration data. The combination is what gives them the diagnostic capability that a generic Siemens FSE, no matter how skilled, can&apos;t match for your specific application.
+        <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand&apos;s AI-guided Field Service Engineers</Link> arrive with your full documentation loaded — Siemens product manuals plus the machine builder&apos;s OEM documentation plus your plant-specific configuration data. The combination is what gives them the diagnostic capability that a generic Siemens FSE, no matter how skilled, can&apos;t match for your specific application.
       </p>
 
       <p style={{ fontSize: '14px', opacity: 0.5, marginTop: '3rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>

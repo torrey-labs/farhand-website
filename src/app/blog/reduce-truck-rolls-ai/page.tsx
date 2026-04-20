@@ -64,7 +64,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>How Farhand does it</h2>
       <p>
-        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, our <Link href="/#relay" style={{ color: 'var(--accent-green)' }}>Relay platform</Link> handles remote triage, AI-guided on-site repair, and post-ticket debriefs in a single loop. Our network of on-demand technicians rolls out only when remote resolution fails — and when they do, they arrive with a diagnosis, a parts list, and step-by-step instructions specific to your equipment. <Link href="/services/industrial-robots" style={{ color: 'var(--accent-green)' }}>Industrial robot service</Link> that respects your P&amp;L.
+        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, our <Link href="/#relay" style={{ color: 'var(--accent-green)' }}>Relay platform</Link> handles remote triage, AI-guided on-site repair, and post-ticket debriefs in a single loop. Our network of on-demand Field Service Engineers rolls out only when remote resolution fails — and when they do, they arrive with a diagnosis, a parts list, and step-by-step instructions specific to your equipment. <Link href="/services/industrial-robots" style={{ color: 'var(--accent-green)' }}>Industrial robot service</Link> that respects your P&amp;L.
       </p>
 
       <p style={{ fontSize: '14px', opacity: 0.5, marginTop: '3rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>

@@ -60,7 +60,7 @@ export default function Post() {
         If you&apos;re running a service org in 2026, the question isn&apos;t whether to adopt AI. It&apos;s how fast. If you&apos;re a customer buying service, the question is whether your current provider can meet the new bar — remote-first, AI-guided, outcome-priced.
       </p>
       <p>
-        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, we&apos;re building the service network the next decade requires. Our <Link href="/services/robots" style={{ color: 'var(--accent-green)' }}>robot service</Link> platform combines AI triage, on-demand technicians, and closed-loop knowledge capture — the full stack of where field service is going.
+        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, we&apos;re building the service network the next decade requires. Our <Link href="/services/robots" style={{ color: 'var(--accent-green)' }}>robot service</Link> platform combines AI triage, on-demand Field Service Engineers, and closed-loop knowledge capture — the full stack of where field service is going.
       </p>
 
       <p style={{ fontSize: '14px', opacity: 0.5, marginTop: '3rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>

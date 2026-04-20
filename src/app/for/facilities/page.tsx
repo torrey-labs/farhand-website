@@ -2,7 +2,7 @@ import VerticalLanding from '@/components/VerticalLanding';
 
 export const metadata = {
   title: 'For Facilities | Farhand',
-  description: 'AI-guided field service for facilities with installed equipment. On-demand technicians who know your machines.',
+  description: 'AI-guided field service for facilities with installed equipment. On-demand Field Service Engineers who know your machines.',
 };
 
 export default function FacilitiesPage() {
@@ -10,7 +10,7 @@ export default function FacilitiesPage() {
     <VerticalLanding
       machineType="For Facilities"
       headline="Your facility runs on machines. We keep them running."
-      subheadline="Hospitals, factories, warehouses, labs — any facility with installed equipment gets AI-guided technicians who arrive knowing your exact systems."
+      subheadline="Hospitals, factories, warehouses, labs — any facility with installed equipment gets AI-guided Field Service Engineers who arrive knowing your exact systems."
       painPoints={[
         "Equipment vendors each have their own service contracts and response times",
         "Your maintenance team can't specialize in every machine brand",
@@ -23,7 +23,7 @@ export default function FacilitiesPage() {
       ]}
       howItWorks={[
         "We load documentation for every machine in your facility — regardless of brand or vendor.",
-        "One number to call. One platform that knows all your equipment. AI dispatches the right technician with the right context.",
+        "One number to call. One platform that knows all your equipment. AI dispatches the right Field Service Engineer with the right context.",
         "Remote resolution first — many issues are solved by phone with AI guidance before a truck ever rolls.",
         "Preventive recommendations based on your equipment's actual usage and service history.",
       ]}
@@ -38,11 +38,11 @@ export default function FacilitiesPage() {
         },
         {
           q: "How quickly can you respond?",
-          a: "Remote triage begins immediately. On-site technicians dispatched same-day for critical issues. We cover every zip code in the US.",
+          a: "Remote triage begins immediately. On-site Field Service Engineers dispatched same-day for critical issues. We cover every zip code in the US.",
         },
         {
-          q: "Do your technicians need facility access training?",
-          a: "Your access procedures and safety protocols are loaded into the AI. Technicians arrive briefed on site-specific requirements before they walk through the door.",
+          q: "Do your Field Service Engineers need facility access training?",
+          a: "Your access procedures and safety protocols are loaded into the AI. Field Service Engineers arrive briefed on site-specific requirements before they walk through the door.",
         },
       ]}
     />

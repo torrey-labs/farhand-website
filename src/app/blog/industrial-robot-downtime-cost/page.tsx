@@ -57,10 +57,10 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>How AI shrinks downtime</h2>
       <p>
-        Service Council&apos;s 2025 State of AI report shows AI-guided workflows deliver <strong>39% faster resolution</strong> and <strong>21% higher accuracy</strong>. When a technician can query the entire manual, alarm code history, and past ticket resolutions in natural language, they stop guessing. They start fixing.
+        Service Council&apos;s 2025 State of AI report shows AI-guided workflows deliver <strong>39% faster resolution</strong> and <strong>21% higher accuracy</strong>. When a Field Service Engineer can query the entire manual, alarm code history, and past ticket resolutions in natural language, they stop guessing. They start fixing.
       </p>
       <p>
-        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, we deliver <Link href="/services/industrial-robots" style={{ color: 'var(--accent-green)' }}>industrial robot service</Link> that combines on-demand technicians with AI-guided workflows. The goal isn&apos;t &quot;respond faster.&quot; It&apos;s &quot;don&apos;t roll the second truck.&quot;
+        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, we deliver <Link href="/services/industrial-robots" style={{ color: 'var(--accent-green)' }}>industrial robot service</Link> that combines on-demand Field Service Engineers with AI-guided workflows. The goal isn&apos;t &quot;respond faster.&quot; It&apos;s &quot;don&apos;t roll the second truck.&quot;
       </p>
       <p>
         For <Link href="/for/oems" style={{ color: 'var(--accent-green)' }}>OEMs</Link> sitting on uptime SLAs, every hour of MTTR compression is pure contribution margin. Calculate it once and you&apos;ll never look at service costs the same way.

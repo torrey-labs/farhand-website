@@ -20,7 +20,7 @@ export default function Post() {
         FANUC ships more industrial robots than any other manufacturer on earth — IFR data shows FANUC holds roughly <strong>20% of the global installed base</strong>, part of the <strong>4.66 million robots</strong> in operation worldwide. Kept on schedule, a FANUC arm will run for 15+ years with minimal drama. Neglected, it becomes a very expensive paperweight.
       </p>
       <p>
-        Here&apos;s the maintenance checklist we hand technicians before they walk onto a FANUC site.
+        Here&apos;s the maintenance checklist we hand Field Service Engineers before they walk onto a FANUC site.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>Daily checks (operator-level)</h2>
@@ -43,7 +43,7 @@ export default function Post() {
         <li>Back up program, macro variables, and system variables to USB</li>
       </ul>
 
-      <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>Annual service (technician-level)</h2>
+      <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>Annual service (Field Service Engineer-level)</h2>
       <p>
         This is where <Link href="/services/industrial-robots" style={{ color: 'var(--accent-green)' }}>industrial robot service</Link> pays for itself. Skipping annual PMs is the fastest way to turn a $2K service visit into a $40K gearbox rebuild.
       </p>
@@ -57,7 +57,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>The knowledge gap problem</h2>
       <p>
-        Most facilities don&apos;t skip PMs because they don&apos;t care. They skip them because the technician who knew the FANUC retired, and the new hire is still figuring out which grease fitting is which. Aquant benchmarks show bottom-performing techs cost <strong>97% more per ticket</strong> than top performers — mostly because they&apos;re missing context their senior colleagues never wrote down.
+        Most facilities don&apos;t skip PMs because they don&apos;t care. They skip them because the Field Service Engineer who knew the FANUC retired, and the new hire is still figuring out which grease fitting is which. Aquant benchmarks show bottom-performing techs cost <strong>97% more per ticket</strong> than top performers — mostly because they&apos;re missing context their senior colleagues never wrote down.
       </p>
       <p>
         <Link href="/for/facilities" style={{ color: 'var(--accent-green)' }}>Facilities</Link> running a mixed FANUC / ABB / KUKA fleet especially feel this. Every manufacturer has their own conventions, their own service manuals, their own alarm code system.
@@ -65,7 +65,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>How AI-guided service fits</h2>
       <p>
-        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, we load the full FANUC manual set — the B-series maintenance guides, the alarm code dictionary, and your site&apos;s service history — into context. When a technician arrives, they get step-by-step guidance on the specific SRVO, PRIO, or SYST code they&apos;re chasing. No more paging through PDFs on a tablet in a dusty cell.
+        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, we load the full FANUC manual set — the B-series maintenance guides, the alarm code dictionary, and your site&apos;s service history — into context. When a Field Service Engineer arrives, they get step-by-step guidance on the specific SRVO, PRIO, or SYST code they&apos;re chasing. No more paging through PDFs on a tablet in a dusty cell.
       </p>
       <p>
         The result: Service Council reports <strong>39% faster resolution</strong> and first-time fix rates climbing from 53% to 86% once AI-guided workflows are in place.

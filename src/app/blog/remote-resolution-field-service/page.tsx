@@ -17,7 +17,7 @@ export default function Post() {
       category="Technology"
     >
       <p>
-        <strong>1 in 5 cases could be resolved remotely but still get a truck roll.</strong> That&apos;s a fifth of all service dispatches that didn&apos;t need to happen. The technician drives to the site, diagnoses the issue, and realizes it could have been fixed over the phone with the right guidance.
+        <strong>1 in 5 cases could be resolved remotely but still get a truck roll.</strong> That&apos;s a fifth of all service dispatches that didn&apos;t need to happen. The Field Service Engineer drives to the site, diagnoses the issue, and realizes it could have been fixed over the phone with the right guidance.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>The cost of unnecessary truck rolls</h2>
@@ -25,7 +25,7 @@ export default function Post() {
         Every truck roll costs hundreds of dollars — fuel, labor, opportunity cost, customer downtime. When <strong>14% of onsite visits are completely unnecessary</strong>, you&apos;re burning cash on logistics that add zero value.
       </p>
       <p>
-        But the real cost isn&apos;t the truck roll itself. It&apos;s the delay. While your technician is driving to an issue that could have been resolved remotely, another customer with a genuine emergency waits. Response times lengthen. SLAs slip. Satisfaction drops.
+        But the real cost isn&apos;t the truck roll itself. It&apos;s the delay. While your Field Service Engineer is driving to an issue that could have been resolved remotely, another customer with a genuine emergency waits. Response times lengthen. SLAs slip. Satisfaction drops.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>How AI enables remote resolution</h2>
@@ -41,10 +41,10 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>When you do need to send someone</h2>
       <p>
-        Remote resolution handles the easy-to-medium cases. But when you do need boots on the ground, AI still helps. The remote triage has already identified the problem, the likely root cause, and the parts needed. The technician arrives pre-briefed. First-time fix rates jump to <strong>86%</strong>.
+        Remote resolution handles the easy-to-medium cases. But when you do need boots on the ground, AI still helps. The remote triage has already identified the problem, the likely root cause, and the parts needed. The Field Service Engineer arrives pre-briefed. First-time fix rates jump to <strong>86%</strong>.
       </p>
       <p>
-        This is how <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link> operates. Every service request starts with remote triage through our <Link href="/#relay" style={{ color: 'var(--accent-green)' }}>Relay platform</Link>. We resolve what we can remotely. When on-site service is needed, our technicians arrive with full context.
+        This is how <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link> operates. Every service request starts with remote triage through our <Link href="/#relay" style={{ color: 'var(--accent-green)' }}>Relay platform</Link>. We resolve what we can remotely. When on-site service is needed, our Field Service Engineers arrive with full context.
       </p>
       <p>
         The result: fewer truck rolls, faster resolution, lower costs. For <Link href="/for/oems" style={{ color: 'var(--accent-green)' }}>OEMs</Link> and <Link href="/for/fleet-operators" style={{ color: 'var(--accent-green)' }}>fleet operators</Link>, this means scaling support without scaling headcount.

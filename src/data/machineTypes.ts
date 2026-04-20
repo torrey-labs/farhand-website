@@ -40,7 +40,7 @@ export const machineTypes: MachineType[] = [
     slug: 'robots',
     displayName: 'Robots',
     shortDescription:
-      'AI-guided technicians for robot maintenance, repair, and field support. On-demand service across every zip code in the US.',
+      'AI-guided Field Service Engineers for robot maintenance, repair, and field support. On-demand service across every zip code in the US.',
     painPoints: [
       'When a unit goes down, it takes days to get someone who knows the system',
       'Only your senior guy knows some repairs',
@@ -53,7 +53,7 @@ export const machineTypes: MachineType[] = [
     ],
     howItWorks: [
       'Upload your documentation — manuals, SOPs, wiring diagrams, error codes. The AI loads the full manual into context. No chunking. No retrieval errors.',
-      'A technician arrives on-site guided by AI that knows your robot. Step-by-step repair guidance from your own documentation.',
+      'A Field Service Engineer arrives on-site guided by AI that knows your robot. Step-by-step repair guidance from your own documentation.',
       'After every job, the AI improves by text and voice debriefs. Your knowledge compounds over time.',
       '1 in 3 issues resolved without rolling a truck. AI + phone = fixed.',
     ],
@@ -64,15 +64,15 @@ export const machineTypes: MachineType[] = [
       },
       {
         q: 'How does AI-guided service work?',
-        a: 'We load your complete documentation into our Relay platform. When a technician arrives, they have AI-powered step-by-step guidance specific to your robot, its history, and its current state.',
+        a: 'We load your complete documentation into our Relay platform. When a Field Service Engineer arrives, they have AI-powered step-by-step guidance specific to your robot, its history, and its current state.',
       },
       {
         q: 'What areas do you cover?',
-        a: 'Every zip code in the US. We have on-demand technicians nationwide, guided by our AI platform so they perform like your best senior tech.',
+        a: 'Every zip code in the US. We have on-demand Field Service Engineers nationwide, guided by our AI platform so they perform like your best senior tech.',
       },
       {
         q: 'How fast can you respond?',
-        a: 'For critical issues, we can have a technician on-site within hours. Many issues are resolved remotely first — 1 in 3 service queries can be resolved without sending anyone.',
+        a: 'For critical issues, we can have a Field Service Engineer on-site within hours. Many issues are resolved remotely first — 1 in 3 service queries can be resolved without sending anyone.',
       },
     ],
   },
@@ -93,7 +93,7 @@ export const machineTypes: MachineType[] = [
     ],
     howItWorks: [
       'Paste your manuals — SOPs, wiring diagrams, error codes, firmware changelogs. The agent builds a visual workflow your techs can follow.',
-      'A technician arrives guided by AI that knows your industrial robot. Right diagnosis, right parts, first visit.',
+      'A Field Service Engineer arrives guided by AI that knows your industrial robot. Right diagnosis, right parts, first visit.',
       'Knowledge preservation — capture what your senior techs know before they retire. Make it searchable.',
       'New tech performs like a 10-year veteran on day one.',
     ],
@@ -104,7 +104,7 @@ export const machineTypes: MachineType[] = [
       },
       {
         q: 'Can you handle emergency breakdowns?',
-        a: 'Yes. For production-critical downtime, we dispatch technicians with full AI-guided context. Many issues are triaged remotely first to speed resolution.',
+        a: 'Yes. For production-critical downtime, we dispatch Field Service Engineers with full AI-guided context. Many issues are triaged remotely first to speed resolution.',
       },
       {
         q: 'How does this compare to an OEM service contract?',
@@ -120,10 +120,10 @@ export const machineTypes: MachineType[] = [
     slug: 'industrial-machinery',
     displayName: 'Industrial Machinery',
     shortDescription:
-      'AI-guided field service for industrial machinery, CNC machines, and manufacturing equipment. On-demand technicians nationwide.',
+      'AI-guided field service for industrial machinery, CNC machines, and manufacturing equipment. On-demand Field Service Engineers nationwide.',
     painPoints: [
       'Outsourced service contracts are slow and expensive',
-      "Travelling or regional technicians don't scale",
+      "Travelling or regional Field Service Engineers don't scale",
       'When a unit goes down, it takes days to get someone who knows the system',
     ],
     stats: [
@@ -133,7 +133,7 @@ export const machineTypes: MachineType[] = [
     ],
     howItWorks: [
       'Upload your machinery documentation. Full manual loaded into context — no chunking, no retrieval errors, no missed context.',
-      'On-site technician arrives with AI-powered diagnostics specific to your machine model and its repair history.',
+      'On-site Field Service Engineer arrives with AI-powered diagnostics specific to your machine model and its repair history.',
       'Remote resolution first — 1 in 3 issues solvable without rolling a truck.',
       'Every repair improves the AI. Your knowledge compounds, your costs decrease.',
     ],
@@ -148,7 +148,7 @@ export const machineTypes: MachineType[] = [
       },
       {
         q: "What's the typical response time?",
-        a: 'Remote triage begins immediately. On-site technicians can be dispatched same-day for critical issues, with nationwide coverage across every US zip code.',
+        a: 'Remote triage begins immediately. On-site Field Service Engineers can be dispatched same-day for critical issues, with nationwide coverage across every US zip code.',
       },
       {
         q: 'Can this replace our internal service team?',
@@ -160,7 +160,7 @@ export const machineTypes: MachineType[] = [
     slug: 'instruments',
     displayName: 'Instruments',
     shortDescription:
-      'AI-guided field service for precision instruments, test equipment, and calibration systems. Nationwide technician coverage.',
+      'AI-guided field service for precision instruments, test equipment, and calibration systems. Nationwide Field Service Engineer coverage.',
     painPoints: [
       'Instrument calibration requires techs who know the exact model and procedures',
       'Sending instruments back to the manufacturer takes weeks',
@@ -173,7 +173,7 @@ export const machineTypes: MachineType[] = [
     ],
     howItWorks: [
       'Upload calibration procedures, service manuals, tolerance specs, and compliance requirements into the AI platform.',
-      'Technician arrives on-site with AI guidance specific to your instrument model, its calibration history, and certification requirements.',
+      'Field Service Engineer arrives on-site with AI guidance specific to your instrument model, its calibration history, and certification requirements.',
       'Remote diagnostics first — many calibration drift issues can be identified and guided through remotely.',
       'Full documentation trail for every service event — audit-ready compliance records.',
     ],
@@ -184,15 +184,15 @@ export const machineTypes: MachineType[] = [
       },
       {
         q: 'Can you handle ISO-compliant calibration?',
-        a: 'Our AI loads your exact calibration procedures and compliance requirements. Technicians follow them step-by-step, with full audit trails for ISO and regulatory documentation.',
+        a: 'Our AI loads your exact calibration procedures and compliance requirements. Field Service Engineers follow them step-by-step, with full audit trails for ISO and regulatory documentation.',
       },
       {
         q: 'Do you service instruments in the field or do they need to be sent in?',
-        a: 'Field service is our specialty. Technicians come to you — no shipping delays, no weeks without your equipment.',
+        a: 'Field service is our specialty. Field Service Engineers come to you — no shipping delays, no weeks without your equipment.',
       },
       {
         q: 'How do you handle instruments from different manufacturers?',
-        a: 'We scope to your specific instrument. Your documentation is loaded into the AI, so the technician has brand-specific, model-specific guidance regardless of manufacturer.',
+        a: 'We scope to your specific instrument. Your documentation is loaded into the AI, so the Field Service Engineer has brand-specific, model-specific guidance regardless of manufacturer.',
       },
     ],
   },
@@ -200,9 +200,9 @@ export const machineTypes: MachineType[] = [
     slug: 'equipment',
     displayName: 'Equipment',
     shortDescription:
-      'AI-guided field service for commercial and industrial equipment. On-demand technicians with full documentation context.',
+      'AI-guided field service for commercial and industrial equipment. On-demand Field Service Engineers with full documentation context.',
     painPoints: [
-      "Travelling or regional technicians don't scale",
+      "Travelling or regional Field Service Engineers don't scale",
       'Outsourced service contracts are slow and expensive',
       'Failed visits cost 44% of total service costs for bottom performers',
     ],
@@ -213,7 +213,7 @@ export const machineTypes: MachineType[] = [
     ],
     howItWorks: [
       'Load your equipment docs — installation guides, troubleshooting trees, parts catalogs, service bulletins.',
-      'Technician shows up with AI-powered, step-by-step guidance built from your own documentation.',
+      'Field Service Engineer shows up with AI-powered, step-by-step guidance built from your own documentation.',
       'Faster onboarding — new tech performs like a 10-year veteran on day one.',
       'Parts optimization — smarter diagnostics means fewer unnecessary replacements.',
     ],
@@ -224,7 +224,7 @@ export const machineTypes: MachineType[] = [
       },
       {
         q: 'How is this different from a staffing agency?',
-        a: 'Staffing sends bodies. We send AI-guided technicians who arrive knowing your equipment. The AI loads your full manual — no chunking, no retrieval errors.',
+        a: 'Staffing sends bodies. We send AI-guided Field Service Engineers who arrive knowing your equipment. The AI loads your full manual — no chunking, no retrieval errors.',
       },
       {
         q: 'Can you handle installations as well as repairs?',
@@ -240,7 +240,7 @@ export const machineTypes: MachineType[] = [
     slug: 'medical-equipment',
     displayName: 'Medical Equipment',
     shortDescription:
-      'AI-guided field service for medical devices, surgical systems, and pharmacy automation. Compliance-ready technicians nationwide.',
+      'AI-guided field service for medical devices, surgical systems, and pharmacy automation. Compliance-ready Field Service Engineers nationwide.',
     painPoints: [
       'Medical equipment downtime directly impacts patient outcomes',
       'Compliance and regulatory requirements make repairs complex',
@@ -253,14 +253,14 @@ export const machineTypes: MachineType[] = [
     ],
     howItWorks: [
       'Load your device documentation — service manuals, compliance protocols, calibration procedures, error code databases.',
-      'Technicians arrive with AI context covering your exact device model, its maintenance history, and regulatory requirements.',
+      'Field Service Engineers arrive with AI context covering your exact device model, its maintenance history, and regulatory requirements.',
       'Remote diagnostics resolve issues before they become emergencies. Predictive maintenance reduces unplanned downtime.',
       'Full audit trail on every service event for regulatory compliance.',
     ],
     faqs: [
       {
-        q: 'Do your technicians have medical device certifications?',
-        a: 'Our technicians are guided by AI loaded with your specific compliance and service protocols. We match technicians with relevant certifications to your equipment type.',
+        q: 'Do your Field Service Engineers have medical device certifications?',
+        a: 'Our Field Service Engineers are guided by AI loaded with your specific compliance and service protocols. We match Field Service Engineers with relevant certifications to your equipment type.',
       },
       {
         q: 'How do you handle HIPAA and compliance?',
@@ -280,10 +280,10 @@ export const machineTypes: MachineType[] = [
     slug: 'general-aviation',
     displayName: 'General Aviation',
     shortDescription:
-      'AI-guided field service for aviation ground equipment, avionics, and aircraft systems. Nationwide technician network.',
+      'AI-guided field service for aviation ground equipment, avionics, and aircraft systems. Nationwide Field Service Engineer network.',
     painPoints: [
       'Aviation equipment failures cause cascading delays and safety risks',
-      'FAA-compliant repairs require technicians who know the exact system',
+      'FAA-compliant repairs require Field Service Engineers who know the exact system',
       'Specialized aviation techs are concentrated in major hubs, not where you need them',
     ],
     stats: [
@@ -293,7 +293,7 @@ export const machineTypes: MachineType[] = [
     ],
     howItWorks: [
       'Upload aviation technical manuals, maintenance procedures, airworthiness directives, and service bulletins into the AI platform.',
-      'Technicians arrive with full context — knowing your exact equipment, its service history, and applicable compliance requirements.',
+      'Field Service Engineers arrive with full context — knowing your exact equipment, its service history, and applicable compliance requirements.',
       'Remote triage identifies whether a ground visit is needed. Many issues are diagnosed and resolved without dispatching.',
       'Every service event is documented for compliance and continuous improvement.',
     ],
@@ -303,16 +303,16 @@ export const machineTypes: MachineType[] = [
         a: 'Ground support equipment (GSE), avionics test equipment, aircraft maintenance tools, hangar automation, and aviation-specific industrial systems. Our AI adapts to any documented equipment.',
       },
       {
-        q: 'Are your technicians aviation-certified?',
-        a: 'We match technicians with relevant certifications to your equipment. The AI ensures every tech follows your exact procedures and compliance requirements regardless of their prior experience.',
+        q: 'Are your Field Service Engineers aviation-certified?',
+        a: 'We match Field Service Engineers with relevant certifications to your equipment. The AI ensures every tech follows your exact procedures and compliance requirements regardless of their prior experience.',
       },
       {
         q: 'How do you handle compliance documentation?',
-        a: 'Full audit trails on every service event. Your compliance procedures are loaded into the AI, ensuring technicians follow them step-by-step with no shortcuts.',
+        a: 'Full audit trails on every service event. Your compliance procedures are loaded into the AI, ensuring Field Service Engineers follow them step-by-step with no shortcuts.',
       },
       {
         q: "What's your coverage for remote airports?",
-        a: 'Every zip code in the US. Our on-demand model means technicians are available even in underserved areas — guided by AI so they perform like your best specialist.',
+        a: 'Every zip code in the US. Our on-demand model means Field Service Engineers are available even in underserved areas — guided by AI so they perform like your best specialist.',
       },
     ],
   },

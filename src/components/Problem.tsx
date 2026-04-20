@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 
 const problems = [
-  "Travelling or regional technicians don't scale",
+  "Travelling or regional Field Service Engineers don't scale",
   "Outsourced service contracts are expensive and poor quality",
   "Only your senior engineer knows some procedures",
 ];

@@ -20,7 +20,7 @@ export default function Post() {
         Every field service leader has a dashboard. Most dashboards have 20+ metrics. Most of those metrics don&apos;t predict anything that matters.
       </p>
       <p>
-        Here&apos;s what ten years of benchmarking data tell us about which KPIs actually correlate with customer retention, technician productivity, and margin — and which ones are vanity metrics you can retire without anyone noticing.
+        Here&apos;s what ten years of benchmarking data tell us about which KPIs actually correlate with customer retention, Field Service Engineer productivity, and margin — and which ones are vanity metrics you can retire without anyone noticing.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>The 8 KPIs that matter</h2>
@@ -32,8 +32,8 @@ export default function Post() {
         <strong>2. Mean Time to Repair (MTTR)</strong> — drives SLA compliance and downtime cost for the customer.<br />
         <strong>3. SLA Compliance Rate</strong> — the contractual KPI your customers actually grade you on.<br />
         <strong>4. Customer Satisfaction (CSAT) on service visits</strong> — leading indicator of churn.<br />
-        <strong>5. Technician Utilization</strong> — the margin ceiling on your service business.<br />
-        <strong>6. Revenue per Technician</strong> — the margin floor.<br />
+        <strong>5. Field Service Engineer Utilization</strong> — the margin ceiling on your service business.<br />
+        <strong>6. Revenue per Field Service Engineer</strong> — the margin floor.<br />
         <strong>7. First Dispatch Accuracy</strong> — did we send the right person and parts for the ticket?<br />
         <strong>8. Cost per Service Event</strong> — the aggregate reality check on all of the above.
       </p>
@@ -69,7 +69,7 @@ export default function Post() {
         <strong>Knowledge coverage</strong> — what % of active tickets does our documentation actually cover? Gaps here predict escalations and repeat visits before they happen.
       </p>
       <p>
-        <strong>Senior technician saturation</strong> — is your most experienced person booked &gt; 85%? When your senior tech is oversubscribed, MTTR starts creeping up immediately on any ticket that would have been escalated to them.
+        <strong>Senior Field Service Engineer saturation</strong> — is your most experienced person booked &gt; 85%? When your senior tech is oversubscribed, MTTR starts creeping up immediately on any ticket that would have been escalated to them.
       </p>
       <p>
         Track these weekly. They predict your lagging KPIs with ~2 weeks of lead time, which is just enough to course-correct before the month closes.
@@ -83,7 +83,7 @@ export default function Post() {
         2024 is when that started to change. Aquant&apos;s 2025–2026 report documents an unusual stat: <strong>organizations with AI-guided service workflows improved FTFR by 8–11 percentage points in a single year.</strong> That&apos;s an order of magnitude more improvement than the industry had seen from any other single lever in two decades.
       </p>
       <p>
-        The reason: the ceiling on FTFR was never routing or parts. It was knowledge distribution. Your best technician had 25 years of experience and could fix anything. Your median technician had 3 years and a service manual. The gap was ~30 points of FTFR. <Link href="/" style={{ color: 'var(--accent-green)' }}>AI-guided service</Link> closes that gap by making every technician as effective as your senior one, on their first visit.
+        The reason: the ceiling on FTFR was never routing or parts. It was knowledge distribution. Your best Field Service Engineer had 25 years of experience and could fix anything. Your median Field Service Engineer had 3 years and a service manual. The gap was ~30 points of FTFR. <Link href="/" style={{ color: 'var(--accent-green)' }}>AI-guided service</Link> closes that gap by making every Field Service Engineer as effective as your senior one, on their first visit.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>A scorecard template that drives behavior</h2>
@@ -94,7 +94,7 @@ export default function Post() {
         <strong>Weekly (leading):</strong> First dispatch accuracy · Senior tech saturation · Knowledge-base coverage · Ticket-to-AI-guidance ratio
       </p>
       <p>
-        <strong>Monthly (lagging):</strong> First-time fix rate · MTTR · SLA compliance · CSAT · Revenue per technician · Cost per service event
+        <strong>Monthly (lagging):</strong> First-time fix rate · MTTR · SLA compliance · CSAT · Revenue per Field Service Engineer · Cost per service event
       </p>
       <p>
         That&apos;s it. Four leading metrics to watch weekly, six lagging metrics to review monthly. Every other thing on your current dashboard can go in a &quot;deep dive&quot; report that you look at quarterly or when something breaks.

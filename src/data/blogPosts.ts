@@ -10,7 +10,7 @@ export const blogPosts: BlogPostMeta[] = [
   {
     slug: 'kuka-robot-service-us',
     title: 'KUKA Robot Service in the US: What European OEMs Need to Know',
-    excerpt: '30,000+ KUKA robots in North America, serviced from a handful of hubs. The coverage gap and how AI-guided technicians close it.',
+    excerpt: '30,000+ KUKA robots in North America, serviced from a handful of hubs. The coverage gap and how AI-guided Field Service Engineers close it.',
     date: '2026-04-15',
     category: 'Industry',
   },
@@ -24,14 +24,14 @@ export const blogPosts: BlogPostMeta[] = [
   {
     slug: 'tsmc-supplier-equipment-service',
     title: 'TSMC Supplier Equipment Service: Scaling with US Fab Expansion',
-    excerpt: 'TSMC Arizona needs Taiwanese equipment OEMs to provide US-based service. The CHIPS Act timeline and how AI-guided technicians solve it.',
+    excerpt: 'TSMC Arizona needs Taiwanese equipment OEMs to provide US-based service. The CHIPS Act timeline and how AI-guided Field Service Engineers solve it.',
     date: '2026-04-15',
     category: 'Industry',
   },
   {
     slug: 'siemens-industrial-service-us',
     title: 'Siemens Industrial Equipment Service in the US',
-    excerpt: 'SINUMERIK, SIMATIC, SINAMICS — Siemens covers metros well but leaves gaps. How to augment with AI-guided technicians.',
+    excerpt: 'SINUMERIK, SIMATIC, SINAMICS — Siemens covers metros well but leaves gaps. How to augment with AI-guided Field Service Engineers.',
     date: '2026-04-15',
     category: 'Industry',
   },

@@ -28,7 +28,7 @@ export default function PrivacyPage() {
             <p>We use Google Analytics 4 and Vercel Analytics for aggregated traffic metrics (sessions, page views, referrers). Both services anonymize IP addresses by default and do not receive personally identifying information. You can opt out of Google Analytics at <a href="https://tools.google.com/dlpage/gaoptout" className="text-accent">tools.google.com/dlpage/gaoptout</a>.</p>
 
             <h3 className="text-white mt-8 mb-4">4. Data Usage</h3>
-            <p>Your data is used to coordinate technician deployments, improve the Farhand Relay™ AI guidance system, and surface relevant service offerings. Form submissions are stored in our internal CRM (Notion) for sales follow-up.</p>
+            <p>Your data is used to coordinate Field Service Engineer deployments, improve the Farhand Relay™ AI guidance system, and surface relevant service offerings. Form submissions are stored in our internal CRM (Notion) for sales follow-up.</p>
 
             <h3 className="text-white mt-8 mb-4">5. Data Sharing</h3>
             <p>Farhand does not sell your personal information. We may share data with service providers (Notion, Vercel, Apollo.io, IPinfo.io, Google) to the extent necessary to operate the site, perform field service, and enrich inbound leads. Each of these providers has their own privacy terms.</p>

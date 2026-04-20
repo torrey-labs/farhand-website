@@ -10,7 +10,7 @@ export default function DistributorsPage() {
     <VerticalLanding
       machineType="For Distributors"
       headline="Add field service to your offering. Without building a team."
-      subheadline="Your customers need service after the sale. Farhand gives you AI-guided technicians nationwide — so you can offer service without the overhead."
+      subheadline="Your customers need service after the sale. Farhand gives you AI-guided Field Service Engineers nationwide — so you can offer service without the overhead."
       painPoints={[
         "Customers expect service, but building a team is expensive",
         "Third-party service contracts are slow and don't know your products",
@@ -23,14 +23,14 @@ export default function DistributorsPage() {
       ]}
       howItWorks={[
         "Share equipment documentation for the products you distribute. Our AI learns every model in your catalog.",
-        "When your customers need service, we dispatch AI-guided technicians who know the exact equipment.",
-        "You offer a complete solution — equipment + service — without hiring a single technician.",
+        "When your customers need service, we dispatch AI-guided Field Service Engineers who know the exact equipment.",
+        "You offer a complete solution — equipment + service — without hiring a single Field Service Engineer.",
         "Customer satisfaction drives renewals and referrals. Service becomes a revenue center, not a cost center.",
       ]}
       faqs={[
         {
           q: "Can we brand the service as our own?",
-          a: "Yes. Technicians can represent your brand. Your customers see seamless service from the company they bought from.",
+          a: "Yes. Field Service Engineers can represent your brand. Your customers see seamless service from the company they bought from.",
         },
         {
           q: "We distribute equipment from multiple manufacturers. Can you handle that?",

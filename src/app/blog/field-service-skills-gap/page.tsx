@@ -17,7 +17,7 @@ export default function Post() {
       category="Insights"
     >
       <p>
-        Here&apos;s a number that should alarm every service leader: <strong>bottom-performing technicians cost 97% more than top performers</strong>. Not 10% more. Not 20% more. Nearly double.
+        Here&apos;s a number that should alarm every service leader: <strong>bottom-performing Field Service Engineers cost 97% more than top performers</strong>. Not 10% more. Not 20% more. Nearly double.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>The gap is real — and it&apos;s widening</h2>
@@ -38,7 +38,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>AI closes the gap — permanently</h2>
       <p>
-        The solution isn&apos;t better hiring. It&apos;s better knowledge infrastructure. When your documentation, repair history, and tribal knowledge are loaded into an AI platform, every technician gets guidance from your best expert — regardless of their experience level.
+        The solution isn&apos;t better hiring. It&apos;s better knowledge infrastructure. When your documentation, repair history, and tribal knowledge are loaded into an AI platform, every Field Service Engineer gets guidance from your best expert — regardless of their experience level.
       </p>
       <p>
         <strong>Boosting your bottom 25% to average saves ~17% in service costs.</strong> Scale that across your entire workforce and you&apos;re looking at <strong>up to 26% service cost savings</strong>.

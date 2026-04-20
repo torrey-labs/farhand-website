@@ -17,12 +17,12 @@ export default function Post() {
       category="Insights"
     >
       <p>
-        Every field service org has tried to solve knowledge management. SharePoint. Confluence. ServiceNow. Custom internal wikis. A shared Google Drive named &quot;service docs (FINAL v3).&quot; None of them work the way you need them to when a technician is standing in front of a $500K robot at 2 a.m.
+        Every field service org has tried to solve knowledge management. SharePoint. Confluence. ServiceNow. Custom internal wikis. A shared Google Drive named &quot;service docs (FINAL v3).&quot; None of them work the way you need them to when a Field Service Engineer is standing in front of a $500K robot at 2 a.m.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>Why the traditional approach fails</h2>
       <p>
-        Knowledge management systems are built for people searching from a desk. Field technicians don&apos;t search from a desk. They&apos;re crouched next to a controller, one hand holding a teach pendant, trying to remember what the senior tech said last Tuesday about SRVO-068 recovery.
+        Knowledge management systems are built for people searching from a desk. Field Field Service Engineers don&apos;t search from a desk. They&apos;re crouched next to a controller, one hand holding a teach pendant, trying to remember what the senior tech said last Tuesday about SRVO-068 recovery.
       </p>
       <p>
         Traditional KM systems assume you know what you&apos;re looking for. Field techs don&apos;t — they&apos;re describing a symptom (&quot;robot drops part at end of cycle&quot;) and need the system to bridge that to a procedure buried on page 847 of a B-series manual.
@@ -30,7 +30,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>The cost of bad knowledge access</h2>
       <p>
-        Aquant&apos;s benchmarks put the performance gap starkly: <strong>bottom-performing technicians cost 97% more per ticket</strong> than top performers. That gap isn&apos;t about skill or effort. It&apos;s about information access.
+        Aquant&apos;s benchmarks put the performance gap starkly: <strong>bottom-performing Field Service Engineers cost 97% more per ticket</strong> than top performers. That gap isn&apos;t about skill or effort. It&apos;s about information access.
       </p>
       <p>
         Top-quartile teams hit <strong>86% first-time fix rate</strong>. Bottom-quartile hit 53%. The 33-point gap translates into <strong>2 extra visits and 14 extra days</strong> per failed ticket, per Service Council data.

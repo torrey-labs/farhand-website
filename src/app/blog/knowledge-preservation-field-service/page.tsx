@@ -38,7 +38,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>New tech, veteran performance</h2>
       <p>
-        When your entire service history and tribal knowledge is loaded into an AI platform, onboarding transforms. A new technician doesn&apos;t need months of shadowing. They get AI-guided, step-by-step instructions built from the collective experience of everyone who came before them.
+        When your entire service history and tribal knowledge is loaded into an AI platform, onboarding transforms. A new Field Service Engineer doesn&apos;t need months of shadowing. They get AI-guided, step-by-step instructions built from the collective experience of everyone who came before them.
       </p>
       <p>
         <strong>New tech performs like a 10-year veteran on day one.</strong>

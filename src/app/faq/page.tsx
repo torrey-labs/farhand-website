@@ -10,11 +10,11 @@ import {
 const faqs = [
   {
     q: "What does Farhand do?",
-    a: "Farhand provides AI-guided field service technicians for robots, industrial machinery, medical equipment, and other complex machines. Our AI platform learns your documentation and guides technicians during repairs — so they perform like your best senior tech, everywhere.",
+    a: "Farhand provides AI-guided Field Service Engineers for robots, industrial machinery, medical equipment, and other complex machines. Our AI platform learns your documentation and guides Field Service Engineers during repairs — so they perform like your best senior tech, everywhere.",
   },
   {
     q: "How does the AI-guided service work?",
-    a: "You upload your documentation — manuals, SOPs, wiring diagrams, error codes, firmware changelogs. Our Relay platform loads the full manual into context. When a technician arrives, they have AI-powered step-by-step guidance specific to your machine, its history, and its current state.",
+    a: "You upload your documentation — manuals, SOPs, wiring diagrams, error codes, firmware changelogs. Our Relay platform loads the full manual into context. When a Field Service Engineer arrives, they have AI-powered step-by-step guidance specific to your machine, its history, and its current state.",
   },
   {
     q: "What types of machines do you service?",
@@ -22,15 +22,15 @@ const faqs = [
   },
   {
     q: "What areas do you cover?",
-    a: "Every zip code in the United States. We have on-demand technicians nationwide, guided by our AI platform.",
+    a: "Every zip code in the United States. We have on-demand Field Service Engineers nationwide, guided by our AI platform.",
   },
   {
     q: "How fast can you respond to an issue?",
-    a: "Remote triage begins immediately. On-site technicians can be dispatched same-day for critical issues. Many issues are resolved remotely first — 1 in 3 service queries can be resolved without sending anyone.",
+    a: "Remote triage begins immediately. On-site Field Service Engineers can be dispatched same-day for critical issues. Many issues are resolved remotely first — 1 in 3 service queries can be resolved without sending anyone.",
   },
   {
     q: "How is Farhand different from a staffing agency?",
-    a: "Staffing sends bodies. We send AI-guided technicians who arrive knowing your machine. They train techs. We train AI. Your documentation becomes the teacher — so every tech performs like a 10-year veteran on day one.",
+    a: "Staffing sends bodies. We send AI-guided Field Service Engineers who arrive knowing your machine. They train techs. We train AI. Your documentation becomes the teacher — so every tech performs like a 10-year veteran on day one.",
   },
   {
     q: "How is this different from an OEM service contract?",
@@ -38,11 +38,11 @@ const faqs = [
   },
   {
     q: "What is Farhand Relay?",
-    a: "Relay is our AI platform that becomes your senior technician. It learns your documentation, guides technicians during repairs, and improves by text and voice debriefs. Full manual loaded into context — no chunking, no retrieval errors, no missed context.",
+    a: "Relay is our AI platform that becomes your senior Field Service Engineer. It learns your documentation, guides Field Service Engineers during repairs, and improves by text and voice debriefs. Full manual loaded into context — no chunking, no retrieval errors, no missed context.",
   },
   {
     q: "Can I use Relay for my own internal team?",
-    a: "Yes. Relay works for your internal technicians too. Load your docs, give your team AI guidance from the same platform. Boost your bottom performers to average and save ~17% in service costs.",
+    a: "Yes. Relay works for your internal Field Service Engineers too. Load your docs, give your team AI guidance from the same platform. Boost your bottom performers to average and save ~17% in service costs.",
   },
   {
     q: "Is my documentation secure?",

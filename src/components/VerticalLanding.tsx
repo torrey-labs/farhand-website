@@ -82,7 +82,7 @@ export default function VerticalLanding({
 
       <StepsList
         title="Farhand Relay™"
-        subtitle="Our AI platform that becomes your senior technician."
+        subtitle="Our AI platform that becomes your senior Field Service Engineer."
         steps={howItWorks}
       />
 

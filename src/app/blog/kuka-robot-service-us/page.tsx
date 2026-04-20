@@ -28,7 +28,7 @@ export default function Post() {
         KUKA&apos;s US service infrastructure mirrors most European robot OEMs: a central hub near Detroit (Shelby Township), with field service engineers dispatched nationally. The problem is math. A fleet of 15-20 FSEs covering 30,000+ robots across 50 states means each engineer is responsible for 1,500+ units spread across a territory the size of a European country.
       </p>
       <p>
-        Response time suffers. For customers in the Southeast, Pacific Northwest, or Mountain West, a KUKA FSE dispatch can take 24-48 hours. For an automotive plant running 24/7 with <strong>$2.3M per hour of line-down cost</strong> (Siemens benchmark), that wait is untenable. Many customers supplement KUKA&apos;s service with in-house robotics technicians — but those are increasingly impossible to hire.
+        Response time suffers. For customers in the Southeast, Pacific Northwest, or Mountain West, a KUKA FSE dispatch can take 24-48 hours. For an automotive plant running 24/7 with <strong>$2.3M per hour of line-down cost</strong> (Siemens benchmark), that wait is untenable. Many customers supplement KUKA&apos;s service with in-house robotics Field Service Engineers — but those are increasingly impossible to hire.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>What KUKA customers actually need</h2>
@@ -44,10 +44,10 @@ export default function Post() {
         The emerging model is augmentation, not replacement. KUKA keeps its factory-trained engineers for complex commissioning, warranty work, and firmware updates. An AI-guided service partner handles the volume layer: break-fix, emergency response, nights/weekends, and geographic coverage gaps.
       </p>
       <p>
-        What makes this work in 2026 is that the KUKA documentation — KR C4/C5 controller manuals, WorkVisual configs, SafeRobot parameters, error code references — can be loaded into an AI platform that gives every on-site technician the same diagnostic capability as a 15-year KUKA veteran. The technician doesn&apos;t need to memorize the difference between a KRC4-1204 and a KRC4-3108 fault. The AI knows.
+        What makes this work in 2026 is that the KUKA documentation — KR C4/C5 controller manuals, WorkVisual configs, SafeRobot parameters, error code references — can be loaded into an AI platform that gives every on-site Field Service Engineer the same diagnostic capability as a 15-year KUKA veteran. The Field Service Engineer doesn&apos;t need to memorize the difference between a KRC4-1204 and a KRC4-3108 fault. The AI knows.
       </p>
       <p>
-        Aquant&apos;s 2025-2026 benchmark shows that AI-guided technicians achieve <strong>86% first-time fix rates</strong> on robot equipment vs. 74% industry average. For KUKA customers, that&apos;s the difference between a one-visit resolution and a three-visit saga with $500k in downtime.
+        Aquant&apos;s 2025-2026 benchmark shows that AI-guided Field Service Engineers achieve <strong>86% first-time fix rates</strong> on robot equipment vs. 74% industry average. For KUKA customers, that&apos;s the difference between a one-visit resolution and a three-visit saga with $500k in downtime.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>What European OEMs should consider</h2>
@@ -58,10 +58,10 @@ export default function Post() {
         <strong>Cost of current model:</strong> €4k+ per transatlantic dispatch, 2-3 day response time, engineer saturation at 85%+, customer churn from slow SLAs.
       </p>
       <p>
-        <strong>Cost of augmented model:</strong> US-based AI-guided technicians available same-day, per-visit pricing (no fixed headcount), documentation-driven quality that matches your factory standards.
+        <strong>Cost of augmented model:</strong> US-based AI-guided Field Service Engineers available same-day, per-visit pricing (no fixed headcount), documentation-driven quality that matches your factory standards.
       </p>
       <p>
-        <Link href="/for/european-oems" style={{ color: 'var(--accent-green)' }}>Farhand partners with European OEMs</Link> to build exactly this augmentation layer. Your documentation, your procedures, your quality standards — delivered by US-based technicians guided by AI that has read every page of your service manual.
+        <Link href="/for/european-oems" style={{ color: 'var(--accent-green)' }}>Farhand partners with European OEMs</Link> to build exactly this augmentation layer. Your documentation, your procedures, your quality standards — delivered by US-based Field Service Engineers guided by AI that has read every page of your service manual.
       </p>
 
       <p style={{ fontSize: '14px', opacity: 0.5, marginTop: '3rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>

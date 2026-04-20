@@ -34,7 +34,7 @@ export default function Post() {
       </p>
       <ul style={{ fontSize: '17px', lineHeight: 1.8, paddingLeft: '1.5rem' }}>
         <li><strong>Tier 0 — AI:</strong> Automated diagnostic pulls alarm logs, controller state, and recent changes. Resolves known-pattern issues without human involvement.</li>
-        <li><strong>Tier 1 — Remote technician:</strong> Video call with the on-site operator, walks through procedures using AI-guided workflow support.</li>
+        <li><strong>Tier 1 — Remote Field Service Engineer:</strong> Video call with the on-site operator, walks through procedures using AI-guided workflow support.</li>
         <li><strong>Tier 2 — Truck roll:</strong> Only if tiers 0 and 1 can&apos;t resolve. By the time a truck rolls, the remote team has already ruled out 80% of possibilities.</li>
       </ul>
       <p>
@@ -46,7 +46,7 @@ export default function Post() {
         The reason most orgs don&apos;t already do this: their service manuals live in PDFs that nobody can search, and their senior techs&apos; knowledge lives in Slack threads that nobody logs. When a tier-1 remote tech picks up a call, they have 30 seconds to look smart. Without context, they can&apos;t — so they default to dispatching a truck just to be safe.
       </p>
       <p>
-        This is why AI-guided workflows are the unlock. Service Council&apos;s 2025 State of AI reports <strong>39% faster resolution</strong> and <strong>21% accuracy gains</strong> when technicians have full-context AI support. That&apos;s the difference between &quot;let me dispatch someone&quot; and &quot;try resetting SRVO-023 by holding SHIFT + RESET for three seconds.&quot;
+        This is why AI-guided workflows are the unlock. Service Council&apos;s 2025 State of AI reports <strong>39% faster resolution</strong> and <strong>21% accuracy gains</strong> when Field Service Engineers have full-context AI support. That&apos;s the difference between &quot;let me dispatch someone&quot; and &quot;try resetting SRVO-023 by holding SHIFT + RESET for three seconds.&quot;
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>Who captures the $14B</h2>
@@ -59,7 +59,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>The Farhand approach</h2>
       <p>
-        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, remote diagnostics is how we start every ticket. Our <Link href="/services/robots" style={{ color: 'var(--accent-green)' }}>robot service</Link> platform combines AI triage with on-demand technicians — most tickets resolve without a truck roll at all. The ones that do need a truck arrive with the diagnosis already in hand.
+        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, remote diagnostics is how we start every ticket. Our <Link href="/services/robots" style={{ color: 'var(--accent-green)' }}>robot service</Link> platform combines AI triage with on-demand Field Service Engineers — most tickets resolve without a truck roll at all. The ones that do need a truck arrive with the diagnosis already in hand.
       </p>
 
       <p style={{ fontSize: '14px', opacity: 0.5, marginTop: '3rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>

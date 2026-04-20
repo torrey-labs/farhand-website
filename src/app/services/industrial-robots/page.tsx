@@ -10,7 +10,7 @@ export default function IndustrialRobotsPage() {
     <VerticalLanding
       machineType="Industrial Robots"
       headline="Keep your production line moving."
-      subheadline="AI-guided technicians for robotic arms, welding systems, packaging automation, and assembly lines — with full manual context on every visit."
+      subheadline="AI-guided Field Service Engineers for robotic arms, welding systems, packaging automation, and assembly lines — with full manual context on every visit."
       painPoints={[
         "A failed first visit adds 2 more visits and 14 extra days",
         "Bottom-performing techs cost 97% more than top performers",
@@ -23,7 +23,7 @@ export default function IndustrialRobotsPage() {
       ]}
       howItWorks={[
         "Paste your manuals — SOPs, wiring diagrams, error codes, firmware changelogs. The agent builds a visual workflow your techs can follow.",
-        "A technician arrives guided by AI that knows your industrial robot. Right diagnosis, right parts, first visit.",
+        "A Field Service Engineer arrives guided by AI that knows your industrial robot. Right diagnosis, right parts, first visit.",
         "Knowledge preservation — capture what your senior techs know before they retire. Make it searchable.",
         "New tech performs like a 10-year veteran on day one.",
       ]}
@@ -34,7 +34,7 @@ export default function IndustrialRobotsPage() {
         },
         {
           q: "Can you handle emergency breakdowns?",
-          a: "Yes. For production-critical downtime, we dispatch technicians with full AI-guided context. Many issues are triaged remotely first to speed resolution.",
+          a: "Yes. For production-critical downtime, we dispatch Field Service Engineers with full AI-guided context. Many issues are triaged remotely first to speed resolution.",
         },
         {
           q: "How does this compare to an OEM service contract?",

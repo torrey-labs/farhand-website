@@ -224,7 +224,7 @@ export default function RoboticsLabsPage() {
                 style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}
               >
                 <sup className="mr-1">1</sup>
-                Farhand — SF-based, field service for robots. Nationwide technicians and AI tooling. Written for BD and applications teams at frontier labs.
+                Farhand — SF-based, field service for robots. Nationwide Field Service Engineers and AI tooling. Written for BD and applications teams at frontier labs.
               </p>
             </div>
           </div>

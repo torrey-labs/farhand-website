@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'TSMC Supplier Equipment Service: Scaling with US Fab Expansion',
-  description: 'TSMC\'s Arizona fabs need Taiwanese equipment OEMs to provide US-based service. The CHIPS Act timeline, the service gap, and how AI-guided technicians solve it.',
+  description: 'TSMC\'s Arizona fabs need Taiwanese equipment OEMs to provide US-based service. The CHIPS Act timeline, the service gap, and how AI-guided Field Service Engineers solve it.',
 };
 
 export default function Post() {
@@ -41,7 +41,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>AI-guided service as the fast path</h2>
       <p>
-        The alternative: load your full product documentation — Mandarin or English — into an AI platform that guides US-based technicians through every procedure, every fault code, every calibration step. The technician doesn&apos;t need 5 years of experience with your specific tool. The AI has that experience, derived from your manuals.
+        The alternative: load your full product documentation — Mandarin or English — into an AI platform that guides US-based Field Service Engineers through every procedure, every fault code, every calibration step. The Field Service Engineer doesn&apos;t need 5 years of experience with your specific tool. The AI has that experience, derived from your manuals.
       </p>
       <p>
         This works particularly well for semiconductor equipment because:

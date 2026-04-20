@@ -25,7 +25,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>The hiring bottleneck</h2>
       <p>
-        Qualified robotics technicians are the single hardest hire in industrial labor markets. The U.S. Bureau of Labor Statistics projects <strong>13% job growth for industrial machinery mechanics through 2033</strong> — against a shrinking supply of trade-school graduates. In Germany and Japan, the shortage is worse.
+        Qualified robotics Field Service Engineers are the single hardest hire in industrial labor markets. The U.S. Bureau of Labor Statistics projects <strong>13% job growth for industrial machinery mechanics through 2033</strong> — against a shrinking supply of trade-school graduates. In Germany and Japan, the shortage is worse.
       </p>
       <p>
         Even when you find them, the ramp is brutal. A junior tech needs 12-18 months of shadowing before they&apos;re billing at full rate on complex robotic systems. For an OEM growing install base 25% YoY, hiring can&apos;t catch up.
@@ -44,7 +44,7 @@ export default function Post() {
         Your best techs are the ones competitors try to poach. They&apos;re also the ones leaving to start their own service shops. When one leaves, they take 10 years of undocumented knowledge with them — and your bottom-quartile techs are left to figure out why a customer&apos;s FANUC is throwing SRVO-068 at 3 a.m.
       </p>
       <p>
-        Aquant benchmarks put the cost clearly: <strong>bottom-performing technicians cost 97% more per ticket</strong> than top performers. The gap is almost entirely knowledge access, not skill.
+        Aquant benchmarks put the cost clearly: <strong>bottom-performing Field Service Engineers cost 97% more per ticket</strong> than top performers. The gap is almost entirely knowledge access, not skill.
       </p>
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>The SLA trap</h2>
@@ -65,7 +65,7 @@ export default function Post() {
 
       <h2 style={{ fontSize: '28px', color: 'var(--foreground)', marginTop: '2.5rem', marginBottom: '1rem', fontWeight: 400 }}>What this looks like</h2>
       <p>
-        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, we operate as the flexible service layer for OEMs. Our <Link href="/services/industrial-robots" style={{ color: 'var(--accent-green)' }}>industrial robot service</Link> network puts technicians within 2 hours of most North American metro areas, and our AI-guided workflow platform makes sure every tech who shows up has full access to your manuals, alarm codes, and ticket history.
+        At <Link href="/" style={{ color: 'var(--accent-green)' }}>Farhand</Link>, we operate as the flexible service layer for OEMs. Our <Link href="/services/industrial-robots" style={{ color: 'var(--accent-green)' }}>industrial robot service</Link> network puts Field Service Engineers within 2 hours of most North American metro areas, and our AI-guided workflow platform makes sure every tech who shows up has full access to your manuals, alarm codes, and ticket history.
       </p>
       <p>
         OEMs stop trying to scale a service org that can&apos;t be scaled. They scale a service outcome — uptime, MTTR, NPS — that their customers actually pay for.

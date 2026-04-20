@@ -20,7 +20,7 @@ export default function TermsPage() {
             <p>By accessing farhand.live, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.</p>
 
             <h3 className="text-white mt-8 mb-4">2. Description of Service</h3>
-            <p>Farhand provides AI-guided technician services for robots and machinery. Our platform, Farhand Relay™, facilitates on-site installations and repairs.</p>
+            <p>Farhand provides AI-guided Field Service Engineer services for robots and machinery. Our platform, Farhand Relay™, facilitates on-site installations and repairs.</p>
 
             <h3 className="text-white mt-8 mb-4">3. Use of Content</h3>
             <p>All content on this website is the property of Farhand Inc. and is protected by copyright laws. Unauthorized use is prohibited.</p>

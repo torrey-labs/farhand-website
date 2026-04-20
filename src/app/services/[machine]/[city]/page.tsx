@@ -46,7 +46,7 @@ export async function generateMetadata({
   // Note: the root layout applies the "%s | Farhand" title template, so we
   // omit the " | Farhand" suffix here to avoid duplicating it in the <title>.
   const title = `${machine.displayName} Field Service in ${city.name}, ${city.state}`;
-  const description = `On-demand, AI-guided ${machine.displayName.toLowerCase()} field service in ${city.name}, ${city.stateName}. Farhand dispatches technicians across the ${city.metroArea} with your full documentation loaded into context.`;
+  const description = `On-demand, AI-guided ${machine.displayName.toLowerCase()} field service in ${city.name}, ${city.stateName}. Farhand dispatches Field Service Engineers across the ${city.metroArea} with your full documentation loaded into context.`;
   const canonicalPath = `/services/${machine.slug}/${city.slug}`;
 
   return {
@@ -83,12 +83,12 @@ export default async function MachineCityPage({
   }
 
   const headline = `${machine.displayName} service in ${city.name}, ${city.state}.`;
-  const subheadline = `On-demand technicians across the ${city.metroArea}, guided by AI that already knows your ${machine.displayName.toLowerCase()} — manuals, SOPs, wiring diagrams, and repair history loaded into context before they arrive on site.`;
+  const subheadline = `On-demand Field Service Engineers across the ${city.metroArea}, guided by AI that already knows your ${machine.displayName.toLowerCase()} — manuals, SOPs, wiring diagrams, and repair history loaded into context before they arrive on site.`;
 
   const url = `https://farhand.live/services/${machine.slug}/${city.slug}`;
   const serviceLd = productSchema({
     name: `${machine.displayName} Field Service in ${city.name}, ${city.state}`,
-    description: `On-demand, AI-guided ${machine.displayName.toLowerCase()} field service in ${city.name}, ${city.stateName}. Farhand dispatches technicians across the ${city.metroArea}.`,
+    description: `On-demand, AI-guided ${machine.displayName.toLowerCase()} field service in ${city.name}, ${city.stateName}. Farhand dispatches Field Service Engineers across the ${city.metroArea}.`,
     url,
     category: machine.displayName,
   });

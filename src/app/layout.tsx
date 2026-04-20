@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     default: "Farhand | Your field service partner",
     template: "%s | Farhand",
   },
-  description: "AI-guided technicians install & service your robots & machinery at your client sites. On-demand field service across every zip code in the US.",
+  description: "AI-guided Field Service Engineers install & service your robots & machinery at your client sites. On-demand field service across every zip code in the US.",
   icons: {
     icon: "/favicon.svg",
   },
   metadataBase: new URL("https://farhand.live"),
   openGraph: {
     title: "Farhand — Your field service partner",
-    description: "On-demand technicians guided by AI to service your machines like your own guys. Every zip code in the US.",
+    description: "On-demand Field Service Engineers guided by AI to service your machines like your own guys. Every zip code in the US.",
     url: "https://farhand.live",
     siteName: "Farhand",
     type: "website",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Farhand — Your field service partner",
-    description: "On-demand technicians guided by AI to service your machines like your own guys.",
+    description: "On-demand Field Service Engineers guided by AI to service your machines like your own guys.",
   },
   robots: {
     index: true,
@@ -125,7 +125,7 @@ export default function RootLayout({
               "@type": "Organization",
               "name": "Farhand",
               "url": "https://farhand.live",
-              "description": "AI-guided technicians install & service your robots & machinery at your client sites.",
+              "description": "AI-guided Field Service Engineers install & service your robots & machinery at your client sites.",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+1-857-498-9778",

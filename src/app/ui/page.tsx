@@ -110,10 +110,10 @@ export default function UISandbox() {
         </div>
         <FeatureGrid
           title="Farhand Relay™"
-          subtitle="Our AI platform that becomes your senior technician."
+          subtitle="Our AI platform that becomes your senior Field Service Engineer."
           features={[
             { title: 'Learns', desc: 'your documentation', icon: <HelpCircle size={20} /> },
-            { title: 'Guides', desc: 'technicians during repairs', icon: <Wrench size={20} /> },
+            { title: 'Guides', desc: 'Field Service Engineers during repairs', icon: <Wrench size={20} /> },
             { title: 'Improves', desc: 'by text and voice debriefs', icon: <Infinity size={20} /> },
           ]}
         />
@@ -135,7 +135,7 @@ export default function UISandbox() {
           subtitle="Four steps from first call to resolution."
           steps={[
             'Upload your documentation — manuals, SOPs, error codes, firmware changelogs.',
-            'A technician arrives guided by AI that knows your machine.',
+            'A Field Service Engineer arrives guided by AI that knows your machine.',
             'Remote triage first — 1 in 3 issues resolved without rolling a truck.',
             'Every repair improves the AI. Your knowledge compounds.',
           ]}
@@ -155,7 +155,7 @@ export default function UISandbox() {
         </div>
         <CalloutBox
           eyebrow="There's a better model"
-          title="On-demand technicians guided by AI to service your machines like your own guys"
+          title="On-demand Field Service Engineers guided by AI to service your machines like your own guys"
           footer="Every zip code in the US"
         />
       </div>
