@@ -13,15 +13,15 @@ export interface FAQItem {
 export const coreFaqs: FAQItem[] = [
   {
     q: 'How does AI-guided field service work?',
-    a: 'Every Field Service Engineer performs like your best senior expert. Knows your machine. Knows your process. Knows the history. Calls close faster. First-time-fix rates up.',
+    a: 'Every Field Service Engineer performs like your senior engineer. Knows your machine. Knows your process. Knows the history. Calls close faster. First-time-fix rates up.',
   },
   {
     q: 'What types of machines do you service?',
-    a: 'Robots. Industrial machinery. Medical equipment. Precision instruments. Aviation ground gear. Anything with service docs.',
+    a: 'Robots and Automation Systems. Industrial machinery. Medical equipment. Precision instruments. Consumer Equipment.',
   },
   {
     q: 'What areas do you cover?',
-    a: 'Every US zip code. Same AI platform coast to coast. Same service quality everywhere.',
+    a: 'Every US zip code. Technicians available within a short drive. Same service quality everywhere.',
   },
   {
     q: 'How fast can you respond to an issue?',
@@ -29,14 +29,18 @@ export const coreFaqs: FAQItem[] = [
   },
   {
     q: 'How is this different from a staffing agency or OEM service contract?',
-    a: 'Staffing sends bodies. OEMs are slow and expensive. We send Field Service Engineers who arrive knowing your machine. No long-term contracts.',
+    a: 'Staffing sends bodies that you have to manage. OEMs are slow and expensive. We send Field Service Engineers who arrive knowing your machine. No long-term contracts.',
+  },
+  {
+    q: 'How do you price?',
+    a: 'You only pay for usage. Pay for our engineers\u2019 time on your client sites. Insurance and travel comes with, on us.',
   },
   {
     q: 'Is my documentation secure?',
     a: 'Yes. Private and scoped to your equipment. Never shared. Full audit trails on every call.',
   },
   {
-    q: 'How do I get started and what does it cost?',
-    a: 'Book a call. Share your docs. Relay set up in days. Pricing by volume — typically cheaper than internal team or OEM contracts.',
+    q: 'How do I get started?',
+    a: 'Book a call. We take two weeks to onboard our AI and show you how it works. Then you pay only for usage!',
   },
 ];

@@ -57,7 +57,7 @@ Cards *(red outline, shuffle responsive)*:
 
 Inside the bordered pill:
 - Eyebrow *(accent green)*: `There's a better model`
-- Headline: `On-demand experienced engineers and AI tools made for your processes`
+- Headline: `On-demand service engineers and AI tools made for your processes`
 - Sub: `Every zip code in the US`
 
 ---
@@ -101,25 +101,28 @@ Subtitle: `Everything you need to know about AI-guided field service.`
 Questions *(edit Q + A here; I'll sync `src/data/faqs.ts`)*:
 
 1. **Q:** How does AI-guided field service work?
-   **A:** Every Field Service Engineer performs like your best senior expert. Knows your machine. Knows your process. Knows the history. Calls close faster. First-time-fix rates up.
+   **A:** Every Field Service Engineer performs like your senior engineer. Knows your machine. Knows your process. Knows the history. Calls close faster. First-time-fix rates up.
 
 2. **Q:** What types of machines do you service?
-   **A:** Robots. Industrial machinery. Medical equipment. Precision instruments. Aviation ground gear. Anything with service docs.
-
+   **A:** Robots and Automation Systems. Industrial machinery. Medical equipment. Precision instruments. Consumer Equipment.
+ 
 3. **Q:** What areas do you cover?
-   **A:** Every US zip code. Same AI platform coast to coast. Same service quality everywhere.
+   **A:** Every US zip code. Technicians available within a short drive. Same service quality everywhere.
 
 4. **Q:** How fast can you respond to an issue?
    **A:** Remote triage starts immediately. 1 in 3 issues resolved without anyone onsite. Same-day dispatch when needed.
 
 5. **Q:** How is this different from a staffing agency or OEM service contract?
-   **A:** Staffing sends bodies. OEMs are slow and expensive. We send Field Service Engineers who arrive knowing your machine. No long-term contracts.
+   **A:** Staffing sends bodies that you have to manage. OEMs are slow and expensive. We send Field Service Engineers who arrive knowing your machine. No long-term contracts.
 
-6. **Q:** Is my documentation secure?
+6. **Q:** How do you price?
+   **A:** You only pay for usage. Pay for our engineers’ time on your client sites. Insurance and travel comes with, on us.
+
+7. **Q:** Is my documentation secure?
    **A:** Yes. Private and scoped to your equipment. Never shared. Full audit trails on every call.
 
-7. **Q:** How do I get started and what does it cost?
-   **A:** Book a call. Share your docs. Relay set up in days. Pricing by volume — typically cheaper than internal team or OEM contracts.
+8. **Q:** How do I get started?
+   **A:** Book a call. We take two weeks to onboard our AI and show you how it works. Then you pay only for usage!
 
 ---
 
