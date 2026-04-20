@@ -68,3 +68,30 @@ Never mix. The whole point of an inbound-capture page is no ambiguity.
 - [ ] Form (if any) posts to a real `/api/*` route with success + error states
 - [ ] Confirmation copy names the next step
 - [ ] Loads in under one viewport on desktop at 1440px
+
+---
+
+## Critique notes *(2026-04-20 audit)*
+
+### `/pitch`
+- **Good:** single-column layout, three short paragraphs of body, stats row, how-it-works list, clear CTA.
+- **Fixed:** top eyebrow `Farhand` now links back to `/` (was a dead text element). Add the same pattern to any future outbound-summary page.
+- **Still long-ish** — it's an executive summary so three paragraphs is intentional, but on mobile the body feels heavy. Consider collapsing paragraph 2+3 into bullets if bounce rate suggests it.
+- `robots: { index: false, follow: false }` — correctly set so it doesn't leak into organic search.
+
+### `/oem`
+- **Minimal** — single headline, single subhead, lead form. That's the right shape for a QR-code destination.
+- **Fixed:** added absolute top-left `Farhand` → home link.
+- **Form lives in `OemLeadForm.tsx`** and POSTs to `/api/oem-lead`. Confirm the success state names a next step (not just "Thanks!").
+- **robots: noindex** — correct.
+
+### `/connect`
+- Needs an audit in the next pass. Verify it has (a) a back-to-home link, (b) a single CTA, (c) noindex if it's outreach-only.
+
+### `/faq` (standalone FAQ page)
+- Uses `FAQSection` shared component + its own `faqs.ts`-style data. Consider folding into `src/data/faqs.ts` so the homepage FAQ and standalone FAQ can't diverge.
+
+### General rules emerging from this audit
+- **Every capture page needs a subtle logo link home** — we don't want these to be dead ends if someone misread the URL.
+- **Form success copy must name the next step** — "Check your inbox", "We'll call within 24 hours", etc. Generic "Thanks" hurts conversion.
+- **If the page is noindex, add it to `robots.ts` explicitly** so bots never surface it.

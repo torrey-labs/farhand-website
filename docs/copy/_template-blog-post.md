@@ -69,3 +69,22 @@ Keep this verbatim for consistency.
 - [ ] 3+ internal links
 - [ ] Sources footnote
 - [ ] Slug added to `rss.xml` and (if applicable) sitemap if not auto-generated
+
+---
+
+## Critique notes *(2026-04-20 audit across 22 posts)*
+
+### Strengths
+- **BlogPost layout includes `<Navigation />`** — every post has the logo → home link baked in. No work needed to add back-links.
+- **Closing paragraph pattern is consistent**: always ends with "The Farhand approach" + 2–3 internal links. Good for SEO and for reader intent.
+- **Sources footnote** is consistent across posts — credibility win.
+
+### Weaknesses
+- **Inline styles for H2** (`style={{ fontSize: '28px', ... }}`) are copy-pasted in every post. Would be cleaner as a styled component or a class. Low priority — refactor when touching posts anyway.
+- **Some posts use `techs`, `senior tech`, `junior tech`** as narrative shorthand. That's fine and reads naturally — do NOT sweep these to "Field Service Engineers." The word-boundary sweep explicitly left these alone.
+- **Link density varies.** Some posts have 5+ internal links, some barely have 3. Aim for the higher end on new posts — SEO and cross-pollination both benefit.
+- **No shared "Related reading" footer.** Each post closes with a sources line; a 3-link "Related reading" would help readers stay on-site after finishing an article.
+
+### Things to skip in routine audits
+- Individual post copy review across 22 articles is a big job. Only do deep edits when the post is underperforming in analytics OR when a factual number is stale.
+- Do NOT rewrite posts to match homepage FAQ voice — blog posts are long-form and benefit from full sentences.

@@ -64,3 +64,22 @@ Fill each slot per page. The component handles layout, animation, and the traili
 
 - `/for/robotics-labs` uses a custom founder-letter layout, not `VerticalLanding`. It has its own copy flow in the file.
 - `/relay` is the product page — see `_template-product-page.md`.
+
+---
+
+## Critique notes *(2026-04-20 audit)*
+
+### Layout
+- **Hero is 70vh + 24–40 pt.** Reads fine on desktop, a little tall on phones after scroll. `min-h-[70vh]` is a reasonable compromise.
+- **Only one primary CTA** (hero `Get started` button → `#schedule` anchor → Footer Cal popup). A secondary, *in-flow* CTA between steps and FAQs would catch readers who scroll past the hero without taking action. Low priority.
+- **Hero CTA does a two-click dance**: scroll to footer → click the cal button. Future fix: put `data-cal-link` directly on the hero button so one click opens the scheduler. Needs a verify that `getCalApi()` (called in `Footer`) has mounted by the time the hero button is clickable.
+
+### Copy patterns
+- **Pain points sometimes use `techs`** (e.g. `/for/oems` says "Your best tech can't be everywhere at once"). That's intentional — customer-language should stay casual. Don't sweep "tech" in pain points.
+- **Stats repeat across verticals** (86% FTFR, 1 in 3 remote, 39% faster). Fine as industry benchmarks; cite source in PR descriptions when new ones land.
+- **FAQ answers are ~40–60 words each** — denser than homepage FAQ fragments. Consider trimming to match homepage voice if we want one voice sitewide.
+- **Most pages have `1.` `2.` `3.` `4.` in `howItWorks`** — rendered by `StepsList`. Sentences vary in length; aim for ~12–18 words each for visual rhythm.
+
+### Things worth auditing next
+- `/for/chinese-oems`, `/for/european-oems`, `/for/japanese-oems`, `/for/taiwanese-oems` are 4 near-identical country variants. Shared data file would make copy updates easier than editing four pages.
+- `/services/[machine]/[city]` is a dynamic route — confirm the generated pages don't leak placeholder copy.
