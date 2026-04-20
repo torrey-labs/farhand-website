@@ -36,25 +36,25 @@ export default function CoverageMap() {
       className="bg-background py-16 md:py-24 border-t border-border overflow-hidden"
     >
       <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-[260px_1fr] lg:grid-cols-[300px_1fr] gap-10 md:gap-16 items-center max-w-[1200px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr] gap-8 md:gap-12 items-center max-w-[900px] mx-auto">
           {/* Stat — fixed column so count-up doesn't reflow the map */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.8 }}
-            className="text-center md:text-left md:pl-4 lg:pl-8"
+            className="text-center md:text-left md:pl-2 lg:pl-4"
           >
             <div
               className="text-accent font-light tracking-tight leading-none tabular-nums"
               style={{
-                fontSize: 'clamp(2.75rem, 7vw, 5rem)',
+                fontSize: 'clamp(2rem, 4.5vw, 3.25rem)',
                 fontFeatureSettings: '"tnum"',
               }}
             >
               {count.toLocaleString('en-US')}+
             </div>
-            <div className="mt-3 md:mt-4 text-light-gray text-sm md:text-base uppercase tracking-[0.15em]">
+            <div className="mt-2 md:mt-3 text-light-gray text-xs md:text-sm uppercase tracking-[0.15em]">
               Field Service Engineers
               <br />
               across the US
@@ -67,7 +67,7 @@ export default function CoverageMap() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="relative w-full"
+            className="relative w-full max-w-[520px] mx-auto"
             style={{ aspectRatio: '1024 / 722' }}
           >
             <img
