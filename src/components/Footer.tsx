@@ -119,7 +119,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Cal.com Embed */}
-        <div className="max-w-[1000px] mx-auto mb-12 md:mb-16 lg:mb-20 bg-white/[0.01] rounded-[24px] border border-white/10 overflow-hidden" style={{ height: 'clamp(620px, 80vh, 780px)' }}>
+        <div className="max-w-[1000px] mx-auto mb-12 md:mb-16 lg:mb-20 rounded-[24px] overflow-hidden" style={{ height: 'clamp(620px, 80vh, 780px)' }}>
           <Cal
             calLink="aaryan-agrawal/30min"
             style={{ width: '100%', height: '100%' }}
