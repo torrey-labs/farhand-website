@@ -27,7 +27,7 @@ export default function Navigation() {
             whileHover={{ opacity: 0.8 }}
             className="text-accent text-base md:text-lg font-normal no-underline px-3 md:px-5 py-2.5 min-h-[44px] flex items-center"
           >
-            Schedule
+            Schedule a call
           </motion.a>
         </div>
       </div>
