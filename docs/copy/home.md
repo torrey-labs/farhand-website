@@ -13,7 +13,7 @@ Source-of-truth for everything the homepage says. Sections are in scroll order. 
 ## 1. Navigation
 **Source:** `src/components/Navigation.tsx`
 
-Farhand (logo) · **Schedule**
+Farhand (logo) · **Schedule a call**
 
 ---
 
