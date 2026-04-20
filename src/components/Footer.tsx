@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Cal, { getCalApi } from "@calcom/embed-react";
+import { getCalApi } from "@calcom/embed-react";
 import { FaLinkedin } from 'react-icons/fa';
 import { Button } from '@/components/ui/button';
 
@@ -118,24 +118,26 @@ export default function Footer() {
           <FooterEmailForm />
         </motion.div>
 
-        {/* Cal.com Embed */}
-        <div
-          className="max-w-[1000px] mx-auto mb-12 md:mb-16 lg:mb-20 rounded-[24px] overflow-hidden relative bg-background"
-          style={{ height: 'clamp(640px, 82vh, 820px)' }}
+        {/* Cal.com popup trigger — opens the full scheduler in a modal,
+            works at every viewport instead of cramming month-view into the page */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="flex flex-col items-center gap-4 mb-12 md:mb-16 lg:mb-20"
         >
-          {/* Loading placeholder — hidden once Cal renders over it */}
-          <div
-            aria-hidden
-            className="absolute inset-0 flex items-center justify-center text-light-gray/40 text-sm pointer-events-none"
+          <button
+            data-cal-link="aaryan-agrawal/30min"
+            data-cal-config='{"theme":"dark","layout":"month_view"}'
+            className="bg-accent text-black text-base md:text-lg font-semibold px-8 md:px-10 py-4 md:py-5 rounded-full hover:opacity-90 transition-opacity min-h-[56px] min-w-[240px]"
           >
-            Loading scheduler…
-          </div>
-          <Cal
-            calLink="aaryan-agrawal/30min"
-            style={{ width: '100%', height: '100%', position: 'relative', zIndex: 1 }}
-            config={{ theme: 'dark' }}
-          />
-        </div>
+            Book a 30-min call
+          </button>
+          <p className="text-sm text-light-gray/60">
+            Opens the scheduler in a window — pick any time that works.
+          </p>
+        </motion.div>
 
 
         {/* Bottom Section - Logo */}

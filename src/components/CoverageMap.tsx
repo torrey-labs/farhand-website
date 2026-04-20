@@ -33,7 +33,7 @@ export default function CoverageMap() {
   return (
     <section
       ref={ref}
-      className="bg-background py-16 md:py-24 overflow-hidden"
+      className="bg-background py-10 md:py-24 overflow-hidden"
     >
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] lg:grid-cols-[240px_1fr] gap-8 md:gap-12 items-center max-w-[900px] mx-auto">

@@ -12,14 +12,14 @@ const problems = [
 
 export default function Problem() {
   return (
-    <section className="bg-background py-12 md:py-16 lg:py-24">
+    <section className="bg-background py-10 md:py-16 lg:py-24">
       <div className="container text-center">
         <motion.h4
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
           viewport={{ once: true, margin: "-100px" }}
-          className="mb-12 md:mb-20 lg:mb-24"
+          className="mb-8 md:mb-20 lg:mb-24"
           style={{ lineHeight: 1.3, fontWeight: 400 }}
         >
           You&apos;ve built a next-gen machine. <br />

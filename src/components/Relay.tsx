@@ -13,14 +13,14 @@ const steps = [
 
 export function RelayIntro() {
   return (
-    <section className="bg-background py-12 md:py-16 lg:py-20">
+    <section className="bg-background py-10 md:py-16 lg:py-20">
       <div className="container text-center">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
           viewport={{ once: true, margin: '-100px' }}
-          className="py-12 md:py-16 lg:py-20 px-6 md:px-10 lg:px-12 border border-white/10 rounded-[30px] max-w-[900px] mx-auto"
+          className="py-8 md:py-16 lg:py-20 px-5 md:px-10 lg:px-12 border border-white/10 rounded-[30px] max-w-[900px] mx-auto"
         >
           <p className="text-base md:text-lg mb-6 font-normal text-accent">
             There&apos;s a better model
@@ -39,7 +39,7 @@ export function RelayIntro() {
 
 export function RelayCards() {
   return (
-    <section id="relay" className="bg-background py-12 md:py-16 lg:py-24">
+    <section id="relay" className="bg-background py-10 md:py-16 lg:py-24">
       <div className="container text-center">
         <motion.div
           initial={{ opacity: 0 }}
