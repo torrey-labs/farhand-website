@@ -68,6 +68,7 @@ export default function Footer() {
         theme: "dark",
         cssVarsPerTheme: {
           dark: { "cal-brand": "#1aff67" },
+          light: { "cal-brand": "#1aff67" },
         },
         hideEventTypeDetails: false,
         layout: "month_view",
