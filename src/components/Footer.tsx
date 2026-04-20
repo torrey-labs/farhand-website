@@ -159,8 +159,8 @@ export default function Footer() {
                 className="h-10 opacity-90"
               />
             </div>
-            <p className="text-sm text-light-gray/60 mb-4">
-              Your field support partner
+            <p className="text-sm text-light-gray/60 mb-4 max-w-[420px] leading-relaxed">
+              We keep every robot in US factories running — and train the workforce that owns them.
             </p>
             <div className="flex gap-4 mb-4">
               <motion.a

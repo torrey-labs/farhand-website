@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import {
   StatsRow,
   StepsList,
+  CalloutBox,
   CTABlock,
 } from '@/components/sections';
 
@@ -64,6 +65,12 @@ export default function PitchPage() {
           'Remote triage first — 1 in 3 issues resolved without rolling a truck.',
           'Every repair improves the AI. Your knowledge compounds across every site.',
         ]}
+      />
+
+      <CalloutBox
+        eyebrow="Why this matters"
+        title="The robots coming to American factories are US-made. The people running them should be too."
+        footer="Farhand is the upskilling layer for US reindustrialization — a national bench of Field Service Engineers pulled from electrical, mechanical, and ex-military trades, paired with the AI that turns every repair into training data."
       />
 
       <CTABlock
