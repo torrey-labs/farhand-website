@@ -26,7 +26,7 @@ export function RelayIntro() {
             There&apos;s a better model
           </p>
           <h3 className="max-w-[750px] mx-auto mb-6 font-light leading-[1.45]">
-            <strong>On-demand experienced engineers and AI tools made for your processes</strong>
+            <strong>On-demand service engineers and AI tools made for your processes</strong>
           </h3>
           <p className="text-base md:text-lg text-light-gray/80">
             Every zip code in the US
