@@ -77,8 +77,6 @@ Cards:
 ## 7. Coverage Map
 **Source:** `src/components/CoverageMap.tsx`
 
-- Headline: `Robots everywhere. People everywhere.`
-- Sub: `Every US zip code.`
 - Stat (count-up animation beside the map): `2,100+` · `Field techs across the US`
 - Map: static US outline (no dots)
 

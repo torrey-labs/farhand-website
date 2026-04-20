@@ -24,7 +24,7 @@ export default function Relay() {
           viewport={{ once: true, margin: '-100px' }}
           className="py-12 md:py-16 lg:py-20 px-6 md:px-10 lg:px-12 border border-white/10 rounded-[30px] max-w-[900px] mx-auto mb-12 md:mb-16 lg:mb-20"
         >
-          <p className="text-base md:text-lg text-light-gray/90 mb-6 font-normal">
+          <p className="text-base md:text-lg mb-6 font-normal text-accent">
             There&apos;s a better model
           </p>
           <h3 className="max-w-[750px] mx-auto mb-6 font-light leading-[1.45]">
