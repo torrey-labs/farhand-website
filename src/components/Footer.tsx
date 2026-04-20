@@ -67,7 +67,16 @@ export default function Footer() {
       cal("ui", {
         theme: "dark",
         cssVarsPerTheme: {
-          dark: { "cal-brand": "#1aff67" },
+          dark: {
+            "cal-brand": "#1aff67",
+            "cal-bg-default": "#000000",
+            "cal-bg-subtle": "#0a0a0a",
+            "cal-bg-emphasis": "#111111",
+            "cal-bg-muted": "#0a0a0a",
+            "cal-border-default": "#1a1a1a",
+            "cal-border-subtle": "#1a1a1a",
+            "cal-border-emphasis": "#262626",
+          },
           light: { "cal-brand": "#1aff67" },
         },
         hideEventTypeDetails: false,
@@ -129,7 +138,7 @@ export default function Footer() {
         >
           <button
             data-cal-link="aaryan-agrawal/30min"
-            data-cal-config='{"theme":"dark","layout":"month_view"}'
+            data-cal-config='{"theme":"dark","layout":"month_view","cssVarsPerTheme":{"dark":{"cal-brand":"#1aff67","cal-bg-default":"#000000","cal-bg-subtle":"#0a0a0a","cal-bg-emphasis":"#111111","cal-bg-muted":"#0a0a0a","cal-border-default":"#1a1a1a","cal-border-subtle":"#1a1a1a","cal-border-emphasis":"#262626"}}}'
             className="bg-accent text-black text-base md:text-lg font-semibold px-8 md:px-10 py-4 md:py-5 rounded-full hover:opacity-90 transition-opacity min-h-[56px] min-w-[240px]"
           >
             Book a 30-min call

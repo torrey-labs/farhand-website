@@ -145,3 +145,21 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #333;
 }
+
+/* Cal.com popup modal — force pure-black backdrop so no light edge bleeds
+   through around the embed on dark backgrounds */
+cal-modal-box {
+  background-color: #000;
+}
+cal-modal-box::part(backdrop),
+cal-modal-box::part(modal-box) {
+  background-color: #000 !important;
+  border: 0 !important;
+}
+cal-modal-box iframe,
+cal-modal-box .cal-embed {
+  background-color: #000 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  color-scheme: dark;
+}
