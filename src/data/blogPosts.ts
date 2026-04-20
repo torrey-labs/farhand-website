@@ -8,6 +8,13 @@ export type BlogPostMeta = {
 
 export const blogPosts: BlogPostMeta[] = [
   {
+    slug: 'reduce-mttr-industrial-robots',
+    title: 'How to Reduce MTTR on Industrial Robots: A Field Service Playbook',
+    excerpt: 'MTTR under 4 hours is achievable — most teams are 14 hours away. The four sub-components driving repair time and how top-quartile teams eliminate each one.',
+    date: '2026-04-20',
+    category: 'Technical',
+  },
+  {
     slug: 'kuka-robot-service-us',
     title: 'KUKA Robot Service in the US: What European OEMs Need to Know',
     excerpt: '30,000+ KUKA robots in North America, serviced from a handful of hubs. The coverage gap and how AI-guided Field Service Engineers close it.',
