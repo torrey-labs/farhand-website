@@ -51,10 +51,10 @@ function FooterEmailForm() {
         {status === 'loading'
           ? 'Sending…'
           : status === 'success'
-            ? 'Got it — we\u2019ll be in touch.'
+            ? 'Check your inbox — link on the way.'
             : status === 'error'
               ? 'Try again'
-              : 'Send me a call link'}
+              : 'Let\u2019s talk'}
       </Button>
     </form>
   );
@@ -66,9 +66,11 @@ export default function Footer() {
       const cal = await getCalApi();
       cal("ui", {
         theme: "dark",
-        styles: { branding: { brandColor: "#000000" } },
+        cssVarsPerTheme: {
+          dark: { "cal-brand": "#1aff67" },
+        },
         hideEventTypeDetails: false,
-        layout: "month_view"
+        layout: "month_view",
       });
     })();
   }, []);
@@ -116,10 +118,10 @@ export default function Footer() {
         </motion.div>
 
         {/* Cal.com Embed */}
-        <div className="max-w-[1000px] mx-auto mb-12 md:mb-16 lg:mb-20 bg-white/[0.01] rounded-[24px] border border-white/10 overflow-hidden min-h-[500px]">
+        <div className="max-w-[1000px] mx-auto mb-12 md:mb-16 lg:mb-20 bg-white/[0.01] rounded-[24px] border border-white/10 overflow-hidden" style={{ height: 'clamp(620px, 80vh, 780px)' }}>
           <Cal
             calLink="aaryan-agrawal/30min"
-            style={{ width: "100%", height: "100%", minHeight: "clamp(450px, 80vw, 600px)" }}
+            style={{ width: '100%', height: '100%' }}
             config={{ layout: 'month_view', theme: 'dark' }}
           />
         </div>

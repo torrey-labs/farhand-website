@@ -3,7 +3,7 @@ import Hero from '@/components/Hero';
 import FeaturedOn from '@/components/FeaturedOn';
 import CoverageMap from '@/components/CoverageMap';
 import Problem from '@/components/Problem';
-import Relay from '@/components/Relay';
+import { RelayIntro, RelayCards } from '@/components/Relay';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 import { coreFaqs } from '@/data/faqs';
@@ -13,19 +13,6 @@ export default function Home() {
     <main style={{ background: '#000', minHeight: '100vh' }}>
       <Navigation />
       <Hero />
-
-      {/* Signature tagline — short section under the hero */}
-      <section className="bg-background py-6 md:py-8 border-t border-border">
-        <div className="container text-center">
-          <p className="text-sm md:text-base text-light-gray/70 leading-relaxed">
-            Designed by SF-based roboticists
-            <br />
-            For the robots of{' '}
-            <span className="line-through opacity-50">tomorrow</span>{' '}
-            <span className="text-accent">today</span>
-          </p>
-        </div>
-      </section>
 
       <FeaturedOn
         logos={[
@@ -45,9 +32,24 @@ export default function Home() {
         <Problem />
       </div>
 
-      <Relay />
+      <RelayIntro />
 
       <CoverageMap />
+
+      <RelayCards />
+
+      {/* Signature tagline — sits above FAQ */}
+      <section className="bg-background py-8 md:py-10 border-t border-border">
+        <div className="container text-center">
+          <p className="text-sm md:text-base text-light-gray/70 leading-relaxed">
+            Designed by SF-based roboticists
+            <br />
+            For the robots of{' '}
+            <span className="line-through opacity-50">tomorrow</span>{' '}
+            <span className="text-accent">today</span>
+          </p>
+        </div>
+      </section>
 
       <FAQSection
         faqs={coreFaqs}
