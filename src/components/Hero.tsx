@@ -10,7 +10,7 @@ export default function Hero() {
   const opacity = useTransform(scrollY, [0, 400], [1, 0]);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center p-0 text-center relative overflow-hidden bg-background">
+    <section className="min-h-[85svh] md:min-h-screen flex flex-col justify-center items-center p-0 text-center relative overflow-hidden bg-background">
       {/* Video Background */}
       <video
         autoPlay
@@ -46,7 +46,7 @@ export default function Hero() {
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3, duration: 1 }}
-          className="max-w-[850px] mb-12 text-light-gray font-normal"
+          className="max-w-[850px] mb-8 md:mb-12 text-light-gray font-normal"
           style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8)' }}
         >
           Our AI-guided service engineers install & service your robots & machinery at your client sites.
