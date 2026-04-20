@@ -36,26 +36,6 @@ export default function CoverageMap() {
       className="bg-background py-16 md:py-24 border-t border-border overflow-hidden"
     >
       <div className="container">
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8 }}
-          className="mb-3 md:mb-4 font-light text-center"
-        >
-          Robots everywhere. <em className="text-accent italic not-italic">People everywhere.</em>
-        </motion.h3>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, delay: 0.15 }}
-          className="text-light-gray/80 mb-12 md:mb-16 text-center"
-        >
-          Every US zip code.
-        </motion.p>
-
         <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-10 md:gap-16 items-center max-w-[1200px] mx-auto">
           {/* Stat */}
           <motion.div

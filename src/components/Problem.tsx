@@ -22,7 +22,8 @@ export default function Problem() {
           className="mb-12 md:mb-20 lg:mb-24"
           style={{ lineHeight: 1.3, fontWeight: 400 }}
         >
-          You&apos;ve built a next-gen machine. <br /> Don&apos;t run it on last-gen ops.
+          You&apos;ve built a next-gen machine. <br />
+          <span style={{ color: '#ff3b3b' }}>Don&apos;t run it on last-gen ops.</span>
         </motion.h4>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-[1000px] mx-auto">
@@ -34,7 +35,7 @@ export default function Problem() {
               transition={{ delay: i * 0.15, duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
               viewport={{ once: true, margin: "-50px" }}
             >
-              <Card className="flex items-center justify-center text-center min-h-[140px]">
+              <Card className="flex items-center justify-center text-center min-h-[140px] border border-[#ff3b3b]/50 hover:border-[#ff3b3b]/70">
                 <p className="text-xl md:text-2xl font-medium text-foreground m-0 leading-snug">
                   {text}
                 </p>
