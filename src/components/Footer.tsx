@@ -177,7 +177,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-6">
+        <div className="border-t border-white/10 pt-6 flex flex-wrap gap-6">
+          <Link href="/mission" className="text-sm text-light-gray/60 py-2 inline-block">
+            Mission
+          </Link>
           <Link href="/terms" className="text-sm text-light-gray/60 py-2 inline-block">
             Terms &amp; Privacy
           </Link>
