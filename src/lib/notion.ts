@@ -119,8 +119,12 @@ export async function enrichViaApollo(company: string): Promise<EnrichmentResult
 }
 
 /**
- * Search the Notion DB for an existing row with this company name.
+ * Search Website Leads DB for an existing row with this company name.
  * Used by /api/visit to avoid creating duplicate rows on repeat visits.
+ *
+ * Website Leads is deliberately kept as its own DB (separate from CRM Companies)
+ * so raw form submissions have their own inbox. User promotes to Companies
+ * manually when a lead is qualified.
  */
 export async function findLeadByCompany(
   company: string,
@@ -138,10 +142,7 @@ export async function findLeadByCompany(
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        filter: {
-          property: 'Company',
-          title: { equals: company },
-        },
+        filter: { property: 'Company', title: { equals: company } },
         page_size: 1,
       }),
     });
@@ -162,7 +163,6 @@ export async function findLeadByCompany(
 
 /**
  * Bump the visit count + last visit timestamp on an existing lead row.
- * Used when findLeadByCompany returns exists: true.
  */
 export async function bumpLeadVisit(
   pageId: string,
@@ -247,8 +247,7 @@ export async function storeInNotion(
   if (contactName) properties.Contact = text(contactName);
   if (domain) properties.Domain = { url: domain };
   if (org?.industry) properties.Industry = text(org.industry);
-  if (org?.estimated_num_employees)
-    properties.Employees = { number: org.estimated_num_employees };
+  if (org?.estimated_num_employees) properties.Employees = { number: org.estimated_num_employees };
   if (org?.annual_revenue) properties.Revenue = { number: org.annual_revenue };
   if (hq) properties.HQ = text(hq);
   if (org?.linkedin_url) properties.LinkedIn = { url: org.linkedin_url };

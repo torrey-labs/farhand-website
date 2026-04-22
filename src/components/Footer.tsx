@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { getCalApi } from "@calcom/embed-react";
-import { FaLinkedin } from 'react-icons/fa';
+import { FaLinkedin, FaXTwitter, FaEnvelope } from 'react-icons/fa6';
 import { Button } from '@/components/ui/button';
 
 function FooterEmailForm() {
@@ -168,9 +168,28 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/farhand-robotics/home"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
                 className="text-light-gray/80 p-2.5 -m-2.5"
               >
                 <FaLinkedin size={20} />
+              </motion.a>
+              <motion.a
+                whileHover={{ opacity: 0.9 }}
+                href="https://x.com/far__hand"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
+                className="text-light-gray/80 p-2.5 -m-2.5"
+              >
+                <FaXTwitter size={20} />
+              </motion.a>
+              <motion.a
+                whileHover={{ opacity: 0.9 }}
+                href="mailto:team@farhand.live"
+                aria-label="Email team@farhand.live"
+                className="text-light-gray/80 p-2.5 -m-2.5"
+              >
+                <FaEnvelope size={20} />
               </motion.a>
             </div>
           </div>

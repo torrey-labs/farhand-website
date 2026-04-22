@@ -1,8 +1,25 @@
 # Farhand SEO & Marketing Dashboard
 
-Living status doc. **Last updated: 2026-04-15.**
+Living status doc. **Last updated: 2026-04-21.**
 
 Single source of truth for all SEO, analytics, lead capture, content, and marketing infrastructure. Update this file alongside every code change that affects marketing or SEO.
+
+## Backlinks created
+
+_Running log. Every new inbound link to `farhand.live` lands here with date, source, target page, anchor text, and type. Keep chronological._
+
+| Date | Source URL | Target page on farhand.live | Anchor text | Type | Notes |
+|---|---|---|---|---|---|
+| | | | | | |
+
+**Legend for Type:**
+- `guest post` — long-form article authored on another site
+- `directory` — listing in a business / industry directory
+- `profile` — link from a personal or company profile (LinkedIn, Crunchbase, etc.)
+- `press` — article/mention in media outlet
+- `forum` — forum comment or answer
+- `syndication` — content cross-post on platforms like Dev.to, Hashnode, Telegraph
+- `partner` — reciprocal link from a partner or customer site
 
 ---
 
