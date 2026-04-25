@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'For OEMs | Farhand',
   description: 'Scale your field service without scaling headcount. AI-guided Field Service Engineers nationwide for robot and machine OEMs.',
+  alternates: { canonical: '/for/oems' },
+  openGraph: {
+    title: 'For OEMs | Farhand',
+    description: 'Scale your field service without scaling headcount. AI-guided Field Service Engineers nationwide for robot and machine OEMs.',
+    url: 'https://farhand.live/for/oems',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'For OEMs | Farhand',
+    description: 'Scale your field service without scaling headcount. AI-guided Field Service Engineers nationwide for robot and machine OEMs.',
+  },
 };
 
 export default function OEMsPage() {

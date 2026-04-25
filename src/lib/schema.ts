@@ -1,6 +1,7 @@
 const SITE_URL = 'https://farhand.live';
 const ORG_NAME = 'Farhand';
-const ORG_LOGO = `${SITE_URL}/favicon.svg`;
+const ORG_LOGO = `${SITE_URL}/logo-w-type-light-on-dark.png`;
+const DEFAULT_OG = `${SITE_URL}/opengraph-image`;
 
 type ArticleSchemaInput = {
   title: string;
@@ -43,7 +44,7 @@ export function articleSchema({
       '@type': 'WebPage',
       '@id': url,
     },
-    image: imageUrl ?? `${SITE_URL}/og-default.jpg`,
+    image: imageUrl ?? DEFAULT_OG,
   };
 }
 

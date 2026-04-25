@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Medical Equipment Service | Farhand',
   description: 'AI-guided field service for medical devices, surgical systems, and pharmacy automation. Compliance-ready Field Service Engineers nationwide.',
+  alternates: { canonical: '/services/medical-equipment' },
+  openGraph: {
+    title: 'Medical Equipment Service | Farhand',
+    description: 'AI-guided field service for medical devices, surgical systems, and pharmacy automation. Compliance-ready Field Service Engineers nationwide.',
+    url: 'https://farhand.live/services/medical-equipment',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Medical Equipment Service | Farhand',
+    description: 'AI-guided field service for medical devices, surgical systems, and pharmacy automation. Compliance-ready Field Service Engineers nationwide.',
+  },
 };
 
 export default function MedicalEquipmentPage() {

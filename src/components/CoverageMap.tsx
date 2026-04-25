@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
 
 function useCountUp(target: number, start: boolean, duration = 1400) {
@@ -70,10 +71,12 @@ export default function CoverageMap() {
             className="relative w-full max-w-[520px] mx-auto"
             style={{ aspectRatio: '1024 / 722' }}
           >
-            <img
+            <Image
               src="/world-map.avif"
-              alt="World coverage map"
-              className="absolute inset-0 w-full h-full object-contain"
+              alt="Farhand nationwide field-service coverage map — every US zip code"
+              fill
+              sizes="(max-width: 768px) 100vw, 520px"
+              className="object-contain"
             />
           </motion.div>
         </div>

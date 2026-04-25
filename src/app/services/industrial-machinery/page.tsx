@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Industrial Machinery Service | Farhand',
   description: 'AI-guided field service for industrial machinery, CNC machines, and manufacturing equipment. On-demand Field Service Engineers nationwide.',
+  alternates: { canonical: '/services/industrial-machinery' },
+  openGraph: {
+    title: 'Industrial Machinery Service | Farhand',
+    description: 'AI-guided field service for industrial machinery, CNC machines, and manufacturing equipment. On-demand Field Service Engineers nationwide.',
+    url: 'https://farhand.live/services/industrial-machinery',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Industrial Machinery Service | Farhand',
+    description: 'AI-guided field service for industrial machinery, CNC machines, and manufacturing equipment. On-demand Field Service Engineers nationwide.',
+  },
 };
 
 export default function IndustrialMachineryPage() {

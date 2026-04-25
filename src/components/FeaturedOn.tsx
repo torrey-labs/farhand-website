@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export type FeaturedLogo = {
@@ -45,16 +46,20 @@ export default function FeaturedOn({
           className="flex flex-wrap items-center justify-center gap-10 md:gap-16"
         >
           {logos.map((logo) => {
+            const h = logo.height ?? 44;
             const img = (
-              <img
+              <Image
                 src={logo.src}
                 alt={logo.alt}
                 title={logo.title}
+                width={h * 4}
+                height={h}
                 style={{
-                  height: logo.height ?? 44,
+                  height: h,
+                  width: 'auto',
                   filter: logo.filter,
                 }}
-                className="w-auto object-contain"
+                className="object-contain"
               />
             );
             if (logo.href) {

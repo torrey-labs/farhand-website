@@ -1,4 +1,35 @@
+# https://www.robotstxt.org/robotstxt.html
+# Farhand — farhand.live
+
 User-agent: *
 Allow: /
 Disallow: /ui
+Disallow: /api/
+
+# Allow major AI crawlers — Farhand benefits from citations in LLM answers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Block low-signal scrapers
+User-agent: CCBot
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
 Sitemap: https://farhand.live/sitemap.xml

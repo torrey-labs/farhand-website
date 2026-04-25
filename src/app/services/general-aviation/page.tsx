@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'General Aviation Equipment Service | Farhand',
   description: 'AI-guided field service for aviation ground equipment, avionics, and aircraft systems. Nationwide Field Service Engineer network.',
+  alternates: { canonical: '/services/general-aviation' },
+  openGraph: {
+    title: 'General Aviation Equipment Service | Farhand',
+    description: 'AI-guided field service for aviation ground equipment, avionics, and aircraft systems. Nationwide Field Service Engineer network.',
+    url: 'https://farhand.live/services/general-aviation',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'General Aviation Equipment Service | Farhand',
+    description: 'AI-guided field service for aviation ground equipment, avionics, and aircraft systems. Nationwide Field Service Engineer network.',
+  },
 };
 
 export default function GeneralAviationPage() {

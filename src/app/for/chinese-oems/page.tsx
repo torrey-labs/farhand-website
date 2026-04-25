@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Field Service for Chinese OEMs in the US',
   description: 'US field service for Chinese industrial equipment OEMs — SANY, Estun, Siasun, and more. AI-guided Field Service Engineers across every American zip code.',
+  alternates: { canonical: '/for/chinese-oems' },
+  openGraph: {
+    title: 'Field Service for Chinese OEMs in the US',
+    description: 'US field service for Chinese industrial equipment OEMs — SANY, Estun, Siasun, and more. AI-guided Field Service Engineers across every American zip code.',
+    url: 'https://farhand.live/for/chinese-oems',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Field Service for Chinese OEMs in the US',
+    description: 'US field service for Chinese industrial equipment OEMs — SANY, Estun, Siasun, and more. AI-guided Field Service Engineers across every American zip code.',
+  },
 };
 
 export default function ChineseOEMsPage() {

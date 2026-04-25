@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'For Facilities | Farhand',
   description: 'AI-guided field service for facilities with installed equipment. On-demand Field Service Engineers who know your machines.',
+  alternates: { canonical: '/for/facilities' },
+  openGraph: {
+    title: 'For Facilities | Farhand',
+    description: 'AI-guided field service for facilities with installed equipment. On-demand Field Service Engineers who know your machines.',
+    url: 'https://farhand.live/for/facilities',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'For Facilities | Farhand',
+    description: 'AI-guided field service for facilities with installed equipment. On-demand Field Service Engineers who know your machines.',
+  },
 };
 
 export default function FacilitiesPage() {

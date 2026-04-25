@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'For Fleet Operators | Farhand',
   description: 'AI-guided field service for robot and machine fleets. Maximize uptime with on-demand Field Service Engineers who know your equipment.',
+  alternates: { canonical: '/for/fleet-operators' },
+  openGraph: {
+    title: 'For Fleet Operators | Farhand',
+    description: 'AI-guided field service for robot and machine fleets. Maximize uptime with on-demand Field Service Engineers who know your equipment.',
+    url: 'https://farhand.live/for/fleet-operators',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'For Fleet Operators | Farhand',
+    description: 'AI-guided field service for robot and machine fleets. Maximize uptime with on-demand Field Service Engineers who know your equipment.',
+  },
 };
 
 export default function FleetOperatorsPage() {

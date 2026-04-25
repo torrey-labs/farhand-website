@@ -15,7 +15,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const COOKIE = '__fh_visited';
 const BOT_RE = /bot|crawler|spider|spyder|preview|headless|lighthouse|gtmetrix|pingdom|uptimerobot|monitor|curl|wget|vercel/i;
 
-export function middleware(req: NextRequest) {
+export function proxy(req: NextRequest) {
   const res = NextResponse.next();
 
   // Skip bots completely

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'For Robotics Frontier Labs',
@@ -204,9 +205,11 @@ export default function RoboticsLabsPage() {
             </p>
 
             <div className="mt-4">
-              <img
+              <Image
                 src="/aaryan-signature.svg"
-                alt="Aaryan Agrawal"
+                alt="Aaryan Agrawal signature"
+                width={240}
+                height={64}
                 className="h-12 md:h-16 w-auto mb-3"
               />
               <p className="text-foreground font-normal m-0 text-sm md:text-base">

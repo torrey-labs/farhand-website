@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Robot Field Service | Farhand',
   description: 'AI-guided Field Service Engineers for robot maintenance, repair, and field support. On-demand service across every zip code in the US.',
+  alternates: { canonical: '/services/robots' },
+  openGraph: {
+    title: 'Robot Field Service | Farhand',
+    description: 'AI-guided Field Service Engineers for robot maintenance, repair, and field support. On-demand service across every zip code in the US.',
+    url: 'https://farhand.live/services/robots',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Robot Field Service | Farhand',
+    description: 'AI-guided Field Service Engineers for robot maintenance, repair, and field support. On-demand service across every zip code in the US.',
+  },
 };
 
 export default function RobotsPage() {

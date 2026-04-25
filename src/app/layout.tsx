@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, DM_Sans, Fraunces } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -29,13 +30,45 @@ export const metadata: Metadata = {
     template: "%s | Farhand",
   },
   description: "AI-guided Field Service Engineers install & service your robots & machinery at your client sites. On-demand field service across every zip code in the US.",
+  applicationName: "Farhand",
+  authors: [{ name: "Aaryan Agrawal", url: "https://farhand.live" }],
+  creator: "Farhand Robotics",
+  publisher: "Farhand Robotics",
+  keywords: [
+    "field service",
+    "AI field service",
+    "industrial robots",
+    "robot repair",
+    "robot maintenance",
+    "FANUC service",
+    "ABB service",
+    "KUKA service",
+    "Yaskawa service",
+    "industrial machinery service",
+    "on-demand technicians",
+    "robotics commissioning",
+    "field service engineers",
+    "PLC troubleshooting",
+    "Relay AI",
+  ],
+  category: "technology",
   icons: {
-    icon: "/favicon.svg",
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/favicon.svg",
   },
   metadataBase: new URL("https://farhand.live"),
+  alternates: {
+    canonical: "/",
+    types: {
+      "application/rss+xml": "/rss.xml",
+    },
+  },
   openGraph: {
     title: "Farhand — Your field service partner",
-    description: "On-demand Field Service Engineers guided by AI to service your machines like your own guys. Every zip code in the US.",
+    description: "AI-guided Field Service Engineers. On-demand industrial robot & machinery service across every US zip code.",
     url: "https://farhand.live",
     siteName: "Farhand",
     type: "website",
@@ -44,12 +77,35 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Farhand — Your field service partner",
-    description: "On-demand Field Service Engineers guided by AI to service your machines like your own guys.",
+    description: "AI-guided Field Service Engineers. On-demand industrial robot & machinery service across every US zip code.",
+    creator: "@aboutaaryan",
+    site: "@far__hand",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
   },
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  referrer: "origin-when-cross-origin",
+};
+
+export const viewport: import("next").Viewport = {
+  themeColor: "#08070E",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
@@ -60,8 +116,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${serifDisplay.variable} ${inter.variable}`}>
       <head>
-        <meta name="theme-color" content="#000000" />
-        <meta name="color-scheme" content="dark" />
         <meta name="facebook-domain-verification" content="nfla0sjkkzg556b9nwgktdftfas5gk" />
         {/* Google Search Console — paste verification code here after signup */}
         {process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION && (
@@ -71,26 +125,11 @@ export default function RootLayout({
         {process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION && (
           <meta name="msvalidate.01" content={process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION} />
         )}
+        {/* Preconnect hints for 3rd parties — reduces connection latency for tags below */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="alternate" type="application/rss+xml" title="Farhand Blog" href="/rss.xml" />
-        {/* Google Analytics 4 — NEXT_PUBLIC_GA4_MEASUREMENT_ID set in Vercel env */}
-        {process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}`}
-            />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID}');
-            `,
-              }}
-            />
-          </>
-        )}
         {/* LinkedIn Insight Tag — NEXT_PUBLIC_LINKEDIN_PARTNER_ID set in Vercel env */}
         {process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID && (
           <>
@@ -117,30 +156,110 @@ export default function RootLayout({
             }}
           />
         )}
+        {/* Organization schema — rich-result signal for Google, Bing, LinkedIn preview */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
+              "@id": "https://farhand.live/#organization",
               "name": "Farhand",
+              "legalName": "XEngineering, LLC",
+              "alternateName": "Farhand Robotics",
               "url": "https://farhand.live",
-              "description": "AI-guided Field Service Engineers install & service your robots & machinery at your client sites.",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+1-857-498-9778",
-                "email": "aaryan@farhand.live",
-                "contactType": "sales",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://farhand.live/logo-w-type-light-on-dark.png",
+                "width": 512,
+                "height": 128,
               },
+              "image": "https://farhand.live/opengraph-image",
+              "description": "AI-guided Field Service Engineers install & service your robots & machinery at your client sites.",
+              "foundingDate": "2026",
+              "founder": {
+                "@type": "Person",
+                "name": "Aaryan Agrawal",
+                "url": "https://www.linkedin.com/in/aaaryan",
+                "jobTitle": "Founder & CEO",
+              },
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "16192 Coastal Highway",
+                "addressLocality": "Lewes",
+                "addressRegion": "DE",
+                "postalCode": "19958",
+                "addressCountry": "US",
+              },
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+1-857-498-9778",
+                  "email": "aaryan@farhand.live",
+                  "contactType": "sales",
+                  "areaServed": "US",
+                  "availableLanguage": ["English"],
+                },
+                {
+                  "@type": "ContactPoint",
+                  "email": "field@farhand.live",
+                  "contactType": "customer support",
+                  "areaServed": "US",
+                },
+              ],
               "sameAs": [
-                "https://www.linkedin.com/company/farhand-robotics/home"
+                "https://www.linkedin.com/company/farhand-robotics",
+                "https://x.com/far__hand",
               ],
               "areaServed": {
                 "@type": "Country",
-                "name": "United States"
+                "name": "United States",
               },
-              "serviceType": ["Robot Field Service", "AI-Guided Maintenance", "Industrial Equipment Repair", "Medical Equipment Service"]
-            })
+              "knowsAbout": [
+                "Industrial Robotics",
+                "Field Service Management",
+                "FANUC",
+                "ABB Robotics",
+                "KUKA",
+                "Yaskawa Motoman",
+                "Universal Robots",
+                "Rockwell Automation",
+                "PLC Troubleshooting",
+                "Industrial AI",
+              ],
+              "serviceType": [
+                "Robot Field Service",
+                "AI-Guided Maintenance",
+                "Industrial Equipment Repair",
+                "Medical Equipment Service",
+                "Robot Commissioning",
+                "PLC Programming",
+              ],
+            }),
+          }}
+        />
+        {/* WebSite schema — enables Google sitelinks search box */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": "https://farhand.live/#website",
+              "url": "https://farhand.live",
+              "name": "Farhand",
+              "description": "AI-guided Field Service Engineers for robots and industrial machinery.",
+              "publisher": { "@id": "https://farhand.live/#organization" },
+              "inLanguage": "en-US",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://farhand.live/blog?q={search_term_string}",
+                },
+                "query-input": "required name=search_term_string",
+              },
+            }),
           }}
         />
       </head>
@@ -148,6 +267,9 @@ export default function RootLayout({
         {children}
         <SpeedInsights />
         <Analytics />
+        {process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA4_MEASUREMENT_ID} />
+        )}
       </body>
     </html>
   );
