@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navigation() {
   return (
@@ -13,11 +14,14 @@ export default function Navigation() {
       className="fixed top-0 left-0 right-0 z-[100] py-5 bg-black/20 backdrop-blur-2xl backdrop-saturate-150 border-b border-white/[0.06]"
     >
       <div className="container flex justify-between items-center">
-        <Link href="/" className="flex items-center min-h-[44px]">
-          <img
+        <Link href="/" className="flex items-center min-h-[44px]" aria-label="Farhand home">
+          <Image
             src="/logo-w-type-light-on-dark.png"
-            alt="Farhand Logo"
-            className="h-11 object-contain"
+            alt="Farhand — field service partner"
+            width={176}
+            height={44}
+            priority
+            className="h-11 w-auto object-contain"
           />
         </Link>
 

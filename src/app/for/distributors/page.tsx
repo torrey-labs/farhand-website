@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'For Distributors | Farhand',
   description: 'Offer AI-guided field service to your equipment customers. Add service revenue without building a service team.',
+  alternates: { canonical: '/for/distributors' },
+  openGraph: {
+    title: 'For Distributors | Farhand',
+    description: 'Offer AI-guided field service to your equipment customers. Add service revenue without building a service team.',
+    url: 'https://farhand.live/for/distributors',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'For Distributors | Farhand',
+    description: 'Offer AI-guided field service to your equipment customers. Add service revenue without building a service team.',
+  },
 };
 
 export default function DistributorsPage() {

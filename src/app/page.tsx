@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import FeaturedOn from '@/components/FeaturedOn';
@@ -7,6 +8,18 @@ import { RelayIntro, RelayCards } from '@/components/Relay';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 import { coreFaqs } from '@/data/faqs';
+
+export const metadata: Metadata = {
+  title: 'Farhand — On-demand Field Service Engineers for robots & industrial machinery',
+  description: 'AI-guided Field Service Engineers install, commission, and repair your industrial robots and machinery at client sites — every US zip code, per-job pricing, no retainers.',
+  alternates: { canonical: 'https://farhand.live/' },
+  openGraph: {
+    title: 'Farhand — Your field service partner',
+    description: 'AI-guided Field Service Engineers. On-demand industrial robot & machinery service across every US zip code.',
+    url: 'https://farhand.live/',
+    type: 'website',
+  },
+};
 
 export default function Home() {
   return (
@@ -20,7 +33,7 @@ export default function Home() {
           {
             src: '/press/field-service-next-west.png',
             alt: 'Field Service Next West',
-            height: 44,
+            height: 72,
             filter: 'brightness(0) invert(1)',
             href: 'https://fieldserviceusa.wbresearch.com/',
             title: 'Field Service Next West — WBR\'s 2026 service & support conference',

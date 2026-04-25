@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Equipment Field Service | Farhand',
   description: 'AI-guided field service for commercial and industrial equipment. On-demand Field Service Engineers with full documentation context.',
+  alternates: { canonical: '/services/equipment' },
+  openGraph: {
+    title: 'Equipment Field Service | Farhand',
+    description: 'AI-guided field service for commercial and industrial equipment. On-demand Field Service Engineers with full documentation context.',
+    url: 'https://farhand.live/services/equipment',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Equipment Field Service | Farhand',
+    description: 'AI-guided field service for commercial and industrial equipment. On-demand Field Service Engineers with full documentation context.',
+  },
 };
 
 export default function EquipmentPage() {

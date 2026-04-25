@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Industrial Robot Service | Farhand',
   description: 'AI-guided field service for industrial robotic arms, welding systems, and assembly automation. Nationwide coverage.',
+  alternates: { canonical: '/services/industrial-robots' },
+  openGraph: {
+    title: 'Industrial Robot Service | Farhand',
+    description: 'AI-guided field service for industrial robotic arms, welding systems, and assembly automation. Nationwide coverage.',
+    url: 'https://farhand.live/services/industrial-robots',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Industrial Robot Service | Farhand',
+    description: 'AI-guided field service for industrial robotic arms, welding systems, and assembly automation. Nationwide coverage.',
+  },
 };
 
 export default function IndustrialRobotsPage() {

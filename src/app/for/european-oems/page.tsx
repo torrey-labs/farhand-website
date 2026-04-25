@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Field Service for European OEMs in the US',
   description: 'US-nationwide field service for KUKA, ABB, Siemens, DMG MORI, Trumpf, Universal Robots, and Stäubli equipment. AI-guided Field Service Engineers in every zip code.',
+  alternates: { canonical: '/for/european-oems' },
+  openGraph: {
+    title: 'Field Service for European OEMs in the US',
+    description: 'US-nationwide field service for KUKA, ABB, Siemens, DMG MORI, Trumpf, Universal Robots, and Stäubli equipment. AI-guided Field Service Engineers in every zip code.',
+    url: 'https://farhand.live/for/european-oems',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Field Service for European OEMs in the US',
+    description: 'US-nationwide field service for KUKA, ABB, Siemens, DMG MORI, Trumpf, Universal Robots, and Stäubli equipment. AI-guided Field Service Engineers in every zip code.',
+  },
 };
 
 export default function EuropeanOEMsPage() {

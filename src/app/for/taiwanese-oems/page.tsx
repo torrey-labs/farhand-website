@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Field Service for Taiwanese OEMs in the US',
   description: 'US field service for Taiwanese equipment OEMs — TSMC suppliers, Delta, Hiwin, Foxconn. AI-guided Field Service Engineers supporting the US fab expansion.',
+  alternates: { canonical: '/for/taiwanese-oems' },
+  openGraph: {
+    title: 'Field Service for Taiwanese OEMs in the US',
+    description: 'US field service for Taiwanese equipment OEMs — TSMC suppliers, Delta, Hiwin, Foxconn. AI-guided Field Service Engineers supporting the US fab expansion.',
+    url: 'https://farhand.live/for/taiwanese-oems',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Field Service for Taiwanese OEMs in the US',
+    description: 'US field service for Taiwanese equipment OEMs — TSMC suppliers, Delta, Hiwin, Foxconn. AI-guided Field Service Engineers supporting the US fab expansion.',
+  },
 };
 
 export default function TaiwaneseOEMsPage() {

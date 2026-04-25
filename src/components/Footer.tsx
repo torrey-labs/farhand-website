@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getCalApi } from "@calcom/embed-react";
 import { FaLinkedin, FaXTwitter, FaEnvelope } from 'react-icons/fa6';
 import { Button } from '@/components/ui/button';
@@ -153,10 +154,13 @@ export default function Footer() {
         <div className="flex justify-between items-end flex-wrap gap-12 pb-8">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <img
+              <Image
                 src="/logo-w-type-light-on-dark.png"
-                alt="Farhand Logo"
-                className="h-10 opacity-90"
+                alt="Farhand — field service partner"
+                width={160}
+                height={40}
+                loading="lazy"
+                className="h-10 w-auto opacity-90"
               />
             </div>
             <p className="text-sm text-light-gray/60 mb-4 max-w-[420px] leading-relaxed">

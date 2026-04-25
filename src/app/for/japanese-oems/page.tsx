@@ -3,6 +3,20 @@ import VerticalLanding from '@/components/VerticalLanding';
 export const metadata = {
   title: 'Field Service for Japanese OEMs in the US',
   description: 'US-based, AI-guided Field Service Engineers for FANUC, Yaskawa, Mitsubishi, Mazak, and Keyence equipment. Stop flying FSEs from Tokyo — we are already there.',
+  alternates: { canonical: '/for/japanese-oems' },
+  openGraph: {
+    title: 'Field Service for Japanese OEMs in the US',
+    description: 'US-based, AI-guided Field Service Engineers for FANUC, Yaskawa, Mitsubishi, Mazak, and Keyence equipment. Stop flying FSEs from Tokyo — we are already there.',
+    url: 'https://farhand.live/for/japanese-oems',
+    siteName: 'Farhand',
+    type: 'website',
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Field Service for Japanese OEMs in the US',
+    description: 'US-based, AI-guided Field Service Engineers for FANUC, Yaskawa, Mitsubishi, Mazak, and Keyence equipment. Stop flying FSEs from Tokyo — we are already there.',
+  },
 };
 
 export default function JapaneseOEMsPage() {

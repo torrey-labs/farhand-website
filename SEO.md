@@ -1,6 +1,52 @@
 # Farhand SEO & Marketing Dashboard
 
-Living status doc. **Last updated: 2026-04-21.**
+Living status doc. **Last updated: 2026-04-22.**
+
+## 2026-04-22 SEO push #3 (page-level metadata + breadcrumbs + hero LCP)
+
+- **15 static pages** now have `alternates.canonical`, `openGraph`, and `twitter` overrides where they had only title+description before:
+  - 7 service pages (`/services/robots`, `industrial-robots`, `industrial-machinery`, `instruments`, `equipment`, `medical-equipment`, `general-aviation`)
+  - 8 stakeholder pages (`/for/oems`, `distributors`, `fleet-operators`, `facilities`, `japanese-oems`, `european-oems`, `taiwanese-oems`, `chinese-oems`)
+- **ArticleSchema** now emits BreadcrumbList alongside Article for every blog post — Home › Blog › Post Title.
+- **Hero video** — added `poster="/opengraph-image"` for instant LCP paint, `preload="metadata"` (blocks ~4 MB video until after content renders), `aria-hidden` (screen readers skip decorative video).
+- Build verified, deployed.
+
+## 2026-04-22 SEO push #2 (perf + infra)
+
+- **`@next/third-parties/google`** — GA4 now loaded via `<GoogleAnalytics gaId=...>` in `<body>`. Replaces the inline `<script async>` + `dataLayer` boilerplate. Auto-deferred, zero FCP blocking, Next 16-optimized.
+- **`next.config.ts` hardened** — was empty; now has:
+  - `poweredByHeader: false` (strips X-Powered-By)
+  - `compress: true`
+  - `experimental.optimizePackageImports: ['framer-motion', 'lucide-react', 'react-icons', '@phosphor-icons/react']` — tree-shakes these heavy libs automatically
+  - `images: { formats: ['image/avif','image/webp'], minimumCacheTTL: 31536000 }`
+  - `headers()` function emitting:
+    - `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
+    - `X-Content-Type-Options: nosniff`
+    - `X-Frame-Options: SAMEORIGIN`
+    - `Referrer-Policy: strict-origin-when-cross-origin`
+    - `Permissions-Policy: camera=(), microphone=(), geolocation=()`
+    - `Cache-Control: public, max-age=31536000, immutable` for /public static files + OG/Twitter image routes
+- **`src/lib/schema.ts`** — `ORG_LOGO` now points at the branded PNG (`/logo-w-type-light-on-dark.png`) not the favicon SVG. Article schema fallback `image` is now the dynamic `/opengraph-image` route (not the missing `/og-default.jpg`).
+- **Remaining `<img>` → `next/image` migration**:
+  - `src/components/CoverageMap.tsx` — world coverage map (fill + sizes)
+  - `src/components/FeaturedOn.tsx` — press logos (preserves the dynamic filter prop)
+  - `src/app/for/robotics-labs/page.tsx` — Aaryan signature
+- **Build verified locally** — 573 routes built.
+
+## 2026-04-22 SEO push #1 (structured data + metadata)
+
+- **Dynamic OG image** — `src/app/opengraph-image.tsx` (Edge, 1200×630 PNG). Social cards now render the brand + headline + accent dot in farhand-green. `src/app/twitter-image.tsx` re-exports it.
+- **Organization schema** enriched — added `legalName`, `foundingDate`, `founder`, `address`, dual `contactPoint` (sales + support), `sameAs` (LinkedIn + X), `knowsAbout` list, `logo` ImageObject with dimensions, `@id` anchor.
+- **WebSite schema** added — enables Google sitelinks search box; targets `/blog?q={search_term_string}`.
+- **Root metadata expanded** — `applicationName`, `authors`, `creator`, `publisher`, `keywords` (15 industrial/AI terms), `alternates.canonical`, richer `twitter` (`creator`, `site`), explicit `robots.googleBot` with `max-image-preview: large`, `formatDetection` off, `referrer: origin-when-cross-origin`.
+- **Viewport** split out per Next 16 convention — `themeColor: #08070E` (was `#000000`), `colorScheme: dark`.
+- **Home page metadata** — previously inherited defaults; now has page-specific title, description, canonical, OG overrides.
+- **Sitemap** — added `/pitch`, `/oem`, `/relay`, `/connect`, `/for/robotics-labs` (was missing from programmatic map).
+- **robots.txt** — explicit allow for `GPTBot`, `ClaudeBot`, `PerplexityBot`, `Google-Extended`, `Applebot-Extended`; explicit disallow for `CCBot`, `ImagesiftBot`, `DataForSeoBot`; preserves Sitemap line and `/ui` disallow.
+- **Preconnect / DNS-prefetch hints** — `googletagmanager.com`, `google-analytics.com`, `fonts.googleapis.com`.
+- **`<img>` → `next/image`** — Navigation logo (priority) and Footer logo (lazy), fixes LCP + CLS on every page.
+- **`middleware.ts` → `proxy.ts`** — Next 16 deprecation cleaned up (function renamed `middleware` → `proxy`).
+- **Build verified locally**, deployed to prod on Farhand team.
 
 Single source of truth for all SEO, analytics, lead capture, content, and marketing infrastructure. Update this file alongside every code change that affects marketing or SEO.
 

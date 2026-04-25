@@ -35,10 +35,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'distributors',
     'fleet-operators',
     'facilities',
+    'robotics-labs',
     'japanese-oems',
     'european-oems',
     'taiwanese-oems',
     'chinese-oems',
+  ];
+
+  const coreMarketingPages = [
+    { slug: 'pitch',   priority: 0.9 },
+    { slug: 'oem',     priority: 0.9 },
+    { slug: 'relay',   priority: 0.9 },
+    { slug: 'connect', priority: 0.8 },
   ];
 
   const blogPosts = [
@@ -90,6 +98,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    ...coreMarketingPages.map(({ slug, priority }) => ({
+      url: `${baseUrl}/${slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority,
+    })),
     ...servicePages.map((page) => ({
       url: `${baseUrl}/services/${page}`,
       lastModified: now,

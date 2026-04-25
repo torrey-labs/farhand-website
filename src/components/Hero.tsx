@@ -11,12 +11,15 @@ export default function Hero() {
 
   return (
     <section className="min-h-[85svh] md:min-h-screen flex flex-col justify-center items-center p-0 text-center relative overflow-hidden bg-background">
-      {/* Video Background */}
+      {/* Video Background — poster paints instantly; metadata-only preload keeps LCP fast */}
       <video
         autoPlay
         muted
         loop
         playsInline
+        preload="metadata"
+        aria-hidden="true"
+        poster="/opengraph-image"
         className="absolute inset-0 w-full h-full object-cover opacity-100 z-0"
       >
         <source src="/Farhand website.mp4" type="video/mp4" />
