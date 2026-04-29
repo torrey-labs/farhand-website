@@ -2,7 +2,7 @@
 
 Living planning doc for the Farhand homepage. Edit in place. No code changes happen until a section here is marked **LOCKED**.
 
-_Last updated: 2026-04-28._
+_Last updated: 2026-04-29. All seven beats shipped — see commits 1ce2d2d…75f226d._
 
 ---
 
