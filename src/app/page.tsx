@@ -5,6 +5,7 @@ import FeaturedOn from '@/components/FeaturedOn';
 import Problem from '@/components/Problem';
 import Resolution from '@/components/Resolution';
 import Proof from '@/components/Proof';
+import HowItRuns from '@/components/HowItRuns';
 import FAQSection from '@/components/FAQSection';
 import Footer from '@/components/Footer';
 import { coreFaqs } from '@/data/faqs';
@@ -48,6 +49,8 @@ export default function Home() {
       <Resolution />
 
       <Proof />
+
+      <HowItRuns />
 
       {/* Signature tagline — sits above FAQ */}
       <section className="bg-background py-8 md:py-10">
