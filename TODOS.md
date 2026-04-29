@@ -19,7 +19,7 @@ to a new TLD; `farhand.live` becomes 301 redirect. Plan file:
 - [ ] **Pick the new domain** (top picks: `farhand.ai` ~$100/yr brand-fit, `farhandrobotics.com` ~$15/yr, `farhand.io` ~$35/yr)
 - [ ] **Phase 1** — Register at Cloudflare Registrar (or Porkbun for `.ai`); replicate DNS zone (MX, SPF, DKIM google + resend, DMARC, TLS-RPT, send-subdomain)
 - [ ] **Phase 2** — Add domain to Google Workspace, verify, set up send-as / users for aaryan + shivaan + neil + team
-- [ ] **Phase 3** — Add domain to Vercel project, wait for SSL; grep+replace `farhand.live` across `next.config.ts`, `src/app/layout.tsx`, `src/app/sitemap.ts`, all `metadata.alternates.canonical`, `src/app/opengraph-image.tsx`, `src/app/twitter-image.tsx`, `src/lib/schema.ts`, `public/robots.txt`, `email-signature/*.html`, `public/email-signature/*.html`
+- [ ] **Phase 3** — Add domain to Vercel project, wait for SSL; grep+replace `farhand.live` across `next.config.ts`, `src/app/layout.tsx`, `src/app/sitemap.ts`, all `metadata.alternates.canonical`, `src/app/opengraph-image.tsx`, `src/app/twitter-image.tsx`, `src/lib/schema.ts`, `public/robots.txt`, and the sibling `farhand-signature` repo (HTML)
 - [ ] **Phase 3** — Add Vercel redirect: `farhand.live/*` → 301 → new domain
 - [ ] **Phase 4** — Reconnect Apollo mailboxes to new domain; update sequence default sender
 - [ ] **Phase 4** — Stand up `outreach.<new-domain>` subdomain + dedicated mailbox for cold-only sends
@@ -73,7 +73,7 @@ Pending audit + reorg.
 
 - [ ] Audit root-level files; consolidate or relocate non-essential docs
 - [ ] Move any one-off scripts out of root if any exist
-- [ ] Confirm AGENTS.md, CLAUDE.md, GTM.md, SEO.md, TODOS.md, README.md, `email-signature/README.md` are the only operational docs at root
+- [ ] Confirm AGENTS.md, CLAUDE.md, GTM.md, SEO.md, TODOS.md, README.md are the only operational docs at root (signature docs moved to sibling `farhand-signature` repo)
 
 ---
 

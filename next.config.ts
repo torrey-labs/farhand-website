@@ -18,6 +18,25 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // Signature assets moved to a separate Vercel project (farhand-signatures)
+  // so signatures keep rendering even if this website is down. These redirects
+  // forward any pasted-URL hits on this host (legacy, before cofounders re-paste)
+  // to the new resilient host. Once everyone's re-pasted, these can be removed.
+  async redirects() {
+    return [
+      {
+        source: "/email-signature/:path*",
+        destination: "https://farhand-signature.vercel.app/email-signature/:path*",
+        permanent: true,
+      },
+      {
+        source: "/logo-w-type-light.png",
+        destination: "https://farhand-signature.vercel.app/logo-w-type-light.png",
+        permanent: true,
+      },
+    ];
+  },
+
   // Long-lived cache for static/immutable assets served from /public.
   // Vercel already sets these headers for built assets, but explicit is safer
   // when routing through Cloudflare or custom previews.

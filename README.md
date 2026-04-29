@@ -7,7 +7,7 @@ Next.js source for [farhand.live](https://farhand.live).
 - **Repo rules** — `AGENTS.md` (this repo is the website only; GTM lives in sibling `farhand-gtm`)
 - **SEO + analytics state** — `SEO.md`
 - **Open work** — `TODOS.md`
-- **Email signatures** — `email-signature/README.md`
+- **Email signatures** — sibling repo `torrey-labs/farhand-signature` (separate Vercel project for uptime independence)
 - **Components** — `src/components/README.md`
 
 ## Local dev

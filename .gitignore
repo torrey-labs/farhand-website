@@ -42,3 +42,10 @@ next-env.d.ts
 .gstack/
 scripts/.content-data/
 .worktrees/
+
+# playwright/QA screenshot artifacts
+.playwright-mcp/
+roboworx-*.png
+farhand-after.png
+stats-section.png
+skills-section.png
