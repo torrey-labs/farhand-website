@@ -43,9 +43,12 @@ next-env.d.ts
 scripts/.content-data/
 .worktrees/
 
+# Claude Code session state
+.claude/
+
 # playwright/QA screenshot artifacts
 .playwright-mcp/
-roboworx-*.png
-farhand-after.png
-stats-section.png
-skills-section.png
+
+# stray screenshots / scratch images at repo root (public/ assets are unaffected)
+/*.png
+/*.avif
