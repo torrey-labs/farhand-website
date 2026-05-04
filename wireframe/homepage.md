@@ -1,8 +1,11 @@
 # Homepage flow — working doc
 
+> **STATUS: DRAFT — NOT LIVE.**
+> The flyer-voice rewrite below is workshopped copy, not what's currently shipped. The live homepage at farhand.live runs the original "challenges" framing (Hero "Your field service partner" + red-bordered Problem cards). Re-implementing this draft is queued behind the rest of the website work.
+
 Living planning doc for the Farhand homepage. Edit in place. No code changes happen until a section here is marked **LOCKED**.
 
-_Last updated: 2026-04-29. Live website is reverted to the pre-rewrite state. The flyer-voice rewrite below is **the design we're workshopping** — copy captured here verbatim from the reverted commits so we can iterate on words before re-implementing._
+_Last updated: 2026-04-29. Live website is reverted to the pre-rewrite state. The flyer-voice rewrite below is **the design we're workshopping** — copy captured verbatim from the reverted commits so we can iterate on words before re-implementing._
 
 ---
 

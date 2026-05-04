@@ -1,8 +1,14 @@
 /**
- * Shared FAQ data for the Farhand website.
- * Used on homepage, blog index, and /faq page.
+ * Shared FAQ data for the Farhand homepage + blog index.
  *
- * Only the most conversion-relevant questions — the ones buyers actually ask.
+ * Only the most conversion-relevant questions — the ones buyers actually
+ * ask. Tight phrasing optimised for skim-reading on a marketing page.
+ *
+ * NOTE: /faq page (src/app/faq/page.tsx) has its own 12-question array
+ * with longer, more thorough answers. They're intentionally separate
+ * because the contexts are different — a marketing page rewards
+ * brevity, a dedicated FAQ page rewards completeness. If a question
+ * exists in both places, keep the wording divergent on purpose.
  */
 
 export interface FAQItem {
