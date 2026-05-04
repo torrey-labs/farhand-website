@@ -50,7 +50,7 @@ export default function BlogPost({ title, date, category, children }: BlogPostPr
             Ready to modernize your field service?
           </h3>
           <Button asChild size="lg">
-            <a href="/#schedule">Schedule a call</a>
+            <Link href="/#schedule">Schedule a call</Link>
           </Button>
         </div>
       </section>

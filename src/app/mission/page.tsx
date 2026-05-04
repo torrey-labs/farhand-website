@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import {
   StatsRow,
   CalloutBox,
@@ -83,12 +84,12 @@ export default function MissionPage() {
       />
       <header className="py-8 px-6">
         <div className="container max-w-[900px]">
-          <a
+          <Link
             href="/"
             className="text-accent font-medium text-sm tracking-wider hover:opacity-80 transition-opacity"
           >
             Farhand
-          </a>
+          </Link>
         </div>
       </header>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
@@ -11,12 +12,12 @@ export default function ConnectPage() {
   return (
     <main className="bg-background min-h-screen flex items-center justify-center px-6 py-16 relative">
       {/* Subtle back-to-home link */}
-      <a
+      <Link
         href="/"
         className="absolute top-6 left-6 text-accent font-medium text-sm tracking-wider hover:opacity-80 transition-opacity"
       >
         Farhand
-      </a>
+      </Link>
       <div className="container max-w-[480px] text-center">
         {/* Avatar placeholder */}
         <div className="w-24 h-24 rounded-full border-2 border-accent mx-auto mb-6 flex items-center justify-center text-accent text-3xl font-serif">
@@ -33,7 +34,7 @@ export default function ConnectPage() {
 
         <div className="flex flex-col gap-3">
           <Button asChild size="lg" className="w-full">
-            <a href="/#schedule">Schedule a Call</a>
+            <Link href="/#schedule">Schedule a Call</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="w-full">
             <a href="mailto:aaryan@farhand.live">Email Me</a>

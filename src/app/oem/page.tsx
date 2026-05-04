@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import OemLeadForm from './OemLeadForm';
 
 export const metadata: Metadata = {
@@ -11,12 +12,12 @@ export default function OEMLandingPage() {
   return (
     <main className="bg-background min-h-screen flex items-center justify-center px-6 py-16 relative">
       {/* Subtle back-to-home link */}
-      <a
+      <Link
         href="/"
         className="absolute top-6 left-6 text-accent font-medium text-sm tracking-wider hover:opacity-80 transition-opacity"
       >
         Farhand
-      </a>
+      </Link>
       <div className="container max-w-[720px] text-center">
         <p className="text-sm text-accent font-medium uppercase tracking-wider mb-6">
           For robotics &amp; machinery OEMs
