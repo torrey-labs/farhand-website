@@ -90,7 +90,7 @@ export default function PitchPage() {
           <div className="text-sm text-light-gray text-right">
             <p><a href="mailto:aaryan@farhand.live" className="text-accent">aaryan@farhand.live</a></p>
             <p className="mt-1">(857) 498-9778</p>
-            <p className="mt-1"><a href="https://farhand.live" className="text-accent">farhand.live</a></p>
+            <p className="mt-1"><a href="https://farhand.ai" className="text-accent">farhand.ai</a></p>
           </div>
         </div>
       </footer>

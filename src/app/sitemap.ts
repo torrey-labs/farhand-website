@@ -3,7 +3,7 @@ import { cities } from '@/data/cities';
 import { machineTypes } from '@/data/machineTypes';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://farhand.live';
+  const baseUrl = 'https://farhand.ai';
   const now = new Date();
 
   const servicePages = [

@@ -24,6 +24,26 @@ const nextConfig: NextConfig = {
   // to the new resilient host. Once everyone's re-pasted, these can be removed.
   async redirects() {
     return [
+      // Domain migration: farhand.live -> farhand.ai (canonical).
+      // Both domains are aliases of the same Vercel project, but Next.js
+      // matches on the Host header so this only fires when the request
+      // came in on farhand.live. SEO juice consolidates onto farhand.ai.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "farhand.live" }],
+        destination: "https://farhand.ai/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.farhand.live" }],
+        destination: "https://farhand.ai/:path*",
+        permanent: true,
+      },
+      // Signature assets moved to a separate Vercel project so signatures
+      // keep rendering even if this website is down. Forwards any pasted-URL
+      // hits on this host (legacy, before cofounders re-paste) to the new
+      // resilient host. Once everyone's re-pasted, these can be removed.
       {
         source: "/email-signature/:path*",
         destination: "https://farhand-signature.vercel.app/email-signature/:path*",

@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Industrial Robot Service | Farhand',
     description: 'AI-guided field service for industrial robotic arms, welding systems, and assembly automation. Nationwide coverage.',
-    url: 'https://farhand.live/services/industrial-robots',
+    url: 'https://farhand.ai/services/industrial-robots',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

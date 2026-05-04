@@ -88,7 +88,7 @@ export default async function OpengraphImage() {
             color: '#888',
           }}
         >
-          <span>farhand.live</span>
+          <span>farhand.ai</span>
           <span style={{ color: '#16a34a' }}>●&nbsp;&nbsp;on-demand</span>
         </div>
       </div>

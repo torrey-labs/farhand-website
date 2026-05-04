@@ -10,9 +10,9 @@ Scope: this file tracks work on the Next.js site only. GTM automation TODOs (scr
 
 Full multi-phase migration plan (DNS, Workspace, Apollo, mailop) lives in `farhand-gtm/TODOS.md`. Website-side work that lives here:
 
-- [ ] Once new domain is picked: grep+replace `farhand.live` across `next.config.ts`, `src/app/layout.tsx`, `src/app/sitemap.ts`, all `metadata.alternates.canonical`, `src/app/opengraph-image.tsx`, `src/app/twitter-image.tsx`, `src/lib/schema.ts`, `public/robots.txt`
+- [ ] Once new domain is picked: grep+replace `farhand.ai` across `next.config.ts`, `src/app/layout.tsx`, `src/app/sitemap.ts`, all `metadata.alternates.canonical`, `src/app/opengraph-image.tsx`, `src/app/twitter-image.tsx`, `src/lib/schema.ts`, `public/robots.txt`
 - [ ] Add new domain to Vercel project + wait for SSL
-- [ ] Add Vercel redirect: `farhand.live/*` → 301 → new domain
+- [ ] Add Vercel redirect: `farhand.ai/*` → 301 → new domain
 - [ ] Update Google Search Console verification + GA hostname filters
 
 ---

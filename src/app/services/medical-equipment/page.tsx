@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Medical Equipment Service | Farhand',
     description: 'AI-guided field service for medical devices, surgical systems, and pharmacy automation. Compliance-ready Field Service Engineers nationwide.',
-    url: 'https://farhand.live/services/medical-equipment',
+    url: 'https://farhand.ai/services/medical-equipment',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

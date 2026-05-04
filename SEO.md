@@ -52,9 +52,9 @@ Single source of truth for all SEO, analytics, lead capture, content, and market
 
 ## Backlinks created
 
-_Running log. Every new inbound link to `farhand.live` lands here with date, source, target page, anchor text, and type. Keep chronological._
+_Running log. Every new inbound link to `farhand.ai` lands here with date, source, target page, anchor text, and type. Keep chronological._
 
-| Date | Source URL | Target page on farhand.live | Anchor text | Type | Notes |
+| Date | Source URL | Target page on farhand.ai | Anchor text | Type | Notes |
 |---|---|---|---|---|---|
 | | | | | | |
 
@@ -193,7 +193,7 @@ Source of truth: `src/data/blogPosts.ts`. All posts follow the canonical pattern
 | `VERCEL_TOKEN` | GitHub secret | ✅ live | CI deployment auth |
 | `VERCEL_ORG_ID` | GitHub variable | ✅ live | `team_Nsre7Gv1KjFULi4ZdSCU74NK` |
 | `VERCEL_PROJECT_ID` | GitHub variable | ✅ live | `prj_i0NZ0EsQBkMfmTwQXaNE9rTdzKSF` |
-| `CLOUDFLARE_API_TOKEN` | `.env.local` only | ✅ local | DNS management (Edit zone DNS for farhand.live) |
+| `CLOUDFLARE_API_TOKEN` | `.env.local` only | ✅ local | DNS management (Edit zone DNS for farhand.ai) |
 | `CLOUDFLARE_ZONE_ID` | `.env.local` only | ✅ local | `0eefd328ad52b700eae1ae4673b75c00` |
 | `TELEGRAPH_ACCESS_TOKEN` | `scripts/.env.syndication` | ✅ local | Content syndication to telegra.ph |
 | `APOLLO_API_KEY` | NOT SET | ⬜ | Apollo enrichment for leads |
@@ -297,16 +297,16 @@ Env file: `scripts/.env.syndication` (gitignored)
 
 ### UTM link pattern
 ```
-https://farhand.live/{page}?utm_source={source}&utm_medium={medium}&utm_campaign={campaign}&utm_content={prospect}
+https://farhand.ai/{page}?utm_source={source}&utm_medium={medium}&utm_campaign={campaign}&utm_content={prospect}
 ```
 
 | Use case | Example URL |
 |---|---|
-| Cold email to FANUC | `farhand.live/for/japanese-oems?utm_source=email&utm_medium=outreach&utm_campaign=q2-2026&utm_content=fanuc` |
-| Expo QR handout | `farhand.live/oem?utm_source=qr&utm_medium=expo&utm_campaign=modex-2026` |
-| LinkedIn DM | `farhand.live/pitch?utm_source=linkedin&utm_medium=dm&utm_campaign=q2-2026&utm_content=prospect-name` |
-| Business card QR | `farhand.live/connect?utm_source=qr&utm_medium=card` |
-| Investor deck link | `farhand.live/pitch?utm_source=email&utm_medium=fundraise&utm_campaign=preseed` |
+| Cold email to FANUC | `farhand.ai/for/japanese-oems?utm_source=email&utm_medium=outreach&utm_campaign=q2-2026&utm_content=fanuc` |
+| Expo QR handout | `farhand.ai/oem?utm_source=qr&utm_medium=expo&utm_campaign=modex-2026` |
+| LinkedIn DM | `farhand.ai/pitch?utm_source=linkedin&utm_medium=dm&utm_campaign=q2-2026&utm_content=prospect-name` |
+| Business card QR | `farhand.ai/connect?utm_source=qr&utm_medium=card` |
+| Investor deck link | `farhand.ai/pitch?utm_source=email&utm_medium=fundraise&utm_campaign=preseed` |
 
 GA4 captures all UTM parameters automatically. No code needed.
 
@@ -403,10 +403,10 @@ npx next build                       # must compile + build all routes
 After deploy, verify:
 
 ```bash
-curl -sI https://farhand.live/                              # 200
-curl -sI https://farhand.live/sitemap.xml                    # 200
-curl -sI https://farhand.live/rss.xml                        # 200
-curl -sI https://farhand.live/robots.txt                     # 200
-curl -s  https://farhand.live/ | grep "G-CMC24D7416"         # GA4 present
-curl -s  https://farhand.live/services/robots/new-york | grep '"@type":"Service"'  # schema present
+curl -sI https://farhand.ai/                              # 200
+curl -sI https://farhand.ai/sitemap.xml                    # 200
+curl -sI https://farhand.ai/rss.xml                        # 200
+curl -sI https://farhand.ai/robots.txt                     # 200
+curl -s  https://farhand.ai/ | grep "G-CMC24D7416"         # GA4 present
+curl -s  https://farhand.ai/services/robots/new-york | grep '"@type":"Service"'  # schema present
 ```

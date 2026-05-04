@@ -17,7 +17,7 @@ export default function TermsPage() {
 
           <div className="leading-[1.8] text-light-gray">
             <h3 className="text-white mt-8 mb-4">1. Acceptance of Terms</h3>
-            <p>By accessing farhand.live, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.</p>
+            <p>By accessing farhand.ai, you agree to be bound by these Terms and Conditions. If you do not agree, please do not use our services.</p>
 
             <h3 className="text-white mt-8 mb-4">2. Description of Service</h3>
             <p>Farhand provides AI-guided Field Service Engineer services for robots and machinery. Our platform, Farhand Relay™, facilitates on-site installations and repairs.</p>

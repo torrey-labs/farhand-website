@@ -66,7 +66,7 @@ function autoReplyHtml() {
   <p>I'd love to learn about your machines and what you're trying to get done in the field. Grab any slot that works — 30 minutes, no prep needed:</p>
   <p><a href="${CAL_LINK}" style="display:inline-block;background:#000;color:#fff;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:600">Book a time</a></p>
   <p>Or reply to this email if a quick note is easier first.</p>
-  <p>— Aaryan<br/>Farhand · <a href="https://farhand.live" style="color:#111">farhand.live</a></p>
+  <p>— Aaryan<br/>Farhand · <a href="https://farhand.ai" style="color:#111">farhand.ai</a></p>
 </div>`.trim();
 }
 

@@ -12,11 +12,11 @@ import { coreFaqs } from '@/data/faqs';
 export const metadata: Metadata = {
   title: 'Farhand — On-demand Field Service Engineers for robots & industrial machinery',
   description: 'AI-guided Field Service Engineers install, commission, and repair your industrial robots and machinery at client sites — every US zip code, per-job pricing, no retainers.',
-  alternates: { canonical: 'https://farhand.live/' },
+  alternates: { canonical: 'https://farhand.ai/' },
   openGraph: {
     title: 'Farhand — Your field service partner',
     description: 'AI-guided Field Service Engineers. On-demand industrial robot & machinery service across every US zip code.',
-    url: 'https://farhand.live/',
+    url: 'https://farhand.ai/',
     type: 'website',
   },
 };

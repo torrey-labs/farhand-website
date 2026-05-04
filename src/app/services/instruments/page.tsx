@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Instrument Service & Calibration | Farhand',
     description: 'AI-guided field service for precision instruments, test equipment, and calibration systems. Nationwide Field Service Engineer coverage.',
-    url: 'https://farhand.live/services/instruments',
+    url: 'https://farhand.ai/services/instruments',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

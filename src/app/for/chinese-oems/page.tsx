@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Field Service for Chinese OEMs in the US',
     description: 'US field service for Chinese industrial equipment OEMs — SANY, Estun, Siasun, and more. AI-guided Field Service Engineers across every American zip code.',
-    url: 'https://farhand.live/for/chinese-oems',
+    url: 'https://farhand.ai/for/chinese-oems',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

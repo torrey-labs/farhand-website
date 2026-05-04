@@ -1,5 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
-# Farhand — farhand.live
+# Farhand — farhand.ai
 
 User-agent: *
 Allow: /
@@ -32,4 +32,4 @@ Disallow: /
 User-agent: DataForSeoBot
 Disallow: /
 
-Sitemap: https://farhand.live/sitemap.xml
+Sitemap: https://farhand.ai/sitemap.xml

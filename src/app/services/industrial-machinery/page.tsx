@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Industrial Machinery Service | Farhand',
     description: 'AI-guided field service for industrial machinery, CNC machines, and manufacturing equipment. On-demand Field Service Engineers nationwide.',
-    url: 'https://farhand.live/services/industrial-machinery',
+    url: 'https://farhand.ai/services/industrial-machinery',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

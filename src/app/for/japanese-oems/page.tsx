@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Field Service for Japanese OEMs in the US',
     description: 'US-based, AI-guided Field Service Engineers for FANUC, Yaskawa, Mitsubishi, Mazak, and Keyence equipment. Stop flying FSEs from Tokyo — we are already there.',
-    url: 'https://farhand.live/for/japanese-oems',
+    url: 'https://farhand.ai/for/japanese-oems',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

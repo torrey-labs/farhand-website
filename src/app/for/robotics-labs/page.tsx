@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'An applications arm for robotics frontier labs',
     description: 'We learn from you and help apply your models at scale.',
-    url: 'https://farhand.live/for/robotics-labs',
+    url: 'https://farhand.ai/for/robotics-labs',
     siteName: 'Farhand',
     type: 'article',
     publishedTime: '2026-04-18',
@@ -242,7 +242,7 @@ export default function RoboticsLabsPage() {
             <div className="text-xs text-light-gray/60 text-left sm:text-right space-x-3">
               <a href="mailto:aaryan@farhand.live" className="text-accent">aaryan@farhand.live</a>
               <span>·</span>
-              <a href="https://farhand.live" className="text-accent">farhand.live</a>
+              <a href="https://farhand.ai" className="text-accent">farhand.ai</a>
             </div>
           </div>
         </footer>

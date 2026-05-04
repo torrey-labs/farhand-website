@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Farhand — Mission: Reindustrialize the US',
   description:
     'Farhand is the deployment layer for American reindustrialization — an AI-guided field service network that keeps US factories running and trains the workforce that owns them.',
-  alternates: { canonical: 'https://farhand.live/mission' },
+  alternates: { canonical: 'https://farhand.ai/mission' },
 };
 
 const organizationSchema = {
@@ -18,8 +18,8 @@ const organizationSchema = {
   name: 'Farhand',
   alternateName: 'Farhand Robotics',
   legalName: 'XEngineering, LLC',
-  url: 'https://farhand.live',
-  logo: 'https://farhand.live/logo-w-type-light-on-dark.png',
+  url: 'https://farhand.ai',
+  logo: 'https://farhand.ai/logo-w-type-light-on-dark.png',
   description:
     'Farhand is the deployment layer for American reindustrialization — an AI-guided field service network that keeps every robot in a US factory running, and trains the workforce that owns them.',
   foundingDate: '2026',
@@ -236,8 +236,8 @@ export default function MissionPage() {
             </p>
             <p className="mt-1">(857) 498-9778</p>
             <p className="mt-1">
-              <a href="https://farhand.live" className="text-accent">
-                farhand.live
+              <a href="https://farhand.ai" className="text-accent">
+                farhand.ai
               </a>
             </p>
           </div>

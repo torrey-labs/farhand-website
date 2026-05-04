@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'For Facilities | Farhand',
     description: 'AI-guided field service for facilities with installed equipment. On-demand Field Service Engineers who know your machines.',
-    url: 'https://farhand.live/for/facilities',
+    url: 'https://farhand.ai/for/facilities',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

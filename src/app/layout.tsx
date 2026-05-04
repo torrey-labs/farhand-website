@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
   description: "AI-guided Field Service Engineers install & service your robots & machinery at your client sites. On-demand field service across every zip code in the US.",
   applicationName: "Farhand",
-  authors: [{ name: "Aaryan Agrawal", url: "https://farhand.live" }],
+  authors: [{ name: "Aaryan Agrawal", url: "https://farhand.ai" }],
   creator: "Farhand Robotics",
   publisher: "Farhand Robotics",
   keywords: [
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     ],
     apple: "/favicon.svg",
   },
-  metadataBase: new URL("https://farhand.live"),
+  metadataBase: new URL("https://farhand.ai"),
   alternates: {
     canonical: "/",
     types: {
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Farhand — Your field service partner",
     description: "AI-guided Field Service Engineers. On-demand industrial robot & machinery service across every US zip code.",
-    url: "https://farhand.live",
+    url: "https://farhand.ai",
     siteName: "Farhand",
     type: "website",
     locale: "en_US",
@@ -163,18 +163,18 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "@id": "https://farhand.live/#organization",
+              "@id": "https://farhand.ai/#organization",
               "name": "Farhand",
               "legalName": "XEngineering, LLC",
               "alternateName": "Farhand Robotics",
-              "url": "https://farhand.live",
+              "url": "https://farhand.ai",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://farhand.live/logo-w-type-light-on-dark.png",
+                "url": "https://farhand.ai/logo-w-type-light-on-dark.png",
                 "width": 512,
                 "height": 128,
               },
-              "image": "https://farhand.live/opengraph-image",
+              "image": "https://farhand.ai/opengraph-image",
               "description": "AI-guided Field Service Engineers install & service your robots & machinery at your client sites.",
               "foundingDate": "2026",
               "founder": {
@@ -245,17 +245,17 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "@id": "https://farhand.live/#website",
-              "url": "https://farhand.live",
+              "@id": "https://farhand.ai/#website",
+              "url": "https://farhand.ai",
               "name": "Farhand",
               "description": "AI-guided Field Service Engineers for robots and industrial machinery.",
-              "publisher": { "@id": "https://farhand.live/#organization" },
+              "publisher": { "@id": "https://farhand.ai/#organization" },
               "inLanguage": "en-US",
               "potentialAction": {
                 "@type": "SearchAction",
                 "target": {
                   "@type": "EntryPoint",
-                  "urlTemplate": "https://farhand.live/blog?q={search_term_string}",
+                  "urlTemplate": "https://farhand.ai/blog?q={search_term_string}",
                 },
                 "query-input": "required name=search_term_string",
               },

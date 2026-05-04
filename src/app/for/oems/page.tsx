@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'For OEMs | Farhand',
     description: 'Scale your field service without scaling headcount. AI-guided Field Service Engineers nationwide for robot and machine OEMs.',
-    url: 'https://farhand.live/for/oems',
+    url: 'https://farhand.ai/for/oems',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

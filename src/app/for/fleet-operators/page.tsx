@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'For Fleet Operators | Farhand',
     description: 'AI-guided field service for robot and machine fleets. Maximize uptime with on-demand Field Service Engineers who know your equipment.',
-    url: 'https://farhand.live/for/fleet-operators',
+    url: 'https://farhand.ai/for/fleet-operators',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

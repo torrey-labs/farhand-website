@@ -1,7 +1,7 @@
 # Homepage flow — working doc
 
 > **STATUS: DRAFT — NOT LIVE.**
-> The flyer-voice rewrite below is workshopped copy, not what's currently shipped. The live homepage at farhand.live runs the original "challenges" framing (Hero "Your field service partner" + red-bordered Problem cards). Re-implementing this draft is queued behind the rest of the website work.
+> The flyer-voice rewrite below is workshopped copy, not what's currently shipped. The live homepage at farhand.ai runs the original "challenges" framing (Hero "Your field service partner" + red-bordered Problem cards). Re-implementing this draft is queued behind the rest of the website work.
 
 Living planning doc for the Farhand homepage. Edit in place. No code changes happen until a section here is marked **LOCKED**.
 

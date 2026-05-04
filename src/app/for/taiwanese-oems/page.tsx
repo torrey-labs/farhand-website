@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Field Service for Taiwanese OEMs in the US',
     description: 'US field service for Taiwanese equipment OEMs — TSMC suppliers, Delta, Hiwin, Foxconn. AI-guided Field Service Engineers supporting the US fab expansion.',
-    url: 'https://farhand.live/for/taiwanese-oems',
+    url: 'https://farhand.ai/for/taiwanese-oems',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

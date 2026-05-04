@@ -1,6 +1,6 @@
 # Farhand website
 
-Next.js source for [farhand.live](https://farhand.live).
+Next.js source for [farhand.ai](https://farhand.ai).
 
 ## Where things live
 

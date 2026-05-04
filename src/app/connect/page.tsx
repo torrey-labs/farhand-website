@@ -49,7 +49,7 @@ export default function ConnectPage() {
         </div>
 
         <p className="text-xs text-light-gray/50 mt-10">
-          <a href="https://farhand.live" className="text-accent/60">farhand.live</a>
+          <a href="https://farhand.ai" className="text-accent/60">farhand.ai</a>
         </p>
       </div>
     </main>

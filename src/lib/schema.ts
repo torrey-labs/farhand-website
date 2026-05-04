@@ -1,4 +1,4 @@
-const SITE_URL = 'https://farhand.live';
+const SITE_URL = 'https://farhand.ai';
 const ORG_NAME = 'Farhand';
 const ORG_LOGO = `${SITE_URL}/logo-w-type-light-on-dark.png`;
 const DEFAULT_OG = `${SITE_URL}/opengraph-image`;

@@ -1,6 +1,6 @@
 import { blogPosts } from '@/data/blogPosts';
 
-const SITE_URL = 'https://farhand.live';
+const SITE_URL = 'https://farhand.ai';
 const FEED_TITLE = 'Farhand Blog';
 const FEED_DESC = 'Insights on AI-guided field service, robot maintenance, and the future of industrial service operations.';
 

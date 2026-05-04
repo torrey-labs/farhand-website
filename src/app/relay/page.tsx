@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: 'Farhand Relay — AI agent trained to be your senior engineer',
     description:
       'Your docs in. AI-guided SOPs, autonomous diagnostics, and closed-loop learning out. Custom per OEM.',
-    url: 'https://farhand.live/relay',
+    url: 'https://farhand.ai/relay',
     siteName: 'Farhand',
     type: 'website',
   },

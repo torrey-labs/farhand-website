@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'General Aviation Equipment Service | Farhand',
     description: 'AI-guided field service for aviation ground equipment, avionics, and aircraft systems. Nationwide Field Service Engineer network.',
-    url: 'https://farhand.live/services/general-aviation',
+    url: 'https://farhand.ai/services/general-aviation',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

@@ -7,7 +7,7 @@ export const metadata = {
   openGraph: {
     title: 'Field Service for European OEMs in the US',
     description: 'US-nationwide field service for KUKA, ABB, Siemens, DMG MORI, Trumpf, Universal Robots, and Stäubli equipment. AI-guided Field Service Engineers in every zip code.',
-    url: 'https://farhand.live/for/european-oems',
+    url: 'https://farhand.ai/for/european-oems',
     siteName: 'Farhand',
     type: 'website',
     locale: 'en_US',

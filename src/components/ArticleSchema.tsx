@@ -9,7 +9,7 @@ export default function ArticleSchema({ slug }: Props) {
   const post = blogPosts.find((p) => p.slug === slug);
   if (!post) return null;
 
-  const url = `https://farhand.live/blog/${post.slug}`;
+  const url = `https://farhand.ai/blog/${post.slug}`;
 
   const article = articleSchema({
     title: post.title,
@@ -19,8 +19,8 @@ export default function ArticleSchema({ slug }: Props) {
   });
 
   const breadcrumbs = breadcrumbSchema([
-    { name: 'Home', url: 'https://farhand.live/' },
-    { name: 'Blog', url: 'https://farhand.live/blog' },
+    { name: 'Home', url: 'https://farhand.ai/' },
+    { name: 'Blog', url: 'https://farhand.ai/blog' },
     { name: post.title, url },
   ]);
 
