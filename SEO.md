@@ -1,6 +1,24 @@
 # Farhand SEO & Marketing Dashboard
 
-Living status doc. **Last updated: 2026-04-22.**
+Living status doc. **Last updated: 2026-05-04.**
+
+## 2026-05-04 SEO push #4 (domain migration + per-post OG + reputation signals)
+
+- **Canonical domain migrated**: `farhand.live` → `farhand.ai`. 53 hardcoded URL
+  references replaced across 38 files (canonicals, OG metadata, sitemap, schema,
+  robots.txt, RSS feed, page metadata, README/SEO/TODOS docs). All 19 `@farhand.live`
+  email addresses preserved (mailbox migration is a later phase).
+- **Host-based 301** in `next.config.ts`: `farhand.live/*` and `www.farhand.live/*`
+  → `https://farhand.ai/*`. Both domains alias the same Vercel project; Next.js
+  matches on Host header so the redirect only fires for legacy-domain requests.
+- **Per-blog-post OG images**: each of the 23 posts generates its own 1200×630 social
+  card with title + excerpt + category. New `src/lib/blog-og.tsx` factory plus 23
+  thin `opengraph-image.tsx` files (one per blog directory). Better LinkedIn / X
+  share rendering than every post sharing the homepage OG.
+- **`/.well-known/security.txt`** (RFC 9116) — standard security disclosure file.
+- **Hero poster fix** — was loading `/opengraph-image` (the social-share text card)
+  as the video poster, causing a giant text overlay flash on first paint. Replaced
+  with `hero-poster.jpg` (335KB) — a representative frame from the same MP4.
 
 ## 2026-04-22 SEO push #3 (page-level metadata + breadcrumbs + hero LCP)
 

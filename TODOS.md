@@ -1,6 +1,6 @@
 # Farhand Website TODOs
 
-_Last updated: 2026-04-28._
+_Last updated: 2026-05-04._
 
 Scope: this file tracks work on the Next.js site only. GTM automation TODOs (scrapers, Notion CRM writers, outreach drafters, grant monitor, daily cron, Apollo, email deliverability, ISP outreach, domain-migration mailbox/Apollo phases) live in the `farhand-gtm` repo.
 
@@ -10,10 +10,12 @@ Scope: this file tracks work on the Next.js site only. GTM automation TODOs (scr
 
 Full multi-phase migration plan (DNS, Workspace, Apollo, mailop) lives in `farhand-gtm/TODOS.md`. Website-side work that lives here:
 
-- [ ] Once new domain is picked: grep+replace `farhand.ai` across `next.config.ts`, `src/app/layout.tsx`, `src/app/sitemap.ts`, all `metadata.alternates.canonical`, `src/app/opengraph-image.tsx`, `src/app/twitter-image.tsx`, `src/lib/schema.ts`, `public/robots.txt`
-- [ ] Add new domain to Vercel project + wait for SSL
-- [ ] Add Vercel redirect: `farhand.ai/*` → 301 → new domain
-- [ ] Update Google Search Console verification + GA hostname filters
+- [x] **2026-05-04** — grep+replaced `farhand.live` → `farhand.ai` across 38 files (53 URL refs; 19 emails preserved). Canonical is now `farhand.ai`.
+- [x] **2026-05-04** — `farhand.ai` already aliased on Vercel project (returns 200, SSL valid).
+- [x] **2026-05-04** — Added Next.js host-based 301 redirect in `next.config.ts` (`farhand.live/*` → `https://farhand.ai/*`).
+- [ ] Update Google Search Console: add `farhand.ai` as a property, verify, submit sitemap. Existing `farhand.live` GSC stays for change-of-address notification.
+- [ ] Update GA4: confirm hostname filters accept `farhand.ai`.
+- [ ] Submit `farhand.ai` to HSTS preload list (https://hstspreload.org) — headers are already correct.
 
 ---
 
@@ -33,11 +35,11 @@ Full multi-phase migration plan (DNS, Workspace, Apollo, mailop) lives in `farha
 
 ### Reputation & security signals
 
-- [ ] `/.well-known/security.txt` (RFC 9116)
-- [ ] Site-wide Organization JSON-LD (currently only on `/mission`)
-- [ ] Per-page Open Graph images
-- [ ] HSTS preload submission
-- [ ] Confirm Google Search Console + Bing Webmaster verification are still active
+- [x] **2026-05-04** — `/.well-known/security.txt` (RFC 9116) shipped.
+- [x] Site-wide Organization JSON-LD already lives in `src/app/layout.tsx` and emits on every page (TODO was outdated).
+- [x] **2026-05-04** — Per-blog-post Open Graph images shipped (23 posts, factory in `src/lib/blog-og.tsx`).
+- [ ] HSTS preload submission (manual — submit `farhand.ai` at https://hstspreload.org).
+- [ ] Confirm Google Search Console + Bing Webmaster verification are still active for `farhand.ai`. After domain migration, GSC needs the new property added + change-of-address from `farhand.live`.
 
 ### Content
 
