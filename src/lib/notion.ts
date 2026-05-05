@@ -119,10 +119,10 @@ export async function enrichViaApollo(company: string): Promise<EnrichmentResult
 }
 
 /**
- * Search Website Leads DB for an existing row with this company name.
+ * Search Inbound Leads DB for an existing row with this company name.
  * Used by /api/visit to avoid creating duplicate rows on repeat visits.
  *
- * Website Leads is deliberately kept as its own DB (separate from CRM Companies)
+ * Inbound Leads is deliberately kept as its own DB (separate from CRM Companies)
  * so raw form submissions have their own inbox. User promotes to Companies
  * manually when a lead is qualified.
  */

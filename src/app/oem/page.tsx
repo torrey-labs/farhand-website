@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import OemLeadForm from './OemLeadForm';
+import TextUsCTA from '@/components/cta-text-us';
 
 export const metadata: Metadata = {
   title: 'For Robotics & Machinery OEMs',
@@ -27,9 +28,15 @@ export default function OEMLandingPage() {
           Your machines.<br />Serviced everywhere.
         </h1>
 
-        <h2 className="max-w-[560px] mx-auto mb-12 font-normal">
+        <h2 className="max-w-[560px] mx-auto mb-10 font-normal">
           AI-guided Field Service Engineers install &amp; repair your equipment at every client site — without you building a field team.
         </h2>
+
+        <div className="flex justify-center mb-12">
+          <TextUsCTA size="lg" />
+        </div>
+
+        <p className="text-sm text-light-gray/60 mb-4">— or —</p>
 
         <OemLeadForm />
       </div>
