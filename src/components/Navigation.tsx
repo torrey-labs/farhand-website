@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import TextUsCTA from '@/components/cta-text-us';
 
 export default function Navigation() {
   return (
@@ -25,14 +26,8 @@ export default function Navigation() {
           />
         </Link>
 
-        <div className="flex items-center gap-2 md:gap-4">
-          <motion.a
-            href="#schedule"
-            whileHover={{ opacity: 0.8 }}
-            className="text-accent text-base md:text-lg font-normal no-underline px-3 md:px-5 py-2.5 min-h-[44px] flex items-center"
-          >
-            Schedule a call
-          </motion.a>
+        <div className="flex items-center gap-2 md:gap-3">
+          <TextUsCTA size="sm" />
         </div>
       </div>
     </motion.nav>

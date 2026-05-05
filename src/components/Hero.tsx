@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import TextUsCTA from '@/components/cta-text-us';
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -59,9 +60,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
+          className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4"
         >
-          <Button asChild size="lg">
-            <a href="#schedule">Deploy smarter</a>
+          <TextUsCTA size="lg" />
+          <Button asChild variant="outline" size="lg">
+            <a href="#schedule">Schedule a call</a>
           </Button>
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import TextUsCTA from '@/components/cta-text-us';
 
 export const metadata: Metadata = {
   title: 'Connect with Farhand',
@@ -33,7 +34,8 @@ export default function ConnectPage() {
         </p>
 
         <div className="flex flex-col gap-3">
-          <Button asChild size="lg" className="w-full">
+          <TextUsCTA size="lg" className="w-full" />
+          <Button asChild variant="outline" size="lg" className="w-full">
             <Link href="/#schedule">Schedule a Call</Link>
           </Button>
           <Button asChild variant="outline" size="lg" className="w-full">

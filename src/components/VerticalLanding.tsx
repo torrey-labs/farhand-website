@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import FAQSection from './FAQSection';
-import { Button } from '@/components/ui/button';
+import TextUsCTA from '@/components/cta-text-us';
 import {
   PainPointGrid,
   StatsRow,
@@ -69,9 +69,7 @@ export default function VerticalLanding({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
           >
-            <Button asChild size="lg">
-              <a href="#schedule">Get started</a>
-            </Button>
+            <TextUsCTA size="lg" />
           </motion.div>
         </div>
       </section>
