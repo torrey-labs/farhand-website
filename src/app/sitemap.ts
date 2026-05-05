@@ -31,6 +31,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Per-city local-pack target pages (one per city).
+  const locationPages: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/locations`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    },
+    ...cities.map((city) => ({
+      url: `${baseUrl}/locations/${city.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
+  ];
+
   const stakeholderPages = [
     'oems',
     'distributors',
@@ -94,6 +110,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     })),
     ...programmaticPages,
+    ...locationPages,
     ...stakeholderPages.map((page) => ({
       url: `${baseUrl}/for/${page}`,
       lastModified: now,

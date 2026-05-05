@@ -1,6 +1,6 @@
 # Farhand Website TODOs
 
-_Last updated: 2026-05-04._
+_Last updated: 2026-05-05._
 
 Scope: this file tracks work on the Next.js site only. GTM automation TODOs (scrapers, Notion CRM writers, outreach drafters, grant monitor, daily cron, Apollo, email deliverability, ISP outreach, domain-migration mailbox/Apollo phases) live in the `farhand-gtm` repo.
 
@@ -50,3 +50,28 @@ Full multi-phase migration plan (DNS, Workspace, Apollo, mailop) lives in `farha
 ## SEO
 
 _See `SEO.md` for current state and pending items._
+
+---
+
+## Investor portal
+
+Plan: `~/.claude/plans/go-through-papermark-or-wiggly-lovelace.md`.
+
+**Live as of 2026-05-05:** `https://investors.farhand.live` → 307 → Papermark hosted free tier (email-gated, page-by-page analytics). Currently fronts a placeholder PDF (`/Users/aaryan/Desktop/Farhand.pdf`).
+
+What shipped:
+- Papermark account on free tier, signed in as `aaryanragrawal@gmail.com`. Dashboard: https://app.papermark.com.
+- Active share link: `https://www.papermark.com/view/cmorekta3000qky04k9yh4x82` (named "Investor Portal", email-required, view notifications on, no expiry).
+- Cloudflare DNS record `investors.farhand.live A 76.76.21.21` (DNS-only, Vercel-managed TLS).
+- Vercel project `farhand-investors` (Hobby/free) under `farhand-team`. Source repo lives locally at `/Users/aaryan/Files/Farhand/farhand-investors-redirect/` — single-file `vercel.json` with two `redirects` rules (root + catch-all) targeting the Papermark URL. Local git only, no GitHub remote.
+- To swap the redirect target later: edit `destination` in `farhand-investors-redirect/vercel.json` and `vercel deploy --prod` from that dir.
+
+Pickup work (the actual investor deck):
+- [ ] Author the real investor deck. Replace the placeholder `Farhand.pdf` upload in the Papermark dashboard. Existing share-link URL stays valid as long as the doc ID doesn't change (Papermark allows replacing the file in place).
+- [ ] Decide if we want per-investor share links (one named link per fund/firm) instead of one canonical link. Free tier supports up to 50 links; mint by hand in the dashboard.
+- [ ] Optional: build a branded landing page at `investors.farhand.live` (replace the redirect with a tiny Vercel-hosted page that has a hero + tagline + CTA → Papermark link). The user previously approved a question-framing tagline draft: "Every home and business is getting a robot. Who installs it? Who fixes it?" / "Farhand. The diffusion layer for physical AI." Out of scope until deck is ready.
+
+Out of scope (until plan revisited):
+- API-driven management (auto-uploads, programmatic per-investor links, scheduled analytics digests). Free tier has no API. Upgrade path: Papermark Business (€59/mo) for API + custom domain on viewer URLs, or self-host (eight-service stack — see plan file).
+- CRM sync (Notion/Apollo). Belongs in `farhand-gtm` if/when wanted.
+- Cleanup of the archived `torrey-labs/farhand-papermark` GitHub repo from the earlier self-host attempt — `gh` token lacks `delete_repo` scope; purge from github.com UI when convenient.
