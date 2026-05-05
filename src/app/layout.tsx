@@ -162,11 +162,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "Organization",
+              // Multi-typed: Organization + ProfessionalService (a LocalBusiness
+              // subtype Google recognizes for service-area businesses that come
+              // to the customer rather than the other way around).
+              "@type": ["Organization", "ProfessionalService"],
               "@id": "https://farhand.ai/#organization",
               "name": "Farhand",
               "legalName": "XEngineering, LLC",
-              "alternateName": "Farhand Robotics",
+              "alternateName": ["Farhand Robotics", "Farhand Service"],
               "url": "https://farhand.ai",
               "logo": {
                 "@type": "ImageObject",
@@ -191,6 +194,48 @@ export default function RootLayout({
                 "postalCode": "19958",
                 "addressCountry": "US",
               },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 38.7745,
+                "longitude": -75.1394,
+              },
+              // Service-area business — not a storefront customers visit.
+              // areaServed is the entire US; we dispatch from the closest hub.
+              "areaServed": {
+                "@type": "Country",
+                "name": "United States",
+                "@id": "https://www.wikidata.org/wiki/Q30",
+              },
+              "serviceArea": {
+                "@type": "GeoShape",
+                "name": "United States",
+                "addressCountry": "US",
+              },
+              "openingHoursSpecification": [
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                  ],
+                  "opens": "00:00",
+                  "closes": "23:59",
+                  "description": "On-demand dispatch — emergency response 24/7 with weekday business-hours support.",
+                },
+                {
+                  "@type": "OpeningHoursSpecification",
+                  "dayOfWeek": ["Saturday", "Sunday"],
+                  "opens": "00:00",
+                  "closes": "23:59",
+                  "description": "Emergency dispatch only on weekends.",
+                },
+              ],
+              "priceRange": "$$",
+              "paymentAccepted": ["Invoice", "ACH", "Wire Transfer", "Credit Card"],
+              "currenciesAccepted": "USD",
               "contactPoint": [
                 {
                   "@type": "ContactPoint",
@@ -210,11 +255,15 @@ export default function RootLayout({
               "sameAs": [
                 "https://www.linkedin.com/company/farhand-robotics",
                 "https://x.com/far__hand",
+                // Add as profiles get claimed:
+                // "https://github.com/farhand-live",
+                // "https://www.crunchbase.com/organization/farhand",
+                // "https://www.producthunt.com/products/farhand",
+                // "https://www.f6s.com/farhand",
+                // "https://www.facebook.com/farhand",
+                // "https://www.instagram.com/farhand",
+                // "https://www.youtube.com/@farhand",
               ],
-              "areaServed": {
-                "@type": "Country",
-                "name": "United States",
-              },
               "knowsAbout": [
                 "Industrial Robotics",
                 "Field Service Management",
@@ -224,8 +273,19 @@ export default function RootLayout({
                 "Yaskawa Motoman",
                 "Universal Robots",
                 "Rockwell Automation",
+                "Siemens",
+                "Mitsubishi Electric",
+                "Omron",
+                "Stäubli",
+                "Kawasaki Robotics",
+                "Mazak",
+                "DMG Mori",
                 "PLC Troubleshooting",
                 "Industrial AI",
+                "Predictive Maintenance",
+                "AMRs (Autonomous Mobile Robots)",
+                "AGVs (Automated Guided Vehicles)",
+                "Cobots (Collaborative Robots)",
               ],
               "serviceType": [
                 "Robot Field Service",
@@ -234,7 +294,15 @@ export default function RootLayout({
                 "Medical Equipment Service",
                 "Robot Commissioning",
                 "PLC Programming",
+                "Preventive Maintenance",
+                "Robot Calibration",
+                "Vision System Integration",
+                "End-of-Arm Tooling",
+                "Robot Relocation",
+                "Cobot Deployment",
               ],
+              "slogan": "Your field service partner. Every US zip code.",
+              "knowsLanguage": ["English"],
             }),
           }}
         />

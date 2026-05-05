@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="reduce-truck-rolls-ai" />
       <BlogPost
+      slug="reduce-truck-rolls-ai"
       title="How AI Reduces Truck Rolls by 40%"
       date="April 12, 2026"
       category="Technology"

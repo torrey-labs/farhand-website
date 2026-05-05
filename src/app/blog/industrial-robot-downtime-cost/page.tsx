@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="industrial-robot-downtime-cost" />
       <BlogPost
+      slug="industrial-robot-downtime-cost"
       title="The True Cost of Downtime for Industrial Robots"
       date="April 12, 2026"
       category="Insights"

@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="predictive-vs-preventive-maintenance" />
       <BlogPost
+      slug="predictive-vs-preventive-maintenance"
       title="Predictive Maintenance vs Preventive Maintenance: Which Wins?"
       date="April 12, 2026"
       category="Technology"

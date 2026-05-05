@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="first-time-fix-rate-ai" />
       <BlogPost
+      slug="first-time-fix-rate-ai"
       title="How AI Pushes First-Time Fix Rates from 53% to 86%"
       date="April 6, 2026"
       category="Technology"

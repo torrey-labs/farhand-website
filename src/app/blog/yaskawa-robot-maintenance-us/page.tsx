@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="yaskawa-robot-maintenance-us" />
       <BlogPost
+      slug="yaskawa-robot-maintenance-us"
       title="Yaskawa Robot Maintenance: US Field Service Challenges"
       date="April 15, 2026"
       category="Technical"

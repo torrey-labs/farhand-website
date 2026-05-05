@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="field-service-kpis-that-matter-2026" />
       <BlogPost
+      slug="field-service-kpis-that-matter-2026"
       title="Field Service KPIs That Actually Matter in 2026"
       date="April 14, 2026"
       category="Insights"

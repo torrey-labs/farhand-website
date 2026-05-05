@@ -23,23 +23,40 @@ const nextConfig: NextConfig = {
   // forward any pasted-URL hits on this host (legacy, before cofounders re-paste)
   // to the new resilient host. Once everyone's re-pasted, these can be removed.
   async redirects() {
+    // Domain consolidation. All non-canonical hosts 301 to farhand.ai so
+    // search engines coalesce signal onto the single canonical domain.
+    // To enable a new alternate domain:
+    //   1. Add the domain in Vercel project settings (or `vercel domains add`).
+    //   2. Add CNAME or A record per Vercel's instructions.
+    //   3. Add a `redirect` entry below with the new host. The next deploy
+    //      picks it up and starts redirecting on the new domain.
+    const ALTERNATE_HOSTS = [
+      // Currently aliased — redirect live:
+      "farhand.live",
+      "www.farhand.live",
+      // Reserved / planned alternates — uncomment after Vercel domain add:
+      // "farhandrobotics.com",
+      // "www.farhandrobotics.com",
+      // "farhand.io",
+      // "www.farhand.io",
+      // "farhand.com",
+      // "www.farhand.com",
+      // "farhand.us",
+      // "www.farhand.us",
+      // "getfarhand.com",
+      // "www.getfarhand.com",
+      // "tryfarhand.com",
+      // "www.tryfarhand.com",
+    ];
+    const altHostRedirects = ALTERNATE_HOSTS.map((host) => ({
+      source: "/:path*",
+      has: [{ type: "host" as const, value: host }],
+      destination: `https://farhand.ai/:path*`,
+      permanent: true,
+    }));
+
     return [
-      // Domain migration: farhand.live -> farhand.ai (canonical).
-      // Both domains are aliases of the same Vercel project, but Next.js
-      // matches on the Host header so this only fires when the request
-      // came in on farhand.live. SEO juice consolidates onto farhand.ai.
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "farhand.live" }],
-        destination: "https://farhand.ai/:path*",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.farhand.live" }],
-        destination: "https://farhand.ai/:path*",
-        permanent: true,
-      },
+      ...altHostRedirects,
       // Signature assets moved to a separate Vercel project so signatures
       // keep rendering even if this website is down. Forwards any pasted-URL
       // hits on this host (legacy, before cofounders re-paste) to the new

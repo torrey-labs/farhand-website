@@ -18,12 +18,38 @@ export const metadata: Metadata = {
     description: 'AI-guided Field Service Engineers. On-demand industrial robot & machinery service across every US zip code.',
     url: 'https://farhand.ai/',
     type: 'website',
+    images: [
+      {
+        url: 'https://farhand.ai/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'Farhand — Your field service partner',
+      },
+    ],
   },
+};
+
+// Schema.org VideoObject for the hero — gives Google a rich-result
+// candidate. uploadDate matches the file's modification date on disk.
+const homeVideoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'Farhand — AI-guided field service for robots & industrial machinery',
+  description:
+    'A nationwide network of AI-guided Field Service Engineers installing, commissioning, and repairing industrial robots and machinery at customer sites.',
+  thumbnailUrl: 'https://farhand.ai/hero-poster.jpg',
+  uploadDate: '2026-04-02',
+  contentUrl: 'https://farhand.ai/Farhand%20website.mp4',
+  publisher: { '@id': 'https://farhand.ai/#organization' },
 };
 
 export default function Home() {
   return (
     <main style={{ background: '#000', minHeight: '100vh' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeVideoSchema) }}
+      />
       <Navigation />
       <Hero />
 

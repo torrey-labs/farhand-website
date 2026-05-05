@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="semiconductor-equipment-field-service-benchmarks" />
       <BlogPost
+      slug="semiconductor-equipment-field-service-benchmarks"
       title="Semiconductor Equipment Field Service: 2026 Benchmarks and the Downtime Economics"
       date="April 14, 2026"
       category="Insights"

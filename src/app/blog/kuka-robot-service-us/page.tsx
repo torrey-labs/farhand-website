@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="kuka-robot-service-us" />
       <BlogPost
+      slug="kuka-robot-service-us"
       title="KUKA Robot Service in the US: What European OEMs Need to Know"
       date="April 15, 2026"
       category="Industry"

@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="cobot-maintenance-guide" />
       <BlogPost
+      slug="cobot-maintenance-guide"
       title="Cobot Maintenance Guide: Collaborative Robot Service Best Practices"
       date="April 12, 2026"
       category="Technical"

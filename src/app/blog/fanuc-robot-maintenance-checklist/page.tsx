@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="fanuc-robot-maintenance-checklist" />
       <BlogPost
+      slug="fanuc-robot-maintenance-checklist"
       title="FANUC Robot Maintenance: A Complete Service Checklist"
       date="April 12, 2026"
       category="Technical"

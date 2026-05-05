@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="tsmc-supplier-equipment-service" />
       <BlogPost
+      slug="tsmc-supplier-equipment-service"
       title="TSMC Supplier Equipment Service: Scaling with US Fab Expansion"
       date="April 15, 2026"
       category="Industry"

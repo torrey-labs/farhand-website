@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="knowledge-preservation-field-service" />
       <BlogPost
+      slug="knowledge-preservation-field-service"
       title="Your Senior Tech Is Retiring. Is Their Knowledge Retiring Too?"
       date="April 7, 2026"
       category="Insights"

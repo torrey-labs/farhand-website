@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="ai-guided-field-service-robots" />
       <BlogPost
+      slug="ai-guided-field-service-robots"
       title="AI-Guided Field Service for Robots: Why the Old Model is Broken"
       date="April 10, 2026"
       category="Industry"

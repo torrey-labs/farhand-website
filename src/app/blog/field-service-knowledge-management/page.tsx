@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="field-service-knowledge-management" />
       <BlogPost
+      slug="field-service-knowledge-management"
       title="Knowledge Management for Field Service Teams"
       date="April 12, 2026"
       category="Insights"

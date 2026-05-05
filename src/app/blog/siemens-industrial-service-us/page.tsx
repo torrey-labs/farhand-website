@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="siemens-industrial-service-us" />
       <BlogPost
+      slug="siemens-industrial-service-us"
       title="Siemens Industrial Equipment Service in the US"
       date="April 15, 2026"
       category="Industry"

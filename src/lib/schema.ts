@@ -53,24 +53,50 @@ type ProductSchemaInput = {
   description: string;
   url: string;
   category?: string;
+  /** When provided, areaServed becomes a City entity with geo coords. */
+  city?: {
+    name: string;
+    state: string;
+    lat?: number;
+    lng?: number;
+  };
 };
 
-export function productSchema({ name, description, url, category }: ProductSchemaInput) {
+export function productSchema({ name, description, url, category, city }: ProductSchemaInput) {
+  // If a city is supplied, build a City-typed areaServed (with geo when we
+  // have coords). Otherwise fall back to country-level. Google's Service
+  // rich-result spec rewards more specific area data.
+  const areaServed = city
+    ? {
+        '@type': 'City',
+        name: `${city.name}, ${city.state}`,
+        ...(city.lat !== undefined && city.lng !== undefined
+          ? {
+              geo: {
+                '@type': 'GeoCoordinates',
+                latitude: city.lat,
+                longitude: city.lng,
+              },
+            }
+          : {}),
+        containedInPlace: {
+          '@type': 'Country',
+          name: 'United States',
+        },
+      }
+    : {
+        '@type': 'Country',
+        name: 'United States',
+      };
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name,
     description,
     url,
-    provider: {
-      '@type': 'Organization',
-      name: ORG_NAME,
-      url: SITE_URL,
-    },
-    areaServed: {
-      '@type': 'Country',
-      name: 'United States',
-    },
+    provider: { '@id': `${SITE_URL}/#organization` },
+    areaServed,
     ...(category ? { category } : {}),
   };
 }

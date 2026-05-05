@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import VerticalLanding from '@/components/VerticalLanding';
 import { cities, getCityBySlug } from '@/data/cities';
+import { cityCoords } from '@/data/cityCoords';
 import { getMachineTypeBySlug, machineTypes } from '@/data/machineTypes';
 import { productSchema, breadcrumbSchema } from '@/lib/schema';
 
@@ -86,11 +87,17 @@ export default async function MachineCityPage({
   const subheadline = `On-demand Field Service Engineers across the ${city.metroArea}, guided by AI that already knows your ${machine.displayName.toLowerCase()} — manuals, SOPs, wiring diagrams, and repair history loaded into context before they arrive on site.`;
 
   const url = `https://farhand.ai/services/${machine.slug}/${city.slug}`;
+  const coords = cityCoords[city.slug];
   const serviceLd = productSchema({
     name: `${machine.displayName} Field Service in ${city.name}, ${city.state}`,
     description: `On-demand, AI-guided ${machine.displayName.toLowerCase()} field service in ${city.name}, ${city.stateName}. Farhand dispatches Field Service Engineers across the ${city.metroArea}.`,
     url,
     category: machine.displayName,
+    city: {
+      name: city.name,
+      state: city.state,
+      ...(coords ? { lat: coords.lat, lng: coords.lng } : {}),
+    },
   });
   const crumbLd = breadcrumbSchema([
     { name: 'Home', url: 'https://farhand.ai' },

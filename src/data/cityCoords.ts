@@ -1,0 +1,107 @@
+/**
+ * Latitude/longitude pairs for the highest-traffic cities in our
+ * programmatic-SEO map. Used to enrich Service schema with
+ * `areaServed.geo` on /services/[machine]/[city] pages.
+ *
+ * Source: city-center coordinates (rounded to 4 decimal places —
+ * ~10m precision, well over what Google needs for rich-result eligibility).
+ *
+ * Not every city in cities.ts needs to be here. Cities not in this
+ * map render Service schema without geo (still valid).
+ */
+export const cityCoords: Record<string, { lat: number; lng: number }> = {
+  // Tier 1
+  'new-york': { lat: 40.7128, lng: -74.006 },
+  'los-angeles': { lat: 34.0522, lng: -118.2437 },
+  'chicago': { lat: 41.8781, lng: -87.6298 },
+  'houston': { lat: 29.7604, lng: -95.3698 },
+  'phoenix': { lat: 33.4484, lng: -112.074 },
+  'philadelphia': { lat: 39.9526, lng: -75.1652 },
+  'san-antonio': { lat: 29.4241, lng: -98.4936 },
+  'san-diego': { lat: 32.7157, lng: -117.1611 },
+  'dallas': { lat: 32.7767, lng: -96.797 },
+  'san-jose': { lat: 37.3382, lng: -121.8863 },
+
+  // Tier 2
+  'austin': { lat: 30.2672, lng: -97.7431 },
+  'jacksonville': { lat: 30.3322, lng: -81.6557 },
+  'fort-worth': { lat: 32.7555, lng: -97.3308 },
+  'columbus': { lat: 39.9612, lng: -82.9988 },
+  'charlotte': { lat: 35.2271, lng: -80.8431 },
+  'indianapolis': { lat: 39.7684, lng: -86.1581 },
+  'seattle': { lat: 47.6062, lng: -122.3321 },
+  'denver': { lat: 39.7392, lng: -104.9903 },
+  'boston': { lat: 42.3601, lng: -71.0589 },
+  'portland': { lat: 45.5152, lng: -122.6784 },
+  'oklahoma-city': { lat: 35.4676, lng: -97.5164 },
+  'las-vegas': { lat: 36.1699, lng: -115.1398 },
+  'detroit': { lat: 42.3314, lng: -83.0458 },
+  'memphis': { lat: 35.1495, lng: -90.049 },
+  'louisville': { lat: 38.2527, lng: -85.7585 },
+  'milwaukee': { lat: 43.0389, lng: -87.9065 },
+  'baltimore': { lat: 39.2904, lng: -76.6122 },
+  'albuquerque': { lat: 35.0844, lng: -106.6504 },
+  'tucson': { lat: 32.2226, lng: -110.9747 },
+  'fresno': { lat: 36.7378, lng: -119.7871 },
+
+  // Tier 3
+  'sacramento': { lat: 38.5816, lng: -121.4944 },
+  'kansas-city': { lat: 39.0997, lng: -94.5786 },
+  'mesa': { lat: 33.4152, lng: -111.8315 },
+  'atlanta': { lat: 33.749, lng: -84.388 },
+  'omaha': { lat: 41.2565, lng: -95.9345 },
+  'colorado-springs': { lat: 38.8339, lng: -104.8214 },
+  'raleigh': { lat: 35.7796, lng: -78.6382 },
+  'long-beach': { lat: 33.7701, lng: -118.1937 },
+  'virginia-beach': { lat: 36.8529, lng: -75.978 },
+  'miami': { lat: 25.7617, lng: -80.1918 },
+  'oakland': { lat: 37.8044, lng: -122.2711 },
+  'minneapolis': { lat: 44.9778, lng: -93.265 },
+  'tulsa': { lat: 36.154, lng: -95.9928 },
+  'arlington': { lat: 32.7357, lng: -97.1081 },
+  'tampa': { lat: 27.9506, lng: -82.4572 },
+  'new-orleans': { lat: 29.9511, lng: -90.0715 },
+  'wichita': { lat: 37.6872, lng: -97.3301 },
+  'cleveland': { lat: 41.4993, lng: -81.6944 },
+  'bakersfield': { lat: 35.3733, lng: -119.0187 },
+  'aurora': { lat: 39.7294, lng: -104.8319 },
+  'anaheim': { lat: 33.8366, lng: -117.9143 },
+  'honolulu': { lat: 21.3069, lng: -157.8583 },
+  'santa-ana': { lat: 33.7455, lng: -117.8677 },
+  'riverside': { lat: 33.9806, lng: -117.3755 },
+  'corpus-christi': { lat: 27.8006, lng: -97.3964 },
+  'lexington': { lat: 38.0406, lng: -84.5037 },
+  'stockton': { lat: 37.9577, lng: -121.2908 },
+  'henderson': { lat: 36.0395, lng: -114.9817 },
+  'saint-paul': { lat: 44.9537, lng: -93.09 },
+  'st-louis': { lat: 38.627, lng: -90.1994 },
+
+  // Tier 4 / specialized hubs
+  'pittsburgh': { lat: 40.4406, lng: -79.9959 },
+  'cincinnati': { lat: 39.1031, lng: -84.512 },
+  'anchorage': { lat: 61.2181, lng: -149.9003 },
+  'plano': { lat: 33.0198, lng: -96.6989 },
+  'orlando': { lat: 28.5383, lng: -81.3792 },
+  'irvine': { lat: 33.6846, lng: -117.8265 },
+  'newark': { lat: 40.7357, lng: -74.1724 },
+  'durham': { lat: 35.994, lng: -78.8986 },
+  'chula-vista': { lat: 32.6401, lng: -117.0842 },
+  'toledo': { lat: 41.6528, lng: -83.5379 },
+  'fort-wayne': { lat: 41.0793, lng: -85.1394 },
+  'jersey-city': { lat: 40.7178, lng: -74.0431 },
+  'st-petersburg': { lat: 27.7676, lng: -82.6403 },
+  'laredo': { lat: 27.5306, lng: -99.4803 },
+  'madison': { lat: 43.0731, lng: -89.4012 },
+  'lubbock': { lat: 33.5779, lng: -101.8552 },
+  'winston-salem': { lat: 36.0999, lng: -80.2442 },
+  'garland': { lat: 32.9126, lng: -96.6389 },
+  'glendale': { lat: 33.5387, lng: -112.186 },
+  'hialeah': { lat: 25.8576, lng: -80.2781 },
+  'reno': { lat: 39.5296, lng: -119.8138 },
+  'baton-rouge': { lat: 30.4515, lng: -91.1871 },
+  'irving': { lat: 32.814, lng: -96.9489 },
+  'chesapeake': { lat: 36.7682, lng: -76.2875 },
+  'lincoln': { lat: 40.8136, lng: -96.7026 },
+  'mobile': { lat: 30.6954, lng: -88.0399 },
+  'greenville': { lat: 34.8526, lng: -82.394 },
+};

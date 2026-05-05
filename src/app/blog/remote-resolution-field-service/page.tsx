@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="remote-resolution-field-service" />
       <BlogPost
+      slug="remote-resolution-field-service"
       title="1 in 3 Service Issues Can Be Resolved Without Sending Anyone"
       date="April 8, 2026"
       category="Technology"

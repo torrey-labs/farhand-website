@@ -1,6 +1,65 @@
 # Farhand SEO & Marketing Dashboard
 
-Living status doc. **Last updated: 2026-05-04.**
+Living status doc. **Last updated: 2026-05-05.**
+
+## 2026-05-05 SEO push #5 (LocalBusiness, multi-domain, internal linking, partners)
+
+Big push to bring everything to "rich-result eligible" status and prepare the
+multi-domain footprint.
+
+### Structured data
+
+- **Organization → ProfessionalService dual-typed**: `@type` is now
+  `["Organization", "ProfessionalService"]`. Adds `geo` (lat/lng of
+  registered office), `serviceArea` (GeoShape, US-wide), `openingHoursSpecification`
+  (24/7 emergency + weekday business-hours support), `priceRange` (`$$`),
+  `paymentAccepted`, `currenciesAccepted`, expanded `knowsAbout` (21 brands +
+  techs), expanded `serviceType` (12 service categories), `slogan`,
+  `knowsLanguage`. Reserved `sameAs` placeholders for GitHub, Crunchbase,
+  ProductHunt, F6S, FB, IG, YouTube — uncomment as those profiles get claimed.
+- **VideoObject** on the homepage — wraps the hero MP4 with thumbnail
+  (`hero-poster.jpg`), upload date, content URL, publisher reference. Makes
+  Farhand's hero video eligible for video rich results.
+- **Service schema with per-city geo** on programmatic
+  `/services/[machine]/[city]` pages. New `src/data/cityCoords.ts` with
+  lat/lng for the top ~85 cities. Service schema now renders `areaServed`
+  as a `City` entity with `GeoCoordinates` + `containedInPlace` (Country).
+  Falls back to country-level for cities not yet in the coords map.
+- `productSchema()` in `src/lib/schema.ts` now uses `provider: { @id }`
+  reference instead of inlining Organization — DRY, more efficient parsing.
+
+### Multi-domain readiness
+
+- **Reusable host-redirect block in `next.config.ts`**: `ALTERNATE_HOSTS`
+  array drives the redirect rules. Drop a new entry, redeploy, and any
+  request on that host 301s to `farhand.ai`. Ready slots commented in for
+  `farhandrobotics.com`, `farhand.io`, `farhand.com`, `farhand.us`,
+  `getfarhand.com`, `tryfarhand.com` — uncomment after Vercel domain add.
+- Domain-add procedure documented inline.
+
+### Internal linking
+
+- **Related posts** on every blog post — 3 cards at the bottom of each
+  article, prioritising same-category posts, fallback to most-recent. Boosts
+  internal link graph + dwell time + crawl depth on long-tail pages.
+- Implemented in `src/components/BlogPost.tsx`; `slug="..."` prop wired
+  into all 23 blog post pages via codegen.
+
+### Sitemap
+
+- **Sourced from `src/data/blogPosts.ts`** instead of a 22-slug hardcoded list
+  — fixes the SEO bug where the new MTTR post wasn't in the sitemap.
+- **`lastModified`** on blog entries now uses each post's actual date instead of
+  treating every crawl as "now" (more honest signal to search engines).
+- **Per-post images entries** — each blog sitemap entry now declares its
+  `/blog/<slug>/opengraph-image` for Google Images discoverability.
+
+### New page
+
+- **`/partners`** — directory of industry-body memberships, conference
+  partnerships, and reciprocal-link targets. Added to sitemap. Each entry has
+  a clear `Active` / `Planned` badge so we can systematically work through
+  pursuing claim/listing for each.
 
 ## 2026-05-04 SEO push #4 (domain migration + per-post OG + reputation signals)
 
@@ -97,8 +156,8 @@ _Running log. Every new inbound link to `farhand.ai` lands here with date, sourc
 | **Google Search Console** | ✅ verified | HTML file method, sitemap submitted |
 | **Bing Webmaster** | ✅ imported | From GSC, sitemap submitted |
 | **Vercel Analytics + Speed Insights** | ✅ live | `@vercel/analytics` + `@vercel/speed-insights` in `layout.tsx` |
-| **Schema.org** | ✅ | Organization, Article, Service, Breadcrumb, FAQ |
-| **Sitemap** | ✅ dynamic | `src/app/sitemap.ts`, 570+ URLs |
+| **Schema.org** | ✅ | Organization+ProfessionalService, VideoObject, Article, Service (with City+geo on programmatic), Breadcrumb, FAQ, WebSite |
+| **Sitemap** | ✅ dynamic + image | `src/app/sitemap.ts`, 595+ URLs, per-post OG images, per-post lastmod |
 | **robots.txt** | ✅ | `public/robots.txt`, blocks `/ui` |
 | **RSS feed** | ✅ | `src/app/rss.xml/route.ts` |
 | **Lead capture (OEM form)** | ✅ | `/oem` → `/api/oem-lead` → Notion "Website Leads" DB |
@@ -117,7 +176,9 @@ _Running log. Every new inbound link to `farhand.ai` lands here with date, sourc
 | **Content syndication** | ⚠️ partial | Telegraph token set. Dev.to, Hashnode need keys. 5/22 posts syndicated. |
 | **Newsletter provider** | ⬜ | API route is placeholder (`console.log`). Need Loops/Resend/Beehiiv. |
 | **HARO / Featured signup** | ⬜ | Requires manual signup at featured.com. Highest-ROI backlink strategy. |
-| **Google Business Profile** | ⬜ | Needs to be claimed at business.google.com. |
+| **Google Business Profile** | ⬜ | Needs claim at business.google.com. LocalBusiness schema (`@type: ProfessionalService`) is already on every page so the claim flow has rich signal to work from. |
+| **Multi-domain redirects** | ✅ ready | `ALTERNATE_HOSTS` in `next.config.ts` — drop a domain in, redeploy, it 301s to farhand.ai |
+| **Internal linking (related posts)** | ✅ | 3-card "Keep reading" strip on every blog post |
 | **Search Atlas OTTO active** | ⚠️ | Widget engaged but `is_active: false`. One-click toggle in SA dashboard. |
 
 ---
@@ -336,33 +397,145 @@ GA4 captures all UTM parameters automatically. No code needed.
 
 ## Backlink strategy
 
-### Active
+### Submission targets (free directories — manual signup, ~5 min each)
+
+Work through these in order. Each is a single backlink from a high-authority
+domain. **Log every backlink created in the table at the top of this doc.**
+
+| Priority | Target | URL | Why | Status |
+|---|---|---|---|---|
+| 1 | Google Business Profile | business.google.com | Local SEO, map listing, knowledge panel eligibility | ⬜ |
+| 2 | Bing Places for Business | bingplaces.com | Bing equivalent of GBP | ⬜ |
+| 3 | Apple Business Connect | businessconnect.apple.com | Apple Maps + Siri results | ⬜ |
+| 4 | LinkedIn Company Page | linkedin.com/company/farhand-robotics | Already exists; add website link | ✅ |
+| 5 | Crunchbase | crunchbase.com | Discovery + investor signals | ⬜ |
+| 6 | F6S | f6s.com | Startup directory + investor matching | ⬜ |
+| 7 | Product Hunt | producthunt.com (launch Relay) | One-time launch traffic spike + permanent listing | ⬜ |
+| 8 | BetaList | betalist.com | Early-stage discovery | ⬜ |
+| 9 | StartupBase | startupbase.io | Startup directory | ⬜ |
+| 10 | Capterra | capterra.com (B2B software directory) | Field service software category | ⬜ |
+| 11 | G2 | g2.com | Software review platform | ⬜ |
+| 12 | GetApp | getapp.com | B2B software directory | ⬜ |
+| 13 | Software Advice | softwareadvice.com | Field service category | ⬜ |
+| 14 | Robotics Business Review | roboticsbusinessreview.com (directory) | Robotics industry directory | ⬜ |
+| 15 | Automate.org (A3) | automate.org/member-directory | Member directory after joining | ⬜ |
+| 16 | ARM Institute member directory | arminstitute.org/members | Already a member; verify directory listing exists | ⬜ |
+| 17 | IEEE RAS industry partners | ieee-ras.org | IEEE Robotics Society partner program | ⬜ |
+| 18 | Y Combinator Launch | ycombinator.com/launches | If accepted | ⬜ |
+| 19 | GitHub Sponsors / @farhand-live profile | github.com/farhand-live | Profile README with link | ⬜ |
+| 20 | Built In | builtin.com (or Built In SF) | Tech-company employer brand directory | ⬜ |
+
+### Press / earned-media targets
+
+| Outlet | Beat | Pitch angle |
+|---|---|---|
+| Modern Machine Shop | Manufacturing | Reindustrialization / AI in field service |
+| Automation.com | Industrial automation | Programmatic case studies + benchmarks |
+| Field Service Digital | Field service | Founder thesis on AI-guided service |
+| Assembly Magazine | Assembly | Cobot deployment + service model |
+| Manufacturing.net | Manufacturing news | Contributor column on field service KPIs |
+| The Robot Report | Robotics | AI + service partnership angles |
+| Robotics 24/7 | Robotics ops | Coverage stories |
+| IndustryWeek | Manufacturing leadership | C-suite ROI on outsourced service |
+| Forbes Tech | General tech | Founder profile / category creation |
+| TechCrunch | Startups | If/when funding announced |
+
+### HARO / journalist queries
+
 - **HARO / Featured** — ⬜ not signed up. Signup: https://www.featured.com/experts-signup/. Daily digest, respond to 1-2 queries. Expected yield: 5-15 backlinks in 3 months from industry pubs.
 - **Qwoted** — ⬜ alternative to HARO. https://www.qwoted.com. B2B tech journalist focus.
+- **HelpAReporter (legacy)** — discontinued; Featured replaces it.
 
-### Opportunities (not started)
-- Guest posts: Modern Machine Shop, Automation.com, Field Service Digital, Assembly Magazine
-- OEM partner mentions (once customer case studies exist)
-- Robotics Business Review directory listing
-- Manufacturing.net contributor column
+### Guest-post opportunities
+
+- Modern Machine Shop — pitch a reindustrialization angle.
+- Automation.com — pitch case studies on AI-guided diagnostics.
+- Field Service Digital — pitch our founder thesis.
+- LinkedIn Newsletter — Aaryan's already publishing; cross-post selected blog content.
+
+### Reciprocal-link strategy
+
+- `/partners` page lists every active partnership. Each partner gets a
+  request to feature Farhand in their member directory or blogroll.
+- OEM partner mentions: once customer case studies exist, embed customer
+  logos with permission and link to their case-study page on farhand.ai
+  in exchange for a link from their newsroom.
+
+### Content-driven backlinks (link bait)
+
+- **`/services/{machine}/{city}` pages** — programmatic SEO target for
+  long-tail "service in city" queries; natural targets for local business
+  directories to link.
+- **Field Service ROI Calculator** (`/blog/field-service-roi-calculator`) —
+  high-utility content; tools like this get linked from peer blogs.
+- **Industry KPIs reports** (e.g., `/blog/field-service-kpis-that-matter-2026`)
+  — original benchmark data is highly link-worthy; double down with annual
+  refreshes.
+
+## Multi-domain & multi-website strategy
+
+### Why multi-domain
+
+Defensive (typo squatting, brand hijacking) + offensive (SEO breadth on the
+specific keywords each domain implies). All alternates 301 to `farhand.ai`,
+so authority consolidates.
+
+### Domains to acquire (cheapest-first)
+
+| Domain | Reason | Est. annual cost |
+|---|---|---|
+| `farhandrobotics.com` | Brand + keyword (robotics) | ~$15 |
+| `farhand.io` | Tech-startup convention | ~$35 |
+| `farhand.com` | Premium (likely taken / expensive) | $$$ |
+| `farhand.us` | US-specific | ~$10 |
+| `farhand.app` | If we ship a real app surface | ~$20 |
+| `getfarhand.com`, `tryfarhand.com` | Sales/marketing variants | ~$15 each |
+| `farhand.support`, `farhand.services` | Service-keyword variants | ~$30 each |
+
+After registering, set DNS to point at Vercel (CNAME `cname.vercel-dns.com`),
+add the domain in Vercel project settings, and uncomment the corresponding
+entry in `ALTERNATE_HOSTS` in `next.config.ts`.
+
+### Multi-website strategy (separate sites, NOT redirects)
+
+The user has hinted at running multiple websites. The right place for that
+is **vertical microsites** that build topical authority that links back to
+farhand.ai. Examples:
+
+- `farhand.support` — pure technical-help blog with deep service content,
+  cross-linking back to farhand.ai for booking/lead capture.
+- `industrialrobotservice.com` (etc.) — a category-leader brand presence
+  that ranks for the broad query and funnels qualified traffic to
+  farhand.ai. Run as a separate Vercel project to stay independently
+  indexable.
+
+Microsites should NOT 301 to farhand.ai (that defeats the point). They
+should be independent sites with editorial content + canonical to
+themselves + a sidebar/CTA pushing to farhand.ai. Build authority on
+the microsite first, then start cross-linking.
 
 ---
 
 ## TODO (ordered by priority)
 
-### Immediate (this week)
-1. ⬜ Sign up for HARO/Featured (manual — https://www.featured.com/experts-signup/)
-2. ⬜ Activate Search Atlas OTTO (`is_active: false` → one-click toggle in SA dashboard)
-3. ⬜ Add Apollo API key to Vercel env (enables lead enrichment)
-4. ⬜ Add Dev.to API key to `scripts/.env.syndication` (30-second signup)
-5. ⬜ Claim Google Business Profile at business.google.com
+### Immediate (this week — manual user actions)
+1. ⬜ **Claim Google Business Profile** at business.google.com — required for local pack + map results.
+2. ⬜ **Add `farhand.ai` to Google Search Console** as a new property; verify via DNS or HTML file. File a change-of-address from `farhand.live`.
+3. ⬜ **Bing Webmaster** — same property addition for `farhand.ai`.
+4. ⬜ **Submit `farhand.ai` to HSTS preload** at https://hstspreload.org (headers are already correct).
+5. ⬜ Sign up for **HARO/Featured** — https://www.featured.com/experts-signup/
+6. ⬜ Activate **Search Atlas OTTO** — one-click toggle in SA dashboard
+7. ⬜ Claim **Crunchbase**, **F6S**, **BetaList** profiles (links in Backlink strategy)
 
 ### This month
-6. ⬜ Add IPinfo.io token ($49/mo) or sign up for RB2B free trial (reverse IP activation)
-7. ⬜ Wire newsletter provider (Loops/Beehiiv) into `/api/newsletter`
-8. ⬜ Generate OG cover images for all blog posts (needs OPENAI_API_KEY or UNSPLASH_ACCESS_KEY)
-9. ⬜ Create static root OG image at `public/og-default.jpg` (1200×630 branded)
-10. ⬜ Transfer domain registration from GoDaddy to Cloudflare Registrar ($11/yr vs $22/yr)
+8. ⬜ Add **IPinfo.io token** ($49/mo) or sign up for RB2B free trial (reverse IP activation)
+9. ⬜ Wire newsletter provider (Loops/Beehiiv) into `/api/newsletter`
+10. ⬜ Register **alternate domains** (farhandrobotics.com, farhand.io, farhand.us, getfarhand.com, tryfarhand.com); add to Vercel; uncomment in `ALTERNATE_HOSTS` (`next.config.ts`)
+11. ⬜ Apply for **A3 (Automate.org)** integrator listing; **IEEE RAS** partner program
+12. ⬜ Pitch **3 guest-post outlets** from the Press table (Modern Machine Shop, Automation.com, Field Service Digital)
+13. ⬜ Transfer domain registration from GoDaddy to Cloudflare Registrar ($11/yr vs $22/yr)
+14. ⬜ Launch **Product Hunt** for Farhand Relay
+15. ⬜ Stand up first **microsite** (recommended start: `farhand.support` for the technical-help blog) per the multi-website strategy
 
 ### Ongoing (automated)
 11. ✅ Weekly blog post (Monday, Claude agent)

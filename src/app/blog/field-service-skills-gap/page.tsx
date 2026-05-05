@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="field-service-skills-gap" />
       <BlogPost
+      slug="field-service-skills-gap"
       title="The Field Service Skills Gap Is Costing You Millions"
       date="April 9, 2026"
       category="Insights"

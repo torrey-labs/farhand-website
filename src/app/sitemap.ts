@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { cities } from '@/data/cities';
 import { machineTypes } from '@/data/machineTypes';
+import { blogPosts as blogPostMeta } from '@/data/blogPosts';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://farhand.ai';
@@ -43,36 +44,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   const coreMarketingPages = [
-    { slug: 'pitch',   priority: 0.9 },
-    { slug: 'oem',     priority: 0.9 },
-    { slug: 'relay',   priority: 0.9 },
-    { slug: 'connect', priority: 0.8 },
+    { slug: 'pitch',    priority: 0.9 },
+    { slug: 'oem',      priority: 0.9 },
+    { slug: 'relay',    priority: 0.9 },
+    { slug: 'connect',  priority: 0.8 },
+    { slug: 'partners', priority: 0.7 },
   ];
 
-  const blogPosts = [
-    'ai-guided-field-service-robots',
-    'field-service-skills-gap',
-    'remote-resolution-field-service',
-    'knowledge-preservation-field-service',
-    'first-time-fix-rate-ai',
-    'field-service-roi-calculator',
-    'fanuc-robot-maintenance-checklist',
-    'industrial-robot-downtime-cost',
-    'predictive-vs-preventive-maintenance',
-    'remote-diagnostics-field-service',
-    'oem-field-service-scaling',
-    'field-service-knowledge-management',
-    'reduce-truck-rolls-ai',
-    'field-service-trends-2026',
-    'cobot-maintenance-guide',
-    'semiconductor-equipment-field-service-benchmarks',
-    'medical-device-field-service-fda-compliance',
-    'field-service-kpis-that-matter-2026',
-    'kuka-robot-service-us',
-    'yaskawa-robot-maintenance-us',
-    'tsmc-supplier-equipment-service',
-    'siemens-industrial-service-us',
-  ];
+  // Source of truth: src/data/blogPosts.ts. Importing the full meta lets
+  // us also pull each post's per-post OG image into the sitemap, and stay
+  // in sync when posts are added (the SEO bug where new posts were absent
+  // from the sitemap).
+  const blogPosts = blogPostMeta;
 
   return [
     {
@@ -123,11 +106,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
-    ...blogPosts.map((slug) => ({
-      url: `${baseUrl}/blog/${slug}`,
-      lastModified: now,
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      // Use post date for lastModified — communicates real freshness
+      // to search engines instead of treating every crawl as "now."
+      lastModified: new Date(post.date),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
+      // Per-post OG image — declares image content for Google Images
+      // discoverability via the sitemap protocol.
+      images: [`${baseUrl}/blog/${post.slug}/opengraph-image`],
     })),
     {
       url: `${baseUrl}/terms`,

@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="reduce-mttr-industrial-robots" />
       <BlogPost
+      slug="reduce-mttr-industrial-robots"
       title="How to Reduce MTTR on Industrial Robots: A Field Service Playbook"
       date="April 20, 2026"
       category="Technical"

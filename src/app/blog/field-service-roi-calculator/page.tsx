@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="field-service-roi-calculator" />
       <BlogPost
+      slug="field-service-roi-calculator"
       title="How to Calculate Field Service ROI in 2026"
       date="April 12, 2026"
       category="Insights"

@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="medical-device-field-service-fda-compliance" />
       <BlogPost
+      slug="medical-device-field-service-fda-compliance"
       title="Medical Device Field Service: FDA 21 CFR 820 Compliance Guide"
       date="April 14, 2026"
       category="Technical"

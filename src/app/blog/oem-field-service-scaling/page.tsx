@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="oem-field-service-scaling" />
       <BlogPost
+      slug="oem-field-service-scaling"
       title="Why OEMs Can't Scale Internal Service Teams"
       date="April 12, 2026"
       category="Industry"

@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="remote-diagnostics-field-service" />
       <BlogPost
+      slug="remote-diagnostics-field-service"
       title="Remote Diagnostics: The $14B Opportunity in Field Service"
       date="April 12, 2026"
       category="Industry"

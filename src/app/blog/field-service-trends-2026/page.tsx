@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="field-service-trends-2026" />
       <BlogPost
+      slug="field-service-trends-2026"
       title="The Future of Field Service: 2026 and Beyond"
       date="April 12, 2026"
       category="Industry"
