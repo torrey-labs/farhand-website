@@ -12,6 +12,7 @@ export default function Post() {
     <>
       <ArticleSchema slug="plc-troubleshooting-remote-diagnostics" />
       <BlogPost
+      slug="plc-troubleshooting-remote-diagnostics"
       title="PLC Troubleshooting with Remote Diagnostics: Cutting MTTR in Half"
       date="May 4, 2026"
       category="Technical"
