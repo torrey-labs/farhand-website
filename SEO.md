@@ -1,6 +1,57 @@
 # Farhand SEO & Marketing Dashboard
 
-Living status doc. **Last updated: 2026-05-05.**
+Living status doc. **Last updated: 2026-05-06.**
+
+## 2026-05-06 SEO push #6 (per-city local hubs + GBP playbook)
+
+Built the local-pack target surface — city hub pages modelled on
+robotlab.com/{city} but stayed honest about service-area mode (no fake
+local addresses).
+
+### Per-city pages
+
+- **`/locations`** — directory of all 85 cities grouped by region
+  (Northeast / Southeast / Midwest / South-Central / Mountain / West).
+  One-hop reach from homepage via the new footer link strip.
+- **`/locations/[city]`** (85 pages) — H1 "Field service in {City}, {State}.",
+  city-specific intro paragraph, machine-type cross-link grid (7 per city),
+  how-it-works, other-metros tail. Renders LocalBusiness JSON-LD with
+  serviceArea: City + GeoCircle 50mi radius around city center, parent
+  Organization reference, HQ address.
+- **`src/data/cityProfiles.ts`** — top 30 metros hand-curated with
+  intro paragraph (named neighborhoods, industrial corridors, employer mix),
+  industrialCorridors[], topEmployers[], industryMix[]. Cities 31–85 fall
+  back to a clean generic intro. Adding a profile is ~5min of research per
+  city; cadence target 2–3 new profiles/week.
+- New schema builders in `src/lib/schema.ts`:
+  - `localBusinessSchema()` — ProfessionalService with serviceArea
+  - `aggregateRatingSchema()` and `reviewSchema()` — wired but no-op until
+    real reviews land. Drops in cleanly when GBP API → Notion → here pipeline
+    is built.
+
+### Footer reach
+
+Added /locations + /services + /blog + /partners + /faq to the footer
+bottom bar so every primary surface is one hop from homepage. Improves
+crawl depth + internal PageRank distribution.
+
+### What this enables
+
+The depth-of-content moves /locations/{detroit, phoenix, houston} etc.
+out of "thin programmatic" and into "city-relevant" territory. Combined
+with the per-city Service schema (already shipping) on /services/[machine]/[city]
+pages, Google now has two surfaces per metro that talk about local
+manufacturing context — the ranking signal the user asked for.
+
+### Out of scope (manual user action)
+
+- Real Google Business Profiles per metro — see new "Local SEO + GBP playbook"
+  section below for the realistic budget + steps.
+- Real review collection at scale — schema is ready; needs Birdeye/NiceJob
+  subscription + GBP setup first.
+- Virtual offices + local phone numbers per metro — see playbook for cost.
+
+## 2026-05-05 SEO push #5 (LocalBusiness, multi-domain, internal linking, partners)
 
 ## 2026-05-05 SEO push #5 (LocalBusiness, multi-domain, internal linking, partners)
 
@@ -471,6 +522,190 @@ domain. **Log every backlink created in the table at the top of this doc.**
 - **Industry KPIs reports** (e.g., `/blog/field-service-kpis-that-matter-2026`)
   — original benchmark data is highly link-worthy; double down with annual
   refreshes.
+
+## Local SEO + Google Business Profiles — multi-city playbook
+
+The single biggest SEO move available to a service-area business is **real
+GBPs in the metros you serve**. There is no shortcut: Google personally
+verifies each address, and faking multi-locations gets ALL profiles
+suspended (including your legit one).
+
+### The 3 paths, ranked by cost vs ceiling
+
+| Path | What it is | Cost | Ceiling | When |
+|---|---|---|---|---|
+| **A — Single GBP, nationwide** | One profile at Lewes DE HQ. Service-area covers all 85 cities. All reviews land here. | $0/mo | Local pack only near Lewes; broad nationwide branding signal | Week 1 — claim immediately |
+| **B — Real hub network** | 5-10 priority metros each get a verified virtual office, unique local phone, postcard verification, weekly ops attention | ~$650-900/mo + 5-10hr/wk ops | 5-10 local packs ranking; visible in "near me" queries in those metros | Month 2-3 once Path A is live |
+| **C — DBA per state** | State-by-state subsidiary registration (Farhand NY LLC, Farhand CA LLC...). Each gets independent GBP, real local address, EIN, license. | $200-500 setup per state + ongoing compliance + Path B costs | Highest — full local identity per metro | Defer until $500K+ ARR + dedicated ops team |
+
+### Path A — start here this week (free, 30 min setup)
+
+1. Go to **business.google.com** → "Add your business to Google."
+2. Name: **Farhand**. Category: **Industrial Equipment Repair Service**.
+3. "I deliver goods and services to my customers" → **yes**. Hide address;
+   set service area to all states (or a long list of cities).
+4. Phone: 857-498-9778. Hours: 24/7 emergency, 9-5 weekday. Website:
+   farhand.ai.
+5. Verification: Google will call/text the phone. Enter the code.
+6. Populate: photos (technicians on-site, robots, our coverage map),
+   services list (mirror /services taxonomy), products (Relay), Q&A
+   answers (mirror coreFaqs).
+7. **Reviews** — funnel ALL real-customer reviews here. Email a Google
+   review link after every closed-out service ticket. Goal: 10+ reviews
+   in first 90 days, 4.5+ avg rating.
+
+This profile alone:
+- Ranks in the local pack for "robot service near me" queries within 50mi
+  of Lewes.
+- Generates a knowledge panel for branded "Farhand" searches.
+- Lights up the LocalBusiness schema we're already shipping into a real
+  Google entity.
+
+### Path B — priority-metro hub network (target months 2-3)
+
+**Pick 5 metros first**, expand later. Recommended starting set based on
+ICP density: **Detroit, Houston, Phoenix, Chicago, Los Angeles**. After 90
+days, if those 5 are ranking + converting, expand to next 10 (Dallas,
+Atlanta, Seattle, Boston, Pittsburgh, Indianapolis, Minneapolis, Charlotte,
+Cincinnati, Cleveland).
+
+#### Required ingredients per metro
+
+| Component | What | Cost |
+|---|---|---|
+| Verifiable physical address | Virtual office with mail receipt + scan service | $49-150/mo |
+| Unique local phone number | OpenPhone US local DID, rings to central | $15-19/mo |
+| Postcard verification | Mail-handling service photographs the postcard | included with virtual office |
+| GBP profile content | Photos, services, hours, Q&A, weekly posts | 1-2hr setup, 30min/wk maintain |
+| Review collection | Birdeye / NiceJob automated post-service ask | $200/mo (covers all metros) |
+
+#### Best-in-class virtual office providers
+
+| Provider | Per metro | Best for | Notes |
+|---|---|---|---|
+| **Alliance Virtual Offices** | $49-99/mo | Cheapest legit option | Mail receipt + scan included; works for GBP postcard verification |
+| **Davinci Virtual** | $50-150/mo | Slightly more premium addresses | Same model, more cities |
+| **Regus / IWG** | $99-250/mo | Premium business-park addresses | Worth the upcharge in metros where address matters (Manhattan, downtown LA) |
+| **Industrious** | $129-299/mo | Best-in-class day passes if you want occasional in-person presence | Overkill for pure GBP play |
+| Anytime Mailbox | $9.99-29.99/mo | Cheapest possible | ⚠️ Some Google reviewers reject these as "mailbox-only" addresses. Coin flip. |
+
+#### Phone-number provider
+
+- **OpenPhone** — $19/mo per number. Web + iOS/Android app. Routes to a single inbox.
+- **Google Voice for Workspace** — $10/mo per number. Cheapest. Less feature-rich.
+- **Phone.com** — $14.99/mo per number. Solid fallback.
+
+#### Verification flow per metro
+
+1. Sign up for virtual office at the metro's address.
+2. Buy a local phone number that area code matches the address.
+3. Go to business.google.com, add a new location with that address + phone.
+4. Google mails a postcard with a 5-digit code (5-14 days).
+5. Virtual-office mail-handling scans the postcard, emails you the photo.
+6. Enter the code in GBP. Verified.
+7. Populate the profile (use Path A's content as a template).
+
+#### Realistic budget for 5 metros
+
+```
+5× Alliance Virtual Offices @ $75/mo  = $375/mo
+5× OpenPhone US local numbers @ $19   = $95/mo
+1× Birdeye review automation          = $200/mo
+1× BrightLocal citation tracking      = $39/mo
+                                      -------
+                                       $709/mo
+```
+
+Plus **5–10hr/week ops time** for postcard handling, weekly posting,
+review responses. If user does it themselves: ~$0 marginal. If outsourced
+to a fractional VA: ~$400-800/mo.
+
+### Path C — DBA + subsidiary network (later)
+
+What Roboworx and most national service brands actually do. Defer until
+you can dedicate an ops hire to it. Costs $200-500 setup per state +
+annual compliance + Path B's ongoing costs. Pays off when you start
+running 10+ locations and want each to feel locally-owned.
+
+### Review collection — this is the multiplier
+
+Reviews drive the local pack more than any other signal. The quality
+of reviews matters more than quantity past 30. Aim for:
+
+- **5+ reviews per profile within 30 days of launch.** Below 5, Google
+  ranks the profile poorly.
+- **4.5+ stars average.** A 4.7 average across 50 reviews beats a 5.0
+  across 5.
+- **Recent reviews** (within the last 90 days). Local pack penalizes
+  stale review signal.
+- **Review responses** — every review, good or bad, gets a response from
+  the business. Google ranks responsive profiles higher.
+- **Mentions of services in reviews** — coach customers to mention what
+  they got serviced ("FANUC R-2000ic robot at our Chicago plant" beats
+  "great service").
+
+#### Review automation tools
+
+| Tool | Per-month | Best for |
+|---|---|---|
+| **Birdeye** | $199-399/mo | All-in-one: review collection + posting + listings + reputation |
+| **NiceJob** | $75-149/mo | Service-business focused, simpler UI |
+| **Podium** | $399-549/mo | Adds web chat + payments; only worth it if you use those |
+| **Trustpilot** | Free tier + $200+/mo | Cross-platform reviews (G + Trustpilot widget on site) |
+
+Recommended start: **NiceJob** for cost, upgrade to **Birdeye** if you
+hit 50+ active customers.
+
+### Citation building — the foundation
+
+Citations = consistent NAP (Name / Address / Phone) listings on directories.
+Google uses citation consistency as a trust signal. Even with a great GBP,
+citation gaps will cap your rank.
+
+**Paid services that scale citations** (one fee, distributes to many directories):
+
+| Service | Cost | Reach |
+|---|---|---|
+| **BrightLocal** | $39/mo | Top 20 directories + ongoing maintenance + GBP rank tracker |
+| **Whitespark** | $30/mo or $399 one-time per location | Hand-built citations, higher quality but slower |
+| **Yext Local** | $199-999/mo | 70+ directories, real-time sync. Premium price. |
+| **Moz Local** | $129/yr per location | Cheaper than Yext, fewer directories |
+
+Recommended: **BrightLocal** monthly ($39 covers nationwide consistent NAP).
+
+### Per-city directory targets (for manual / Whitespark scaling)
+
+For each metro you operate in, get listed on:
+
+1. Local Chamber of Commerce directory ($150-500/yr)
+2. Better Business Bureau (free / paid accreditation)
+3. Local industry-association member directory (varies — A3, NAM, regional manufacturing alliances)
+4. City-specific business directories (e.g., crain's chicago business, downtownla.com, vtsv.org)
+5. State-level industrial directories (e.g., MichBio, BioForward Wisconsin)
+6. Yelp, Yellow Pages, Foursquare, MapQuest, Bing Places, Apple Business Connect
+
+The state + industry-specific directories are the ones BrightLocal/Yext
+miss but ARM-Institute-style manufacturing directories love.
+
+### Operational cadence
+
+| Frequency | Task | Owner |
+|---|---|---|
+| Per service ticket | Send Google review request via Birdeye/NiceJob | automated |
+| Daily | Respond to any new reviews | ops |
+| Weekly | Post 1 GBP update per profile (photo + 1-2 sentences) | ops or AI agent |
+| Weekly | Add 2-3 new city profiles to `cityProfiles.ts` | content team |
+| Monthly | Audit citation consistency via BrightLocal | ops |
+| Quarterly | Press release distribution per priority metro via PRWeb / EIN Presswire ($99-369/release) | marketing |
+| Quarterly | New blog post per priority metro touching local manufacturers + service stories | content team |
+
+### What NOT to do
+
+- ❌ **Multiple GBPs at the same address.** Google detects this immediately. Suspended.
+- ❌ **Fake addresses (P.O. boxes, residential addresses you don't operate from).** Suspended.
+- ❌ **Buying reviews.** Google removes them; sustained buying gets the profile suspended.
+- ❌ **Identical profile content across multiple GBPs.** Vary the description, photos, services per location.
+- ❌ **Adding categories you don't actually do.** Google penalizes category abuse.
 
 ## Multi-domain & multi-website strategy
 
