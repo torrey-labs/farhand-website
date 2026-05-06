@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { cities, getCityBySlug } from '@/data/cities';
 import { cityCoords } from '@/data/cityCoords';
+import { getCityProfile } from '@/data/cityProfiles';
 import { machineTypes } from '@/data/machineTypes';
 import { localBusinessSchema, breadcrumbSchema } from '@/lib/schema';
 
@@ -68,6 +69,7 @@ export default async function LocationPage({
 
   const url = `https://farhand.ai/locations/${city.slug}`;
   const coords = cityCoords[city.slug];
+  const profile = getCityProfile(city.slug);
 
   const localBizLd = localBusinessSchema({
     cityName: city.name,
@@ -103,9 +105,13 @@ export default async function LocationPage({
           <h1 className="mb-6">
             Field service in {city.name}, {city.state}.
           </h1>
-          <h2 className="max-w-[680px] mx-auto font-normal mb-10">
-            On-demand, AI-guided technicians for every robot brand and most
-            industrial machinery. Closest-hub dispatch across the {city.metroArea}.
+          <h2 className="max-w-[760px] mx-auto font-normal mb-10">
+            {profile?.intro ?? (
+              <>
+                On-demand, AI-guided technicians for every robot brand and most
+                industrial machinery. Closest-hub dispatch across the {city.metroArea}.
+              </>
+            )}
           </h2>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-center">
             <Button asChild size="lg">
@@ -118,7 +124,51 @@ export default async function LocationPage({
         </div>
       </section>
 
-      <section className="py-12 md:py-16 lg:py-20">
+      {profile && profile.industrialCorridors.length > 0 && (
+        <section className="py-10 md:py-14 border-t border-white/5">
+          <div className="container max-w-[1100px]">
+            <h3 className="text-xs uppercase tracking-[0.2em] text-light-gray/60 mb-6">
+              Industrial corridors we cover
+            </h3>
+            <div className="flex flex-wrap gap-2 md:gap-3">
+              {profile.industrialCorridors.map((corridor) => (
+                <span
+                  key={corridor}
+                  className="text-sm md:text-base px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 text-light-gray/90"
+                >
+                  {corridor}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {profile && profile.topEmployers.length > 0 && (
+        <section className="py-10 md:py-14 border-t border-white/5">
+          <div className="container max-w-[1100px]">
+            <h3 className="text-xs uppercase tracking-[0.2em] text-light-gray/60 mb-2">
+              Operations we typically support in this metro
+            </h3>
+            <p className="text-sm text-light-gray/50 mb-8 max-w-[640px]">
+              {city.name}-area facilities of these manufacturers run robots and
+              machinery we have the brand certs and tooling to service.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+              {profile.topEmployers.map((employer) => (
+                <div
+                  key={employer}
+                  className="bg-white/[0.03] border border-white/5 rounded-xl px-4 py-3 text-sm md:text-base text-light-gray/90"
+                >
+                  {employer}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section className="py-12 md:py-16 lg:py-20 border-t border-white/5">
         <div className="container max-w-[1100px]">
           <h3 className="text-xs uppercase tracking-[0.2em] text-light-gray/60 mb-8 text-center">
             What we service in {city.name}
