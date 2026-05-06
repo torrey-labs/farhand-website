@@ -200,11 +200,26 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-6 flex flex-wrap gap-6">
-          <Link href="/mission" className="text-sm text-light-gray/60 py-2 inline-block">
+        <div className="border-t border-white/10 pt-6 flex flex-wrap gap-x-6 gap-y-2">
+          <Link href="/locations" className="text-sm text-light-gray/60 py-2 inline-block hover:text-accent transition-colors">
+            Locations
+          </Link>
+          <Link href="/services/industrial-robots" className="text-sm text-light-gray/60 py-2 inline-block hover:text-accent transition-colors">
+            Services
+          </Link>
+          <Link href="/blog" className="text-sm text-light-gray/60 py-2 inline-block hover:text-accent transition-colors">
+            Blog
+          </Link>
+          <Link href="/partners" className="text-sm text-light-gray/60 py-2 inline-block hover:text-accent transition-colors">
+            Partners
+          </Link>
+          <Link href="/mission" className="text-sm text-light-gray/60 py-2 inline-block hover:text-accent transition-colors">
             Mission
           </Link>
-          <Link href="/terms" className="text-sm text-light-gray/60 py-2 inline-block">
+          <Link href="/faq" className="text-sm text-light-gray/60 py-2 inline-block hover:text-accent transition-colors">
+            FAQ
+          </Link>
+          <Link href="/terms" className="text-sm text-light-gray/60 py-2 inline-block hover:text-accent transition-colors">
             Terms &amp; Privacy
           </Link>
         </div>
