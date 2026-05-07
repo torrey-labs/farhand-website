@@ -40,6 +40,7 @@ Full multi-phase migration plan (DNS, Workspace, Apollo, mailop) lives in `farha
 - [x] **2026-05-04** — Per-blog-post Open Graph images shipped (23 posts, factory in `src/lib/blog-og.tsx`).
 - [ ] HSTS preload submission (manual — submit `farhand.ai` at https://hstspreload.org).
 - [ ] Confirm Google Search Console + Bing Webmaster verification are still active for `farhand.ai`. After domain migration, GSC needs the new property added + change-of-address from `farhand.live`.
+- [ ] Audit two `google-site-verification=` TXT records on `farhand.live` root — identify which is current (Workspace vs Search Console vs others) and remove the dead one.
 
 ### Content
 
@@ -50,6 +51,42 @@ Full multi-phase migration plan (DNS, Workspace, Apollo, mailop) lives in `farha
 ## SEO
 
 _See `SEO.md` for current state and pending items._
+
+---
+
+## Email deliverability
+
+_See `DELIVERABILITY.md` for the full record-by-record state. Operational summary below._
+
+Shipped 2026-05-06:
+- [x] `farhand.live` DMARC `rua` repointed from dead `dmarc_rua@onsecureserver.net` → `aaryan@farhand.ai`; added `ruf` + `fo=1`.
+- [x] `farhand.live` TLS-RPT TXT added (`_smtp._tls.farhand.live`); deleted older duplicate that pointed at `aaryan@farhand.live`.
+- [x] `farhand.live` MTA-STS shipped (`mta-sts.farhand.live`, mode=testing). New Vercel project `farhand-mta-sts` (source: `/Users/aaryan/Files/Farhand/farhand-mta-sts/`).
+- [x] `farhand.live` CAA records (5): restrict cert issuance to Let's Encrypt + Google Trust Services + iodef report-to.
+- [x] `farhand.live` DNSSEC enabled at Cloudflare (status `pending` until DS record added at registrar — see action item below).
+- [x] CLAUDE.md rule #1 expanded to cover Cloudflare DNS for both domains.
+
+Blocked on user action — DS record at GoDaddy registrar (one-time, ~2 min):
+- [ ] **`farhand.live` DNSSEC DS record**: log in to GoDaddy → Domains → `farhand.live` → DNS → DNSSEC → Add DS record:
+  - Key Tag: `2371`
+  - Algorithm: `13` (ECDSAP256SHA256)
+  - Digest Type: `2` (SHA-256)
+  - Digest: `F86A4088B3679D2814360B47B8A1D8ACEBDDC9E6117E04F6A4B5CCB1D7F25CC2`
+  - After this propagates, Cloudflare DNSSEC status flips from `pending` → `active`.
+
+Blocked on dual-zone Cloudflare API token (current token only sees `.live`):
+- [ ] `farhand.ai` SPF: `v=spf1 include:_spf.google.com ~all` → add `include:resend.com`.
+- [ ] `farhand.ai` Resend domain verification (DKIM `resend._domainkey` + return-path `send.farhand.ai` MX/TXT). Requires Resend dashboard access too.
+- [ ] `farhand.ai` TLS-RPT TXT (`_smtp._tls.farhand.ai`).
+- [ ] `farhand.ai` MTA-STS (add `mta-sts.farhand.ai` to existing `farhand-mta-sts` Vercel project).
+- [ ] `farhand.ai` CAA records (same set as `.live`).
+- [ ] `farhand.ai` DNSSEC enable (Cloudflare-side; DS record at Cloudflare registrar will need to be added since `.ai` is registered with Cloudflare).
+
+Deferred follow-ups:
+- [ ] **+7 days from MTA-STS ship**: bump `farhand.live` policy `mode: testing` → `mode: enforce` (rotate `id` in `_mta-sts` TXT). Edit `farhand-mta-sts/.well-known/mta-sts.txt`, redeploy, update DNS TXT.
+- [ ] **+7 days from `.ai` auth stack live**: step `.ai` DMARC `p=none` → `p=quarantine`.
+- [ ] **+14 days from quarantine**: consider `p=reject` on both.
+- [ ] **+30 days**: re-run reputation scoring; expect lift now that auth + age are improving.
 
 ---
 

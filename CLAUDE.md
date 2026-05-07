@@ -7,7 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 <!-- BEGIN:repo-purpose-rules -->
 # Hard rules for this repo
 
-1. **Repo is the Next.js website only.** Site source code + workflows that build and deploy it. GTM automation (Notion CRM writers, scrapers, outreach drafters, grant monitor, Apollo, scheduled agents, cofounder mailbox setup, email-deliverability infra) lives in the sibling repo `farhand-gtm`. No long-form copy, grant narratives, answer banks, outreach templates, or mission statements belong here.
+1. **Repo is the Next.js website + the domains it lives on.** Site source code + workflows that build and deploy it, plus Cloudflare DNS for `farhand.ai` and `farhand.live` (records, deliverability auth — SPF/DKIM/DMARC/MTA-STS/TLS-RPT). GTM automation (Notion CRM writers, scrapers, outreach drafters, grant monitor, Apollo, scheduled agents, cofounder mailbox setup, Smartlead/email-warmup infra) lives in the sibling repo `farhand-gtm`. No long-form copy, grant narratives, answer banks, outreach templates, or mission statements belong here.
 
 2. **Notion writes from this repo go to `NOTION_LEADS_DATABASE_ID` (Inbound Leads) only.** That's the inbound form-submission path from `/api/oem-lead`. CRM/Clients/Outbound writes belong in `farhand-gtm`. **Exception: operational webhooks** — small, user-triggered HTTP endpoints (e.g. `/ack/[briefId]` for technician brief acknowledgments) may write to other Notion DBs on demand. Adding new CRM-write endpoints requires explicit approval, not the default.
 

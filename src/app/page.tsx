@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import FeaturedOn from '@/components/FeaturedOn';
+import ServicesGlance from '@/components/ServicesGlance';
 import CoverageMap from '@/components/CoverageMap';
 import Problem from '@/components/Problem';
 import { RelayIntro, RelayCards } from '@/components/Relay';
@@ -57,6 +58,13 @@ export default function Home() {
         logos={[
           { src: '/press/arm-institute.svg', alt: 'ARM Institute', height: 44 },
           {
+            src: '/press/robots-for-america.png',
+            alt: 'Robots for America',
+            height: 56,
+            href: 'https://robotsforamerica.org/',
+            title: 'Robots for America — National Robotics Adoption Coalition',
+          },
+          {
             src: '/press/field-service-next-west.png',
             alt: 'Field Service Next West',
             height: 72,
@@ -66,6 +74,8 @@ export default function Home() {
           },
         ]}
       />
+
+      <ServicesGlance />
 
       <div id="problem">
         <Problem />

@@ -32,6 +32,12 @@ export default function Hero() {
       {/* Content Overlay */}
       <div className="container z-[1] relative flex flex-col items-center">
         <motion.div style={{ y: y1, opacity }} transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}>
+          <p
+            className="text-[11px] md:text-xs tracking-[0.25em] uppercase text-light-gray/80 mb-3 md:mb-4"
+            style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}
+          >
+            Your white-labelled service partner
+          </p>
           <h1
             className="mb-6 max-w-[1000px]"
             style={{
@@ -67,6 +73,16 @@ export default function Hero() {
             <a href="#schedule">Schedule a call</a>
           </Button>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.7, duration: 0.8 }}
+          className="mt-6 md:mt-8 text-xs md:text-sm text-light-gray/70 max-w-[640px]"
+          style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}
+        >
+          Working with or supporting robotics start-ups, integrators &amp; Fortune 500 OEMs
+        </motion.p>
       </div>
     </section>
   );
