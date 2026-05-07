@@ -46,6 +46,16 @@ export type LeadMeta = {
   referrer?: string;
   userAgent?: string;
   path?: string;
+  /** Free-form message body — surfaced in Notes + appended as a paragraph block. */
+  message?: string;
+  /** Inbound contact email — surfaced in the Notion Notes column. */
+  email?: string;
+  /** Inbound contact phone (E.164 preferred) — written to Contact column. */
+  phone?: string;
+  /** Live-Assist Q2 — written to Machinery column. */
+  machinery?: string;
+  /** Live-Assist Q3 — written to Location column. */
+  location?: string;
 };
 
 const NOTION_VERSION = '2022-06-28';
@@ -226,6 +236,10 @@ export async function storeInNotion(
 
   const notes = [
     `Source: ${meta.source || 'unknown'}`,
+    contactName ? `Name: ${contactName}` : null,
+    meta.email ? `Email: ${meta.email}` : null,
+    meta.phone ? `Phone: ${meta.phone}` : null,
+    meta.message ? `Message: ${meta.message.slice(0, 1500)}` : null,
     meta.path ? `Path: ${meta.path}` : null,
     meta.referrer ? `Referrer: ${meta.referrer}` : null,
     meta.userAgent ? `UA: ${meta.userAgent.slice(0, 300)}` : null,
@@ -244,7 +258,11 @@ export async function storeInNotion(
     'Last Visit': { date: { start: new Date().toISOString() } },
   };
 
-  if (contactName) properties.Contact = text(contactName);
+  // Contact column: prefer phone (matches the inbound-text shape); fall back to name.
+  const contactValue = meta.phone || contactName;
+  if (contactValue) properties.Contact = text(contactValue);
+  if (meta.machinery) properties.Machinery = text(meta.machinery);
+  if (meta.location) properties.Location = text(meta.location);
   if (domain) properties.Domain = { url: domain };
   if (org?.industry) properties.Industry = text(org.industry);
   if (org?.estimated_num_employees) properties.Employees = { number: org.estimated_num_employees };
@@ -254,6 +272,22 @@ export async function storeInNotion(
   if (description) properties.Description = text(description);
   if (topContacts) properties['Top Contacts'] = text(topContacts);
   if (notes) properties.Notes = text(notes);
+
+  // Body block: the user's message verbatim — mirrors how inbound texts
+  // are stored, so the conversation transcript view is consistent.
+  const children = meta.message
+    ? [
+        {
+          object: 'block',
+          type: 'paragraph',
+          paragraph: {
+            rich_text: [
+              { type: 'text', text: { content: meta.message.slice(0, 1900) } },
+            ],
+          },
+        },
+      ]
+    : undefined;
 
   const res = await fetch(`${API_BASE}/pages`, {
     method: 'POST',
@@ -265,6 +299,7 @@ export async function storeInNotion(
     body: JSON.stringify({
       parent: { database_id: databaseId },
       properties,
+      ...(children ? { children } : {}),
     }),
   });
 
